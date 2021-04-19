@@ -43,45 +43,39 @@ public class MainActivity extends AppCompatActivity {
         signin = (Button) findViewById(R.id.btnsignin);
         DB = new DBHelper(this);
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String user = username.getText().toString();
-                String pass = password.getText().toString();
-                String repass = repassword.getText().toString();
+        signup.setOnClickListener(view -> {
+            String user = username.getText().toString();
+            String pass = password.getText().toString();
+            String repass = repassword.getText().toString();
 
-                if (user.equals("") || pass.equals("") || repass.equals(""))
-                    Toast.makeText(MainActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else {
-                    if (pass.equals(repass)) {
-                        Boolean checkusers = DB.checkusername(user);
-                        if (checkusers == false) {
-                            Boolean insert = DB.insertData(user, pass);
-                            if (insert == true) {
-                                Toast.makeText(MainActivity.this, "Registered Succesfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), ActivityHome.class);
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(MainActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
-                            }
+            if (user.equals("") || pass.equals("") || repass.equals(""))
+                Toast.makeText(MainActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
+            else {
+                if (pass.equals(repass)) {
+                    Boolean checkusers = DB.checkusername(user);
+                    if (checkusers == false) {
+                        Boolean insert = DB.insertData(user, pass);
+                        if (insert == true) {
+                            Toast.makeText(MainActivity.this, "Registered Succesfully", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), ActivityHome.class);
+                            startActivity(intent);
                         } else {
-                            Toast.makeText(MainActivity.this, "User already exists! Please sign in", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(MainActivity.this, "Password not matching", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "User already exists! Please sign in", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(MainActivity.this, "Password not matching", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
+
+
         });
 
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ActivityLogin.class);
-                startActivity(intent);
-            }
+        signin.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), ActivityLogin.class);
+            startActivity(intent);
         });
         /*-----------------------END OF LOG-IN---------------------------------*/
     }
