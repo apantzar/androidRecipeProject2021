@@ -1,7 +1,5 @@
 package com.pantz.recipepro;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,11 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class ActivityLogin extends AppCompatActivity {
 
     EditText username, password;
     Button btnlogin;
-    com.example.recipepro.DBHelper DB;
+    com.pantz.recipepro.DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class ActivityLogin extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username1);
         password = (EditText) findViewById(R.id.password1);
         btnlogin = (Button) findViewById(R.id.btnsignin1);
-        DB = new com.example.recipepro.DBHelper(this);
+        DB = new com.pantz.recipepro.DBHelper(this);
 
         btnlogin.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
