@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         //test
-
         /*-----------------------START OF LOG-IN----------------------------*/
         setContentView(R.layout.activity_main);
 
