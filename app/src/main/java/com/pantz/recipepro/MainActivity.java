@@ -80,9 +80,16 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
-        signin.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), ActivityLogin.class);
-            startActivity(intent);
+
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ActivityLogin.class);
+                startActivity(intent);
+                finish();
+            }
+
+
         });
         /*-----------------------END OF LOG-IN---------------------------------*/
     }

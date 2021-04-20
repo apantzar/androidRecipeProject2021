@@ -3,9 +3,11 @@ package com.pantz.recipepro;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.regex.Matcher;
@@ -49,6 +51,10 @@ public class RegisterDatabase extends SQLiteOpenHelper {
     }
 
 
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        super.onDowngrade(db, oldVersion, newVersion);
+    }
 
     //this is called when you update the database (when the version of the db changes)
     @Override
@@ -56,6 +62,9 @@ public class RegisterDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME); //in order to delete the table
         onCreate(db); // to create again
     }
+
+
+
 
 
     //method that adds elements to the table
