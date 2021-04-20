@@ -9,42 +9,48 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.security.NoSuchAlgorithmException;
+
 public class ActivityLogin extends AppCompatActivity {
 
     EditText username, password;
     Button btnlogin;
-    com.pantz.recipepro.DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        username = (EditText) findViewById(R.id.username1);
-        password = (EditText) findViewById(R.id.password1);
-        btnlogin = (Button) findViewById(R.id.btnsignin1);
-        DB = new com.pantz.recipepro.DBHelper(this);
+        username =  findViewById(R.id.username1);
+        password =  findViewById(R.id.password1);
+        btnlogin =  findViewById(R.id.btnsignin1);
 
-        btnlogin.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
+        btnlogin.setOnClickListener(view -> {
 
-                String user = username.getText().toString();
-                String pass = password.getText().toString();
-
-                if(user.equals("") || pass.equals(""))
-                    Toast.makeText(ActivityLogin.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else{
-                    Boolean checkuserpass = DB.checkusernamepassword(user, pass);
-                    if(checkuserpass == true){
-                        Toast.makeText(ActivityLogin.this, "Sign in succesfull", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), ActivityHome.class);
-                        startActivity(intent);
-                    }else {
-                        Toast.makeText(ActivityLogin.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
+            User user = new User(username.getText().toString(), password.getText().toString());
+            if (user.getUsername().equals("") || user.getPassword().equals("")) {
+                Toast.makeText(ActivityLogin.this, "Please enter all fields.", Toast.LENGTH_SHORT).show();
             }
+            else{
+                RegisterDatabase registerDatabase = new RegisterDatabase(ActivityLogin.this);
+                HashMe passwordToHash = new HashMe(user.getPassword());
+                try {
+                    String hashedPassword = passwordToHash.theHasher(user.getPassword());
+                    user.setPassword(hashedPassword);
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+                Boolean isMatching = registerDatabase.usernamePasswordMatch(user.getUsername(), user.getPassword());
+                if(isMatching){
+                    Toast.makeText(ActivityLogin.this, "Successful sign in", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), ActivityHome.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(ActivityLogin.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                }
+            }
+
         });
 
     }

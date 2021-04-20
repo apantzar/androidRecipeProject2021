@@ -10,11 +10,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.security.NoSuchAlgorithmException;
+
 public class MainActivity extends AppCompatActivity {
     EditText username, password, repassword;
     Button signup, signin;
-
-    com.pantz.recipepro.DBHelper DB;
 
 
     @Override
@@ -27,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         SQLiteDatabase sqLiteDatabase = getBaseContext().openOrCreateDatabase("dbRecipe.bd", MODE_PRIVATE, null);
 
-
-        //test
+        
         /*-----------------------START OF LOG-IN----------------------------*/
         setContentView(R.layout.activity_main);
 
@@ -37,9 +36,7 @@ public class MainActivity extends AppCompatActivity {
         repassword =  findViewById(R.id.repassword);
         signup =  findViewById(R.id.btnsignup);
         signin =  findViewById(R.id.btnsignin);
-      //  DB = new DBHelper(this);
-
-
+        
 
         //----------------BUTTON LISTENERS-----------------------
         signup.setOnClickListener(v -> {
@@ -48,24 +45,37 @@ public class MainActivity extends AppCompatActivity {
                     if (user.getUsername().equals("") || user.getPassword().equals("") || user.getRepassword().equals("")) {
                         Toast.makeText(MainActivity.this, "Please enter all fields.", Toast.LENGTH_SHORT).show();
                     } else {
-                        if (user.getPassword().equals(user.getRepassword())) {
-                            // Boolean checkusers = DB.checkusername(user);
-                   /* if (checkusers == false) {
-                        Boolean insert = DB.insertData(user, pass);
-                        if (insert == true) {
-                            Toast.makeText(MainActivity.this, "Registered Succesfully", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), ActivityHome.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(MainActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                        RegisterDatabase registerDatabase = new RegisterDatabase(MainActivity.this);
+                        Boolean isUniqueUser = registerDatabase.uniqueUsername(user.getUsername());
+                        if(!isUniqueUser) {
+                            if (user.ValidPassword(user.getPassword())) {
+                                if (user.getPassword().equals(user.getRepassword())) {
+                                    HashMe passwordToHash = new HashMe(user.getPassword());
+                                    try {
+                                        String hashedPassword = passwordToHash.theHasher(user.getPassword());
+                                        user.setPassword(hashedPassword);
+                                    } catch (NoSuchAlgorithmException e) {
+                                        e.printStackTrace();
+                                    }
+                                    boolean successRegister = registerDatabase.addElement(user);
+                                    if (successRegister) {
+                                        Toast.makeText(MainActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(MainActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                                else {
+                                    Toast.makeText(MainActivity.this, "Not matching passwords.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            else {
+                                Toast.makeText(MainActivity.this, "Not valid password.", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    } else {
-                        Toast.makeText(MainActivity.this, "User already exists!", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(MainActivity.this, "Password not matching", Toast.LENGTH_SHORT).show();
-                }*/
+                        else {
+                            Toast.makeText(MainActivity.this, "This username already exists. Please try another one.", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 });
 

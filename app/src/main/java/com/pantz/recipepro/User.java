@@ -5,23 +5,27 @@
 
 package com.pantz.recipepro;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class User {
     private String username;
     private String password;
     private String repassword;
 
 
-    //Constructor
+    //Constructor for register activity
     public User(String username, String password, String repassword) {
         this.username = username;
         this.password = password;
         this.repassword = repassword;
     }
 
-    //Empty constructor (might be deleted later)
-    public User() {
+   //Constructor for log in activity
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
-
 
     //Setters and Getters
     public String getUsername() {
@@ -55,5 +59,23 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+
+    /*Function that checks if the password is valid. The password must contain:
+      1)at least 8 characters,
+      2)at least 1 number
+      3)at least 1 uppercase letter
+      4)at least 1 lowercase letter
+      5)on of these symbols: @, #, $, %, ^, &, +, =, !
+    */
+    public static boolean ValidPassword(final String password) {
+        Pattern pattern;
+        Matcher matcher;
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+
+        return matcher.matches();
     }
 }
