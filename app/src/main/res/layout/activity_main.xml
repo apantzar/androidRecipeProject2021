@@ -9,47 +9,70 @@
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="match_parent"
+        android:layout_width="402dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="0dp"
         android:background="#FBFBFB"
         android:backgroundTint="#FFFFFF"
         android:hint="User Name" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="match_parent"
+        android:layout_width="402dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/username"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="0dp"
         android:background="#FDFDFD"
         android:hint="Password"
         android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/repassword"
-        android:layout_width="match_parent"
+        android:layout_width="402dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="0dp"
         android:background="#FFFDFD"
         android:hint="Retype Password"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btnsignup"
-        android:layout_width="match_parent"
+        android:layout_width="402dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/repassword"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="0dp"
         android:text="Register" />
 
     <Button
         android:id="@+id/btnsignin"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnsignup"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="293dp"
         android:text="Existing user! Go to Sign in page" />
 
 </RelativeLayout>

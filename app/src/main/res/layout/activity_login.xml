@@ -10,18 +10,28 @@
 
     <EditText
         android:id="@+id/username1"
-        android:layout_width="match_parent"
+        android:layout_width="402dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="0dp"
         android:background="#FFFFFF"
-        android:hint="User Name" />
+        android:hint="User Name"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/password1"
-        android:layout_width="match_parent"
+        android:layout_width="402dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/username1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="0dp"
         android:background="#3F51B5"
         android:backgroundTint="#FFFFFF"
         android:hint="Password"
@@ -29,10 +39,16 @@
 
     <Button
         android:id="@+id/btnsignin1"
-        android:layout_width="match_parent"
+        android:layout_width="402dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="465dp"
         android:text="Sign in" />
 
 
