@@ -1,6 +1,3 @@
-package com.pantz.recipepro;
-
-
 /**
  * this class is responsible to encrypt
  * passwords
@@ -8,6 +5,14 @@ package com.pantz.recipepro;
  *
  * Algorithm: shhh be quiet (¬‿¬)
  */
+
+package com.pantz.recipepro;
+
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+
 
 public class HashMe {
 
@@ -25,11 +30,27 @@ public class HashMe {
     }
 
 
+    /**
+     * @author apantzar
+     * @param passwordToHash --> Given password
+     * @return --> Hashed password value
+     * @throws NoSuchAlgorithmException --> exception
+     */
+    public String theHasher(String passwordToHash) throws NoSuchAlgorithmException {
+        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+        messageDigest.update(passwordToHash.getBytes());
+
+        byte [] digest = messageDigest.digest();
+        StringBuffer stringBuffer = new StringBuffer();
+
+        for(byte theByte: digest){
+
+            stringBuffer.append(String.format("%02x", theByte & 0xff));
+
+        }
 
 
-    public String theHasher(String passwordToHash){
-
-        return "";
+        return stringBuffer.toString();
     }
 
 
