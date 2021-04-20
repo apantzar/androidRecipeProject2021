@@ -15,14 +15,14 @@ public class RegisterDatabase extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME="Recipe.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "register";
 
 
    //the columns that the table will have
    private static final String COLUMN_ID ="_id";
-   private static final String COLUMN_USERNAME="usernameTEXT";
-   private static final String COLUMN_PASSWORD="passwordTEXT";
+   private static final String COLUMN_USERNAME="username";
+   private static final String COLUMN_PASSWORD="password";
 
 
 
@@ -41,8 +41,8 @@ public class RegisterDatabase extends SQLiteOpenHelper {
         //create the table
         String table = "CREATE TABLE "+ TABLE_NAME+
                 " ("+ COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
-                COLUMN_USERNAME +"TEXT NOT NULL,"     +
-                COLUMN_PASSWORD         +"TEXT NOT NULL);";
+                COLUMN_USERNAME +" TEXT NOT NULL,"     +
+                COLUMN_PASSWORD         +" TEXT NOT NULL);";
 
 
         db.execSQL(table);
@@ -76,22 +76,16 @@ public class RegisterDatabase extends SQLiteOpenHelper {
 
     public Boolean uniqueUsername(String username){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("Select * from register where usernameTEXT = ?", new String[] {username});
+        Cursor cursor = db.rawQuery("Select * from " + TABLE_NAME + " where " + COLUMN_USERNAME + " = ?", new String[] {username});
         return cursor.getCount() > 0;
 
     }
 
     public Boolean usernamePasswordMatch(String username, String password){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("Select * from register where usernameTEXT=? and passwordTEXT=?", new String[] {username, password});
+        Cursor cursor = db.rawQuery("Select * from "+ TABLE_NAME + " where " + COLUMN_USERNAME + " =?  and " + COLUMN_PASSWORD + "=?", new String[] {username, password});
         return cursor.getCount() > 0;
     }
-
-
-
-
-
-
 
 
 
