@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1D2030"
+    android:background="#F2F2F7"
     android:padding="10dp"
     tools:context=".ActivityLogin">
 
@@ -18,7 +18,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="0dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/text_box"
         android:hint="User Name"
         android:inputType="text" />
 
@@ -32,23 +32,22 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="0dp"
-        android:background="#3F51B5"
+        android:background="@drawable/text_box"
         android:backgroundTint="#FFFFFF"
         android:hint="Password"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btnsignin1"
-        android:layout_width="402dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/password1"
+        android:layout_width="355dp"
+        android:layout_height="69dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="465dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="313dp"
+        android:background="@drawable/button_style"
         android:text="Sign in" />
 
 

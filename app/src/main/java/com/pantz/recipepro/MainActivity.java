@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
     EditText username, password, repassword;
-    Button signup, signin;
+    Button signup;
 
 
     @Override
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         //SQL conn
 
-        SQLiteDatabase sqLiteDatabase = getBaseContext().openOrCreateDatabase("dbRecipe.bd", MODE_PRIVATE, null);
+       SQLiteDatabase sqLiteDatabase = getBaseContext().openOrCreateDatabase("dbRecipe.bd", MODE_PRIVATE, null);
 
         
         /*-----------------------START OF LOG-IN----------------------------*/
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         password =  findViewById(R.id.password);
         repassword =  findViewById(R.id.repassword);
         signup =  findViewById(R.id.btnsignup);
-        signin =  findViewById(R.id.btnsignin);
+
         
 
         //----------------BUTTON LISTENERS-----------------------
@@ -80,11 +80,32 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
-        signin.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), ActivityLogin.class);
-            startActivity(intent);
-        });
+
+        /*
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ActivityLogin.class);
+                startActivity(intent);
+                finish();
+            }
+
+
+        });*/
         /*-----------------------END OF LOG-IN---------------------------------*/
+
+
+
+        Button btn = (Button)findViewById(R.id.button);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ActivityLogin.class));
+            }
+        });
+
+
     }
 
 

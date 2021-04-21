@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1D2030"
+    android:background="#F2F2F7"
     android:padding="10dp"
     tools:context=".MainActivity">
 
@@ -17,8 +17,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="0dp"
-        android:background="#FBFBFB"
-        android:backgroundTint="#FFFFFF"
+        android:background="@drawable/text_box"
         android:hint="User Name" />
 
     <EditText
@@ -31,7 +30,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="0dp"
-        android:background="#FDFDFD"
+        android:background="@drawable/text_box"
         android:hint="Password"
         android:inputType="textPassword" />
 
@@ -45,34 +44,41 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="0dp"
-        android:background="#FFFDFD"
+        android:background="@drawable/text_box"
         android:hint="Retype Password"
         android:inputType="textPassword" />
 
     <Button
+
         android:id="@+id/btnsignup"
-        android:layout_width="402dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/repassword"
+        android:layout_above="@+id/button"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="0dp"
-        android:text="Register" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="62dp"
+        android:background="@drawable/button_style"
+        android:padding="10dp"
+
+        android:text="Register"
+        android:textColor="#ffffff" />
 
     <Button
-        android:id="@+id/btnsignin"
-        android:layout_width="400dp"
+        android:id="@+id/button"
+        android:layout_width="233dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnsignup"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="293dp"
-        android:text="Existing user! Go to Sign in page" />
+        android:layout_marginStart="95dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="27dp"
+        android:background="@drawable/button_style"
+        android:padding="10dp"
+        android:text="Login"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>
