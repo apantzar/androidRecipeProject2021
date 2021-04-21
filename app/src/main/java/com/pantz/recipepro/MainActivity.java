@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
                                     boolean successRegister = registerDatabase.addElement(user);
                                     if (successRegister) {
                                         Toast.makeText(MainActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getApplicationContext(), ActivityHome.class);
+                                        startActivity(intent);
                                     } else {
                                         Toast.makeText(MainActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                                     }
