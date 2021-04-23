@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">RecipePro</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="firstfragment">FirstFragment</string>
+    <string name="secondfragment_app_layout_constraintbottom_tobottomof"><![CDATA[SecondFragment /> app:layout_constraintBottom_toBottomOf=]]></string>
+    <string name="secondfragment">SecondFragment</string>
+    <string name="textview">TextView</string>
+    <string name="thirdfragment">ThirdFragment</string>
 </resources>
