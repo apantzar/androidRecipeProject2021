@@ -3,21 +3,16 @@ package com.pantz.recipepro;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpResponse;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
-
+import java.io.IOException;
 
 
 public class ActivityHome extends AppCompatActivity {
@@ -37,7 +32,35 @@ public class ActivityHome extends AppCompatActivity {
 
         button.setOnClickListener(v -> {
 
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
+            StrictMode.setThreadPolicy(policy);
+
+
+
+
+
+
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url("https://tasty.p.rapidapi.com/tags/list")
+                    .get()
+                    .addHeader("x-rapidapi-key", "26a22ee7a7msh03d13c0b22a034cp1317e8jsn479f9b5ec601")
+                    .addHeader("x-rapidapi-host", "tasty.p.rapidapi.com")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+
+                System.out.println(response);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Oh noooo");
+            }
+
+
+            /*
             // Instantiate the RequestQueue.
             RequestQueue queue = Volley.newRequestQueue(ActivityHome.this);
             String url ="http://api.yummly.com/v1/api/recipe/recipe-id?_app_id=default-application_5197045&_app_key=26a22ee7a7msh03d13c0b22a034cp1317e8jsn479f9b5ec601";
@@ -62,10 +85,12 @@ public class ActivityHome extends AppCompatActivity {
             });
 
             // Add the request to the RequestQueue.
-            queue.add(stringRequest);
+            queue.add(stringRequest);*/
 
 
         });
+
+
 
 
     }

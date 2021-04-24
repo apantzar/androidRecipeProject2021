@@ -51,6 +51,21 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation 'com.android.volley:volley:1.2.0'
 
+    implementation 'com.squareup.okhttp:okhttp:2.5.0'
+
+
+
+
+    /*implementation 'com.android.volley:volley:1.2.0'
+     implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation 'uk.co.chrisjenx:calligraphy:2.0.0-SNAPSHOT'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.squareup.okhttp3:okhttp:3.0.1'
+    */
+}
+
+android {
+    useLibrary 'org.apache.http.legacy'
 }
