@@ -104,6 +104,9 @@ public class ActivityHome extends AppCompatActivity {
     }
 
 
+    /**
+     * For each nav button <- fragment
+     */
     private void theNavFunction(){
 
 
