@@ -52,7 +52,7 @@
         android:hint="Retype Password"
         android:inputType="textPassword" />
 
-    <Button
+    <android.widget.Button
 
         android:id="@+id/btnsignup"
         android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
         android:layout_marginTop="308dp"
         android:layout_marginEnd="219dp"
         android:layout_marginBottom="30dp"
-
+        android:visibility="gone"
         android:background="@drawable/button_style"
         android:padding="10dp"
         android:text="Sign Up"
@@ -85,6 +85,7 @@
         android:layout_marginEnd="54dp"
         android:layout_marginBottom="285dp"
         android:background="@drawable/button_style"
+        android:visibility="gone"
         android:padding="10dp"
         android:text="Login"
         android:textColor="#ffffff" />
@@ -99,10 +100,40 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="-1dp"
-        android:layout_marginTop="-1dp"
+        android:layout_marginTop="-2dp"
         android:layout_marginEnd="-1dp"
-        android:layout_marginBottom="289dp"
+        android:layout_marginBottom="290dp"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/background" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="253dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="109dp"
+        android:layout_toStartOf="@+id/imageButton2"
+        android:text="Sign Up"
+        android:background="@null"
+        app:srcCompat="@drawable/btn_signup" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="366dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="258dp"
+        android:text="Sign In"
+        android:background="@null"
+        app:srcCompat="@drawable/btn_signin" />
 
 </RelativeLayout>
