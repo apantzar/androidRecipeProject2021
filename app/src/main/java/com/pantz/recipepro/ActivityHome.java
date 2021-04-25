@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,11 +40,21 @@ public class ActivityHome extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        NavController navController = Navigation.findNavController(this,  R.id.fragment);
+
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
+
         /**
          * For nav buttons connection to each fragment
          * @author pantz
          *
          */
+
+        /*
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.firstFragment);
@@ -80,7 +92,7 @@ public class ActivityHome extends AppCompatActivity {
                getSupportFragmentManager().beginTransaction().replace(R.id.secondFragment, selectedFragment).commit();
                 return true;
             }
-        });
+        });*/
 
 
 

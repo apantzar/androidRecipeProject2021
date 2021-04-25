@@ -8,21 +8,21 @@
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.pantz.recipepro.FirstFragment"
-        android:label="fragment_first"
+        android:label="fragment_Home"
         tools:layout="@layout/fragment_first" />
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.pantz.recipepro.SecondFragment"
-        android:label="fragment_second"
+        android:label="fragment_list"
         tools:layout="@layout/fragment_second" />
     <fragment
         android:id="@+id/thirdFragment"
         android:name="com.pantz.recipepro.ThirdFragment"
-        android:label="fragment_third"
+        android:label="fragment_search"
         tools:layout="@layout/fragment_third" />
     <fragment
         android:id="@+id/fourthFragment"
         android:name="com.pantz.recipepro.FourthFragment"
-        android:label="fragment_fourth"
+        android:label="fragment_account"
         tools:layout="@layout/fragment_fourth" />
 </navigation>
