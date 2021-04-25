@@ -39,60 +39,14 @@ public class ActivityHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
-        NavController navController = Navigation.findNavController(this,  R.id.fragment);
-
-        NavigationUI.setupWithNavController(bottomNavigationView, navController);
-
-
         /**
          * For nav buttons connection to each fragment
          * @author pantz
          *
          */
 
-        /*
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.firstFragment);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
-                switch (item.getItemId()){
-
-                    case R.id.firstFragment:
-                        selectedFragment = new FirstFragment();
-
-                        break;
-
-
-                    case R.id.secondFragment:
-                       selectedFragment = new SecondFragment();
-                       break;
-
-
-                    case R.id.thirdFragment:
-                       selectedFragment = new ThirdFragment();
-                       break;
-
-
-
-                    case R.id.fourthFragment:
-                       selectedFragment = new FourthFragment();
-                       break;
-
-
-
-                }
-               getSupportFragmentManager().beginTransaction().replace(R.id.secondFragment, selectedFragment).commit();
-                return true;
-            }
-        });*/
+        theNavFunction();
 
 
 
@@ -142,6 +96,22 @@ public class ActivityHome extends AppCompatActivity {
 
 
 
+
+
+
+
+
+    }
+
+
+    private void theNavFunction(){
+
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        NavController navController = Navigation.findNavController(this,  R.id.fragment);
+
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
     }
 
