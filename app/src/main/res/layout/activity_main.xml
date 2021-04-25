@@ -129,11 +129,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="366dp"
-        android:layout_marginEnd="61dp"
-        android:layout_marginBottom="258dp"
-        android:text="Sign In"
+        android:layout_marginTop="372dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="252dp"
         android:background="@null"
+        android:text="Sign In"
         app:srcCompat="@drawable/btn_signin" />
 
 </RelativeLayout>
