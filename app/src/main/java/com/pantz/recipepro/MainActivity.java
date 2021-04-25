@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
     EditText username, password, repassword;
-    Button signup;
+    ImageButton signup;
 
 
     @Override
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password =  findViewById(R.id.password);
         repassword =  findViewById(R.id.repassword);
-        signup =  findViewById(R.id.btnsignup);
+        signup =  findViewById(R.id.imageButton);
 
         
 
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Button btn = (Button)findViewById(R.id.button);
+        ImageButton btn = (ImageButton)findViewById(R.id.imageButton2);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
