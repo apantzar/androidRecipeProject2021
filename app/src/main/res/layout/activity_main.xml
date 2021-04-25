@@ -106,7 +106,7 @@
         android:layout_marginEnd="-1dp"
         android:layout_marginBottom="290dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/background" />
+        app:srcCompat="@drawable/ic_colors_background" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -121,8 +121,7 @@
         android:layout_marginBottom="109dp"
         android:layout_toStartOf="@+id/imageButton2"
         android:background="@null"
-        android:text="Sign Up"
-        app:srcCompat="@drawable/btn_signup" />
+        app:srcCompat="@drawable/ic_sign_up_btn" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -135,7 +134,6 @@
         android:layout_marginEnd="67dp"
         android:layout_marginBottom="243dp"
         android:background="@null"
-        android:text="Sign In"
-        app:srcCompat="@drawable/btn_signin" />
+        app:srcCompat="@drawable/ic_sign_in_btn" />
 
 </RelativeLayout>
