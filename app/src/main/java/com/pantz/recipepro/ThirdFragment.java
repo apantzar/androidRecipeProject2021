@@ -1,5 +1,6 @@
 package com.pantz.recipepro;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,12 +55,33 @@ public class ThirdFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
+
+
+
+    }
+
+
+    public void buttonClick(View v) {
+        switch(v.getId()) {
+            case R.id.button3:
+                Intent myIntent = new Intent();
+              //  myIntent.setClassName(getActivity(), GeneralInfo.class);
+                // for ex: your package name can be "com.example"
+                // your activity name will be "com.example.Contact_Developer"
+                startActivity(myIntent);
+                break;
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+
         return inflater.inflate(R.layout.fragment_third, container, false);
     }
 }

@@ -10,6 +10,7 @@
 
     <Button
 
+        
         android:textAlignment="textStart"
         android:id="@+id/button6"
         android:layout_width="337dp"
@@ -44,6 +45,7 @@
 
     <Button
 
+        android:onClick="buttonClick"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:drawableRight="@drawable/ic_arrow2"
@@ -56,7 +58,8 @@
         app:backgroundTint="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="OnClick" />
 
     <Button
 
