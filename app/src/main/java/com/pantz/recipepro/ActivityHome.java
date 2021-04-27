@@ -1,20 +1,24 @@
 package com.pantz.recipepro;
 
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.StrictMode;
-import android.view.View;
-import android.widget.Button;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -26,17 +30,11 @@ public class ActivityHome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
 
-
-
-
-
+        final RecipeDatabase sqllite =  new RecipeDatabase(this);
 
         /**
          * For nav buttons connection to each fragment
@@ -44,57 +42,81 @@ public class ActivityHome extends AppCompatActivity {
          *
          */
 
-
         theNavFunction();
 
-
-
         Button button = (Button)findViewById(R.id.button2);
-
         button.setOnClickListener(v -> {
+            //SharedPreferences pref = getPreferences(MODE_PRIVATE);
+            //boolean first_time = pref.getBoolean("first_time", true);
+            boolean first_time = true;
 
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            if (first_time == true) {
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
-            StrictMode.setThreadPolicy(policy);
+
+                StrictMode.setThreadPolicy(policy);
 
 
-            /**
-             * This API's code for requests
-             * The result of the call will be displayed (console) for now.
-             *
-             * @author pantz
-             */
+                /**
+                 * This API's code for requests
+                 * The result of the call will be displayed (console) for now.
+                 *
+                 * @author pantz
+                 */
 
-            OkHttpClient client = new OkHttpClient();
+                OkHttpClient client = new OkHttpClient();
 
-            Request request = new Request.Builder()
-                    .url("https://tasty.p.rapidapi.com/tags/list")
-                    .get()
-                    .addHeader("x-rapidapi-key", "26a22ee7a7msh03d13c0b22a034cp1317e8jsn479f9b5ec601")
-                    .addHeader("x-rapidapi-host", "tasty.p.rapidapi.com")
-                    .build();
+                Request request = new Request.Builder()
+                        .url("https://tasty.p.rapidapi.com/recipes/list?from=0&size=10")//First 10 recipes
+                        .get()
+                        .addHeader("x-rapidapi-key", "10d54edbcbmsh905993d8c85037dp1ebfa7jsn234b1f93ab32")
+                        .addHeader("x-rapidapi-host", "tasty.p.rapidapi.com")
+                        .build();
 
-            try {
-                Response response = client.newCall(request).execute();
+                try {
+                    Response response = client.newCall(request).execute();
+                    String data = response.body().string();
 
-                System.out.println(response);
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println("Oh noooo");
+                    SQLiteDatabase db = sqllite.getWritableDatabase();
+
+                    JSONObject reader = new JSONObject(data);
+                    JSONArray results = reader.getJSONArray("results");
+
+
+                    for (int i = 0; i < results.length(); i++) {
+                        JSONObject recipe = results.getJSONObject(i);
+
+                        int id = recipe.getInt("id");
+                        String recipe_title = recipe.getString("name");
+                        int calories = 0;
+
+                        try {
+                            JSONObject nutrition = recipe.getJSONObject("nutrition");
+                            calories = nutrition.getInt("calories");
+                        } catch (Exception ex) {
+                        }
+
+                        String sql = "INSERT OR IGNORE INTO " + RecipeDatabase.TABLE_NAME +
+                                " (_id, recipe_title, recipe_category, basic_element, elements, " +
+                                "exec, calories, special_d, date_added, exec_time, dif_rate) VALUES (" +
+                                id + ", " + DatabaseUtils.sqlEscapeString(recipe_title) + ", '', '', '', '', " + calories + ", '', DateTime('now'), 0, 0)";
+
+                        db.execSQL(sql);
+                    }
+
+                    System.out.println(response);
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                    System.out.println("Oh noooo");
+                }
+
+                //SharedPreferences.Editor editor = pref.edit();
+                //editor.putBoolean("first_time", false);
             }
 
-
-
-
+            // show the recipes
 
         });
-
-
-
-
-
-
-
 
     }
 

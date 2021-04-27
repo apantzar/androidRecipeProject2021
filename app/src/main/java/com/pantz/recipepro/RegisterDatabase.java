@@ -3,21 +3,16 @@ package com.pantz.recipepro;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RegisterDatabase extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME="Recipe.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String TABLE_NAME = "register";
 
 
@@ -95,7 +90,5 @@ public class RegisterDatabase extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("Select * from "+ TABLE_NAME + " where " + COLUMN_USERNAME + " =?  and " + COLUMN_PASSWORD + "=?", new String[] {username, password});
         return cursor.getCount() > 0;
     }
-
-
 
 }

@@ -1,7 +1,6 @@
 package com.pantz.recipepro;
 
 import android.content.Context;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -19,8 +18,8 @@ public class RecipeDatabase extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME="Recipe.db";
-    private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_NAME = "bizRecipe";
+    private static final int DATABASE_VERSION = 2;
+    public static final String TABLE_NAME = "bizRecipe";
 
     ///////////////////////////////////////////////////
     /////////////////////COLUMNS///////////////////////
@@ -58,16 +57,16 @@ public class RecipeDatabase extends SQLiteOpenHelper {
 
         String theQuery = "CREATE TABLE "+ TABLE_NAME+
                 " ("+ COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
-                COLUMN_BASIC_ELEMENT +"TEXT NOT NULL,"     +
-                COLUMN_TITLE         +"TEXT NOT NULL,"     +
-                COLUMN_CALORIES      +"INTEGER NOT NULL,"  +
-                COLUMN_DATE_ADDED    +"DATE NOT NULL,"     +
-                COLUMN_CATEGORY      +"TEXT NOT NULL,"     +
-                COLUMN_DIF_RATE      +"INTEGER NOT NULL,"  +
-                COLUMN_EXEC_TIME     +"INTEGER NOT NULL,"  +
-                COLUMN_SPECIALD      +"TEXT NOT NULL,"     +
-                COLUMN_ELEMENTS      +"TEXT NOT NULL,"     +
-                COLUMN_EXEC          +"TEXT NOT NULL);";
+                COLUMN_BASIC_ELEMENT +" TEXT NOT NULL,"     +
+                COLUMN_TITLE         +" TEXT NOT NULL,"     +
+                COLUMN_CALORIES      +" INTEGER NOT NULL,"  +
+                COLUMN_DATE_ADDED    +" DATE NOT NULL,"     +
+                COLUMN_CATEGORY      +" TEXT NOT NULL,"     +
+                COLUMN_DIF_RATE      +" INTEGER NOT NULL,"  +
+                COLUMN_EXEC_TIME     +" INTEGER NOT NULL,"  +
+                COLUMN_SPECIALD      +" TEXT NOT NULL,"     +
+                COLUMN_ELEMENTS      +" TEXT NOT NULL,"     +
+                COLUMN_EXEC          +" TEXT NOT NULL);";
 
 
 
