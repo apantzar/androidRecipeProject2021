@@ -23,59 +23,76 @@
         app:layout_constraintVertical_bias="0.0">
 
         <Space
-            android:layout_width="0dp"
+            android:layout_width="10dp"
             android:layout_height="1dp"
             android:layout_weight="1"/>
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/pizza_x24"
+            android:background="@drawable/fast_filters"
+            android:text="Pizza"
+
 
             android:padding="15dip" />
 
         <Space
-            android:layout_width="0dp"
+            android:layout_width="10dp"
             android:layout_height="1dp"
             android:layout_weight="1"/>
 
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:padding="15dip" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/chicken_x24"
+            android:background="@drawable/fast_filters"
+            android:text="Chicken"
+            android:padding="15dip"
+            />
 
         <Space
-            android:layout_width="0dp"
+            android:layout_width="10dp"
             android:layout_height="1dp"
             android:layout_weight="1"/>
 
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/cocktail"
+            android:background="@drawable/fast_filters"
+            android:text="Cocktails"
 
 
             android:padding="15dip" />
 
         <Space
-            android:layout_width="0dp"
+            android:layout_width="10dp"
             android:layout_height="1dp"
             android:layout_weight="1"/>
 
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btn4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/cupcake_x24"
+            android:background="@drawable/fast_filters"
+            android:text="Sweets"
             android:padding="15dip" />
 
         <Space
-            android:layout_width="0dp"
+            android:layout_width="10dp"
             android:layout_height="1dp"
             android:layout_weight="1"/>
 
