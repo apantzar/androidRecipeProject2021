@@ -7,110 +7,124 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="406dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="583dp"
-        android:orientation="horizontal"
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="412dp"
+        android:layout_height="88dp"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="406dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="583dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
-        <android.widget.Button
-            android:id="@+id/btn1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/fast_filters"
-            android:drawableLeft="@drawable/pizza_x24"
-            android:padding="15dip"
-            android:text="Pizza"
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
-
-            android:textAllCaps="false" />
-
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
-
-
-        <android.widget.Button
-            android:id="@+id/btn2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:background="@drawable/fast_filters"
-            android:drawableLeft="@drawable/chicken_x24"
-            android:padding="15dip"
-            android:text="Chicken"
-            android:textAllCaps="false" />
-
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+            <android.widget.Button
+                android:id="@+id/btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fast_filters"
+                android:drawableLeft="@drawable/pizza_x24"
+                android:padding="15dip"
+                android:text="Pizza"
 
 
-        <android.widget.Button
-            android:id="@+id/btn3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/fast_filters"
-            android:drawableLeft="@drawable/cocktail"
-            android:padding="15dip"
-            android:text="Cocktails"
+                android:textAllCaps="false" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
 
-            android:textAllCaps="false" />
+            <android.widget.Button
+                android:id="@+id/btn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+                android:background="@drawable/fast_filters"
+                android:drawableLeft="@drawable/chicken_x24"
+                android:padding="15dip"
+                android:text="Chicken"
+                android:textAllCaps="false" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
 
-        <android.widget.Button
-            android:id="@+id/btn4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/fast_filters"
-            android:drawableLeft="@drawable/cupcake_x24"
-            android:padding="15dip"
-            android:text="Sweets"
-            android:textAllCaps="false" />
+            <android.widget.Button
+                android:id="@+id/btn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fast_filters"
+                android:drawableLeft="@drawable/cocktail"
+                android:padding="15dip"
+                android:text="Cocktails"
 
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
 
-    </LinearLayout>
+                android:textAllCaps="false" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+
+            <android.widget.Button
+                android:id="@+id/btn4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fast_filters"
+                android:drawableLeft="@drawable/cupcake_x24"
+                android:padding="15dip"
+                android:text="Sweets"
+                android:textAllCaps="false" />
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="193dp"
         android:layout_height="47dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
         android:text="New Recipes "
         android:textColor="#171616"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.001" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+        app:layout_constraintVertical_bias="0.018" />
 </androidx.constraintlayout.widget.ConstraintLayout>
