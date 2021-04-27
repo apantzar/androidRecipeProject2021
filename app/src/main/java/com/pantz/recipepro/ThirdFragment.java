@@ -1,6 +1,5 @@
 package com.pantz.recipepro;
 
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -77,7 +76,7 @@ public class ThirdFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-               generalFragment generalFragment =  new generalFragment();
+               GeneralFragment generalFragment =  new GeneralFragment();
                 FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                 transaction.replace(R.id.thrirdFragment, generalFragment);
                 transaction.commit();

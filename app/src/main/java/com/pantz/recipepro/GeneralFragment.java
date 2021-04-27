@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link generalFragment#newInstance} factory method to
+ * Use the {@link GeneralFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class generalFragment extends Fragment {
+public class GeneralFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class generalFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public generalFragment() {
+    public GeneralFragment() {
         // Required empty public constructor
     }
 
@@ -37,8 +37,8 @@ public class generalFragment extends Fragment {
      * @return A new instance of fragment generalFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static generalFragment newInstance(String param1, String param2) {
-        generalFragment fragment = new generalFragment();
+    public static GeneralFragment newInstance(String param1, String param2) {
+        GeneralFragment fragment = new GeneralFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -53,6 +53,8 @@ public class generalFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
