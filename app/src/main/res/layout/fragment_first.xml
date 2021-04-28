@@ -50,8 +50,8 @@
                 android:textSize="18dp"
 
 
-                android:textAllCaps="false" />
-            <!--   android:drawableLeft="@drawable/pizza_x24"-->
+                android:textAllCaps="false"
+                android:drawableLeft="@drawable/pizza_x24"/>
             <Space
                 android:layout_width="15dp"
                 android:layout_height="1dp"
@@ -68,8 +68,8 @@
                 android:padding="15dip"
                 android:text="Chicken"
                 android:textSize="18dp"
-                android:textAllCaps="false" />
-            <!--  android:drawableLeft="@drawable/chicken_x24"-->
+                android:textAllCaps="false"
+                android:drawableLeft="@drawable/chicken_x24"/>
             <Space
                 android:layout_width="15dp"
                 android:layout_height="1dp"
@@ -85,8 +85,8 @@
                 android:padding="15dip"
                 android:textSize="18dp"
                 android:text="Cocktails"
-                android:textAllCaps="false" />
-            <!--  android:drawableLeft="@drawable/cocktail"-->
+                android:textAllCaps="false"
+                android:drawableLeft="@drawable/cocktail"/>
             <Space
                 android:layout_width="15dp"
                 android:layout_height="1dp"
@@ -102,8 +102,8 @@
                 android:padding="15dip"
                 android:text="Sweets"
                 android:textSize="18dp"
-                android:textAllCaps="false" />
-            <!--android:drawableLeft="@drawable/cupcake_x24"-->
+                android:textAllCaps="false"
+                android:drawableLeft="@drawable/cupcake_x24"/>
             <Space
                 android:layout_width="30dp"
                 android:layout_height="1dp"
