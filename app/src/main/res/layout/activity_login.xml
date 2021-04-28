@@ -11,16 +11,16 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="426dp"
+        android:layout_width="420dp"
+        android:layout_height="374dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_background2" />
+        app:layout_constraintVertical_bias="0.204"
+        app:srcCompat="@drawable/ic_pizza_maker_cuate" />
 
     <EditText
         android:id="@+id/username1"
@@ -98,7 +98,7 @@
         android:layout_marginBottom="8dp"
         android:clickable="true"
         android:text="Sign Up"
-        android:textColor="#0B5376"
+        android:textColor="#EBA800"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,19 +112,19 @@
         android:layout_width="121dp"
         android:layout_height="79dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="300dp"
         android:text="Welcome back!"
         android:textAlignment="textEnd"
-        android:textColor="#f2f2f7"
+        android:textColor="#9E000000"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
