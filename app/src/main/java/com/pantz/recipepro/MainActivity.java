@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
                     if (user.getUsername().equals("") || user.getPassword().equals("") || user.getRepassword().equals("")) {
                         Toast.makeText(MainActivity.this, "Please enter all fields.", Toast.LENGTH_SHORT).show();
                     } else {
-                        RegisterDatabase registerDatabase = new RegisterDatabase(MainActivity.this);
-                        Boolean isUniqueUser = registerDatabase.uniqueUsername(user.getUsername());
+                        Database Database = new Database(MainActivity.this);
+                        Boolean isUniqueUser = Database.uniqueUsername(user.getUsername());
                         if(!isUniqueUser) {
                             if (user.ValidPassword(user.getPassword())) {
                                 if (user.getPassword().equals(user.getRepassword())) {
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                                     } catch (NoSuchAlgorithmException e) {
                                         e.printStackTrace();
                                     }
-                                    boolean successRegister = registerDatabase.addElement(user);
+                                    boolean successRegister = Database.addElement(user);
                                     if (successRegister) {
                                         Toast.makeText(MainActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), ActivityHome.class);

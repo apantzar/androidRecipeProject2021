@@ -39,7 +39,7 @@ public class ActivityLogin extends AppCompatActivity {
                     Toast.makeText(ActivityLogin.this, "Please enter all fields.", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    RegisterDatabase registerDatabase = new RegisterDatabase(ActivityLogin.this);
+                    Database Database = new Database(ActivityLogin.this);
                     HashMe passwordToHash = new HashMe(user.getPassword());
                     try {
                         String hashedPassword = passwordToHash.theHasher(user.getPassword());
@@ -47,7 +47,7 @@ public class ActivityLogin extends AppCompatActivity {
                     } catch (NoSuchAlgorithmException e) {
                         e.printStackTrace();
                     }
-                    Boolean isMatching = registerDatabase.usernamePasswordMatch(user.getUsername(), user.getPassword());
+                    Boolean isMatching = Database.usernamePasswordMatch(user.getUsername(), user.getPassword());
                     if(isMatching){
                         Toast.makeText(ActivityLogin.this, "Successful sign in", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), ActivityHome.class);

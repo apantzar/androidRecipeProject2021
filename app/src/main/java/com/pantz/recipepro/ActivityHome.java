@@ -34,7 +34,7 @@ public class ActivityHome extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
-        final RecipeDatabase sqllite =  new RecipeDatabase(this);
+        final Database sqllite =  new Database(this);
 
         /**
          * For nav buttons connection to each fragment
@@ -96,7 +96,7 @@ public class ActivityHome extends AppCompatActivity {
                         } catch (Exception ex) {
                         }
 
-                        String sql = "INSERT OR IGNORE INTO " + RecipeDatabase.TABLE_NAME +
+                        String sql = "INSERT OR IGNORE INTO " + Database.RECIPE_TABLE_NAME +
                                 " (_id, recipe_title, recipe_category, basic_element, elements, " +
                                 "exec, calories, special_d, date_added, exec_time, dif_rate) VALUES (" +
                                 id + ", " + DatabaseUtils.sqlEscapeString(recipe_title) + ", '', '', '', '', " + calories + ", '', DateTime('now'), 0, 0)";
