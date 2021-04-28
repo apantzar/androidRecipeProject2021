@@ -14,13 +14,14 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="15dp"
         android:background="@drawable/text_box"
         android:hint="User Name"
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="1.0" />
@@ -58,10 +59,10 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.529" />
+        app:layout_constraintVertical_bias="0.637" />
 
     <android.widget.Button
 
@@ -106,13 +107,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="490dp"
-        android:layout_height="426dp"
+        android:layout_width="484dp"
+        android:layout_height="369dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="-1dp"
         android:layout_marginTop="-2dp"
-        android:layout_marginBottom="290dp"
+        android:layout_marginBottom="292dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,7 +123,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_background2" />
+        app:srcCompat="@drawable/ic_pizza_sharing_cuate" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -170,14 +171,14 @@
         android:layout_marginBottom="300dp"
         android:text="Create Account"
         android:textAlignment="textEnd"
-        android:textColor="#f2f2f7"
+        android:textColor="#0C0C0C"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.939"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView7"
