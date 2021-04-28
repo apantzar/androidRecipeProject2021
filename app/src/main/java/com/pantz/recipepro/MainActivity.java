@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +16,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
     EditText username, password, repassword;
-    ImageButton signup;
+    Button signup;
 
 
     @Override
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password =  findViewById(R.id.password);
         repassword =  findViewById(R.id.repassword);
-        signup =  findViewById(R.id.imageButton);
+        signup =  findViewById(R.id.btnsignup);
 
         
 
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        ImageButton btn = (ImageButton)findViewById(R.id.imageButton2);
+        TextView btn = (TextView)findViewById(R.id.textView8);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
