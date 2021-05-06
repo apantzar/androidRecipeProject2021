@@ -27,8 +27,10 @@ public class ActivityHome extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -89,21 +91,40 @@ public class ActivityHome extends AppCompatActivity {
                         int id = recipe.getInt("id");
                         String recipe_title = recipe.getString("name");
                         int calories = 0;
+                        String elements="vuyvuyvy" ;
 
                         try {
                             JSONObject nutrition = recipe.getJSONObject("nutrition");
                             calories = nutrition.getInt("calories");
 
-                            JSONObject elements = recipe.getJSONObject("");
+
 
                         } catch (Exception ex) {
+
                             ex.printStackTrace();
+                        }
+
+
+                        try{
+
+
+                            JSONObject sections = recipe.getJSONObject("sections");
+                            JSONObject comp = sections.getJSONObject("components");
+                            elements = comp.getString("raw_text");
+
+                            System.out.println("=========================================================================================Here:: "+elements);
+
+
+
+                        }catch(Exception ex){
+                            ex.printStackTrace();
+
                         }
 
                         String sql = "INSERT OR IGNORE INTO " + Database.RECIPE_TABLE_NAME +
                                 " (_id, recipe_title, recipe_category, basic_element, elements, " +
                                 "exec, calories, special_d, date_added, exec_time, dif_rate) VALUES (" +
-                                id + ", " + DatabaseUtils.sqlEscapeString(recipe_title) + ", '', '', '', '', " + calories + ", '', DateTime('now'), 0, 0)";
+                                id + ", " + DatabaseUtils.sqlEscapeString(recipe_title) + ", 'ssss', 'eeee','+elements+', '!!!!', " + calories + ", '', DateTime('now'), 0, 0)";
 
                         db.execSQL(sql);
                     }
