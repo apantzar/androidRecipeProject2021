@@ -67,9 +67,9 @@ public class ActivityHome extends AppCompatActivity {
                 OkHttpClient client = new OkHttpClient();
 
                 Request request = new Request.Builder()
-                        .url("https://tasty.p.rapidapi.com/recipes/detail?id=5586")//First 10 recipes
+                        .url("https://tasty.p.rapidapi.com/recipes/list?from=0&size=1000")//First 10 recipes
                         .get()
-                        .addHeader("x-rapidapi-key", "10d54edbcbmsh905993d8c85037dp1ebfa7jsn234b1f93ab32")
+                        .addHeader("x-rapidapi-key", "26a22ee7a7msh03d13c0b22a034cp1317e8jsn479f9b5ec601")
                         .addHeader("x-rapidapi-host", "tasty.p.rapidapi.com")
                         .build();
 
@@ -93,6 +93,9 @@ public class ActivityHome extends AppCompatActivity {
                         try {
                             JSONObject nutrition = recipe.getJSONObject("nutrition");
                             calories = nutrition.getInt("calories");
+
+                            JSONObject elements = recipe.getJSONObject("");
+
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
