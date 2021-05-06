@@ -67,7 +67,7 @@ public class ActivityHome extends AppCompatActivity {
                 OkHttpClient client = new OkHttpClient();
 
                 Request request = new Request.Builder()
-                        .url("https://tasty.p.rapidapi.com/recipes/list?from=0&size=10")//First 10 recipes
+                        .url("https://tasty.p.rapidapi.com/recipes/detail?id=5586")//First 10 recipes
                         .get()
                         .addHeader("x-rapidapi-key", "10d54edbcbmsh905993d8c85037dp1ebfa7jsn234b1f93ab32")
                         .addHeader("x-rapidapi-host", "tasty.p.rapidapi.com")
@@ -94,6 +94,7 @@ public class ActivityHome extends AppCompatActivity {
                             JSONObject nutrition = recipe.getJSONObject("nutrition");
                             calories = nutrition.getInt("calories");
                         } catch (Exception ex) {
+                            ex.printStackTrace();
                         }
 
                         String sql = "INSERT OR IGNORE INTO " + Database.RECIPE_TABLE_NAME +
