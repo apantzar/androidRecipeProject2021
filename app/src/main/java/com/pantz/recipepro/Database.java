@@ -12,7 +12,7 @@ public class Database extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME="Recipe.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
 
     private static final String REGISTER_TABLE_NAME = "register";
