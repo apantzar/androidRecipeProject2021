@@ -108,11 +108,17 @@ public class ActivityHome extends AppCompatActivity {
                         try{
 
 
+
                             JSONObject sections = recipe.getJSONObject("sections");
+                            System.out.println("---------This is section's test "+recipe.getJSONObject("sections"));
                             JSONObject comp = sections.getJSONObject("components");
+                            System.out.println("---------This is components' test "+recipe.getJSONObject("components"));
                             elements = comp.getString("raw_text");
 
-                            System.out.println("=========================================================================================Here:: "+elements);
+                            System.out.println("--------Here:: "+elements);
+
+
+
 
 
 
