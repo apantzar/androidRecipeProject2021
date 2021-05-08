@@ -1,5 +1,6 @@
 package com.pantz.recipepro;
 
+import android.annotation.SuppressLint;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -26,6 +27,8 @@ import java.io.IOException;
 public class ActivityHome extends AppCompatActivity {
 
 
+    public String elementsIn = "ssss";
+
 
 
     @Override
@@ -39,7 +42,7 @@ public class ActivityHome extends AppCompatActivity {
         final Database sqllite =  new Database(this);
 
         /**
-         * For nav buttons connection to each fragment
+         * For nav buttons connection for each fragment
          * @author pantz
          *
          */
@@ -52,92 +55,112 @@ public class ActivityHome extends AppCompatActivity {
             //boolean first_time = pref.getBoolean("first_time", true);
             boolean first_time = true;
 
-            if (first_time == true) {
-                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
 
-                StrictMode.setThreadPolicy(policy);
+            StrictMode.setThreadPolicy(policy);
 
 
-                /**
-                 * This API's code for requests
-                 * The result of the call will be displayed (console) for now.
-                 *
-                 * @author pantz
-                 */
+            /**
+             * This API's code for requests
+             * The result of the call will be displayed (console) for now.
+             *
+             * @author pantz
+             */
 
-                OkHttpClient client = new OkHttpClient();
+            OkHttpClient client = new OkHttpClient();
 
-                Request request = new Request.Builder()
-                        .url("https://tasty.p.rapidapi.com/recipes/list?from=0&size=1000")//First 10 recipes
-                        .get()
-                        .addHeader("x-rapidapi-key", "26a22ee7a7msh03d13c0b22a034cp1317e8jsn479f9b5ec601")
-                        .addHeader("x-rapidapi-host", "tasty.p.rapidapi.com")
-                        .build();
+            Request request = new Request.Builder()
+                    .url("https://tasty.p.rapidapi.com/recipes/list?from=0&size=1000")//First 10 recipes
+                    .get()
+                    .addHeader("x-rapidapi-key", "26a22ee7a7msh03d13c0b22a034cp1317e8jsn479f9b5ec601")
+                    .addHeader("x-rapidapi-host", "tasty.p.rapidapi.com")
+                    .build();
 
-                try {
-                    Response response = client.newCall(request).execute();
-                    String data = response.body().string();
+            try {
+                Response response = client.newCall(request).execute();
+                String data = response.body().string();
 
-                    SQLiteDatabase db = sqllite.getWritableDatabase();
+                SQLiteDatabase db = sqllite.getWritableDatabase();
 
-                    JSONObject reader = new JSONObject(data);
-                    JSONArray results = reader.getJSONArray("results");
-
-
-                    for (int i = 0; i < results.length(); i++) {
-                        JSONObject recipe = results.getJSONObject(i);
-
-                        int id = recipe.getInt("id");
-                        String recipe_title = recipe.getString("name");
-                        int calories = 0;
-                        String elements="vuyvuyvy" ;
-
-                        try {
-                            JSONObject nutrition = recipe.getJSONObject("nutrition");
-                            calories = nutrition.getInt("calories");
+                JSONObject reader = new JSONObject(data);
+                JSONArray results = reader.getJSONArray("results");
 
 
+                for (int i = 0; i < results.length(); i++) {
+                    JSONObject recipe = results.getJSONObject(i);
 
-                        } catch (Exception ex) {
+                    int id = recipe.getInt("id");
+                    String recipe_title = recipe.getString("name");
+                    int calories = 0;
 
-                            ex.printStackTrace();
-                        }
-
-
-                        try{
+                    //elementsIn = "vuyvuyvy";
 
 
-                            JSONObject sections = recipe.getJSONObject("sections");
-                            JSONObject comp = sections.getJSONObject("components");
-                            elements = comp.getString("raw_text");
-
-                            System.out.println("=========================================================================================Here:: "+elements);
+                   try {
+                        JSONObject nutrition = recipe.getJSONObject("nutrition");
+                        calories = nutrition.getInt("calories");
 
 
 
-                        }catch(Exception ex){
-                            ex.printStackTrace();
+                        elementsIn = "hey";
 
-                        }
+
+                        /*
+
+                        JSONArray sections = recipe.getJSONArray("sections");
+                        JSONObject btwConnection = sections.getJSONObject(0);
+                        JSONArray components = btwConnection.getJSONArray("components");
+                        JSONObject tester = components.getJSONObject(0);
+                        elementsIn = tester.getString("raw_text");
+
+
+
+                     //   JSONObject sections = recipe.getJSONObject("sections");
+                        System.out.println("---------This is section's test "+recipe.getJSONObject("sections"));
+                    //    JSONObject comp = sections.getJSONObject("components");
+                        System.out.println("---------This is components' test "+recipe.getJSONObject("components"));
+                     //   elements = comp.getString("raw_text");
+
+                        System.out.println("--------Here:: "+elementsIn); */
+
+
+                        /*
+
+                        @SuppressLint("DefaultLocale") String sql = String.format("INSERT OR IGNORE INTO %s (_id, recipe_title, recipe_category, basic_element, _elements, exec, calories, special_d, date_added, exec_time, dif_rate) VALUES (%d, %s, 'ssss', 'eeee', %s,'',  '!!!!', %d, '', DateTime('now'), 0, 0)", Database.RECIPE_TABLE_NAME, id, DatabaseUtils.sqlEscapeString(recipe_title), "elementsIn", calories);
+
+                        db.execSQL(sql);*/
+
 
                         String sql = "INSERT OR IGNORE INTO " + Database.RECIPE_TABLE_NAME +
-                                " (_id, recipe_title, recipe_category, basic_element, elements, " +
+                                " (_id, recipe_title, recipe_category, basic_element, _elements, " +
                                 "exec, calories, special_d, date_added, exec_time, dif_rate) VALUES (" +
                                 id + ", " + DatabaseUtils.sqlEscapeString(recipe_title) + ", 'ssss', 'eeee','+elements+', '!!!!', " + calories + ", '', DateTime('now'), 0, 0)";
 
                         db.execSQL(sql);
+
+
+
+
+                   }catch(Exception ex){
+
+
+                        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!I am the catcher ;))))!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                        ex.printStackTrace();
+
                     }
 
-                    System.out.println(response);
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
-                    System.out.println("Oh noooo");
+
                 }
 
-                //SharedPreferences.Editor editor = pref.edit();
-                //editor.putBoolean("first_time", false);
+                System.out.println(response);
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+                System.out.println("Oh noooo");
             }
+
+            //SharedPreferences.Editor editor = pref.edit();
+            //editor.putBoolean("first_time", false);
 
             // show the recipes
 

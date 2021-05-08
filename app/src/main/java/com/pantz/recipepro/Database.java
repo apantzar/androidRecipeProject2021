@@ -26,7 +26,7 @@ public class Database extends SQLiteOpenHelper {
     private static final String RECIPE_COLUMN_TITLE ="recipe_title";
     private static final String RECIPE_COLUMN_CATEGORY ="recipe_category";
     private static final String RECIPE_COLUMN_BASIC_ELEMENT="basic_element";
-    private static final String RECIPE_COLUMN_ELEMENTS = "elements";
+    private static final String RECIPE_COLUMN_ELEMENTS = "_elements";
     private static final String RECIPE_COLUMN_EXEC = "exec";
     private static final String RECIPE_COLUMN_CALORIES ="calories";
     private static final String RECIPE_COLUMN_SPECIALD="special_d";
