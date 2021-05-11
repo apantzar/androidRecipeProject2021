@@ -56,17 +56,17 @@ public class Database extends SQLiteOpenHelper {
 
 
         String theQuery = "CREATE TABLE "+ RECIPE_TABLE_NAME+
-                " ("+ RECIPE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
+                " ("+ /**/ RECIPE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
                 RECIPE_COLUMN_BASIC_ELEMENT +" TEXT NOT NULL,"     +
-                RECIPE_COLUMN_TITLE         +" TEXT NOT NULL,"     +
-                RECIPE_COLUMN_CALORIES      +" INTEGER NOT NULL,"  +
-                RECIPE_COLUMN_DATE_ADDED    +" DATE NOT NULL,"     +
+                /**/   RECIPE_COLUMN_TITLE         +" TEXT NOT NULL,"     +
+                /**/   RECIPE_COLUMN_CALORIES      +" INTEGER NOT NULL,"  +
+                /**/ RECIPE_COLUMN_DATE_ADDED    +" DATE NOT NULL,"     +
                 RECIPE_COLUMN_CATEGORY      +" TEXT NOT NULL,"     +
                 RECIPE_COLUMN_DIF_RATE      +" INTEGER NOT NULL,"  +
-                RECIPE_COLUMN_EXEC_TIME     +" INTEGER NOT NULL,"  +
+                /**/  RECIPE_COLUMN_EXEC_TIME     +" INTEGER NOT NULL,"  +
                 RECIPE_COLUMN_SPECIALD      +" TEXT NOT NULL,"     +
-                RECIPE_COLUMN_ELEMENTS      +" TEXT NOT NULL,"     +
-                RECIPE_COLUMN_EXEC          +" TEXT NOT NULL);";
+                /**/   RECIPE_COLUMN_ELEMENTS      +" TEXT NOT NULL,"     +
+              /**/  RECIPE_COLUMN_EXEC          +" TEXT NOT NULL);";
 
         db.execSQL(theQuery); //To run theQuery
 

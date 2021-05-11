@@ -108,19 +108,9 @@ public class ActivityHome extends AppCompatActivity {
                     JSONObject inner = results.getJSONObject(i);
 
 
+
                     //For keys
 
-                    for(Iterator it = inner.keys(); it.hasNext(); ){
-
-                        String key = (String)it.next();
-
-                        if(key.equals("tags")){
-                            tagKey = Integer.parseInt(key);
-                            System.out.println("This is the tag position: "+tagKey);
-                        }
-
-                        System.out.println(key+"========> "+inner.get(key));
-                    }
 
 
                    int id = inner.getInt("id");
@@ -128,15 +118,26 @@ public class ActivityHome extends AppCompatActivity {
 
                     try{
                         JSONArray recipesArray = inner.getJSONArray("recipes");
+
+
+                        /*for(int j=0; j<recipesArray.length(); j++){
+                            if(recipesArray.get(j).equals("tags")){
+                                tagKey = j;
+                            }
+                        }*/
+
+
+
+
                         JSONObject recipeObj = recipesArray.getJSONObject(0);
-                        JSONObject tagObj = recipesArray.getJSONObject(tagKey);
+                      //  JSONObject tagObj = recipesArray.getJSONObject(tagKey);
 
 
                         String recipeName = recipeObj.getString("name");
-                        String catName = tagObj.getString("display_name");
+                        //String catName = tagObj.getString("display_name");
 
 
-                        System.out.println("The tag is: "+catName);
+                        //System.out.println("The tag is: "+catName);
                         System.out.println("This will be the name:  "+recipeName);
                         counterOfRecipes++;
 
