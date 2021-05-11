@@ -21,11 +21,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
+
 import java.io.IOException;
+import java.util.Iterator;
 
 
 public class ActivityHome extends AppCompatActivity {
 
+    private static int tagKey = 0;
 
     public String elementsIn = "ssss";
 
@@ -77,6 +81,11 @@ public class ActivityHome extends AppCompatActivity {
                     .addHeader("x-rapidapi-host", "tasty.p.rapidapi.com")
                     .build();
 
+
+            /**
+             * For JSON data
+             */
+
             try {
                 Response response = client.newCall(request).execute();
                 String data = response.body().string();
@@ -87,82 +96,75 @@ public class ActivityHome extends AppCompatActivity {
                 JSONArray results = reader.getJSONArray("results");
 
 
-                for (int i = 0; i < results.length(); i++) {
-                    JSONObject recipe = results.getJSONObject(i);
 
-                    int id = recipe.getInt("id");
-                    String recipe_title = recipe.getString("name");
-                    int calories = 0;
-
-                    //elementsIn = "vuyvuyvy";
+                //tESTING (pRINT)
 
 
-                   try {
-                        JSONObject nutrition = recipe.getJSONObject("nutrition");
-                        calories = nutrition.getInt("calories");
+                int counterOfRecipes = 0;
 
 
+                for(int i=0; i<results.length(); i++){
 
-                        elementsIn = "hey";
-
-
-                        /*
-
-                        JSONArray sections = recipe.getJSONArray("sections");
-                        JSONObject btwConnection = sections.getJSONObject(0);
-                        JSONArray components = btwConnection.getJSONArray("components");
-                        JSONObject tester = components.getJSONObject(0);
-                        elementsIn = tester.getString("raw_text");
+                    JSONObject inner = results.getJSONObject(i);
 
 
+                    //For keys
 
-                     //   JSONObject sections = recipe.getJSONObject("sections");
-                        System.out.println("---------This is section's test "+recipe.getJSONObject("sections"));
-                    //    JSONObject comp = sections.getJSONObject("components");
-                        System.out.println("---------This is components' test "+recipe.getJSONObject("components"));
-                     //   elements = comp.getString("raw_text");
+                    for(Iterator it = inner.keys(); it.hasNext(); ){
 
-                        System.out.println("--------Here:: "+elementsIn); */
+                        String key = (String)it.next();
 
+                        if(key.equals("tags")){
+                            tagKey = Integer.parseInt(key);
+                            System.out.println("This is the tag position: "+tagKey);
+                        }
 
-                        /*
-
-                        @SuppressLint("DefaultLocale") String sql = String.format("INSERT OR IGNORE INTO %s (_id, recipe_title, recipe_category, basic_element, _elements, exec, calories, special_d, date_added, exec_time, dif_rate) VALUES (%d, %s, 'ssss', 'eeee', %s,'',  '!!!!', %d, '', DateTime('now'), 0, 0)", Database.RECIPE_TABLE_NAME, id, DatabaseUtils.sqlEscapeString(recipe_title), "elementsIn", calories);
-
-                        db.execSQL(sql);*/
+                        System.out.println(key+"========> "+inner.get(key));
+                    }
 
 
-                        String sql = "INSERT OR IGNORE INTO " + Database.RECIPE_TABLE_NAME +
-                                " (_id, recipe_title, recipe_category, basic_element, _elements, " +
-                                "exec, calories, special_d, date_added, exec_time, dif_rate) VALUES (" +
-                                id + ", " + DatabaseUtils.sqlEscapeString(recipe_title) + ", 'ssss', 'eeee','+elements+', '!!!!', " + calories + ", '', DateTime('now'), 0, 0)";
+                   int id = inner.getInt("id");
+                    System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!This is the id of:  "+id);
 
-                        db.execSQL(sql);
-
-
-
-
-                   }catch(Exception ex){
+                    try{
+                        JSONArray recipesArray = inner.getJSONArray("recipes");
+                        JSONObject recipeObj = recipesArray.getJSONObject(0);
+                        JSONObject tagObj = recipesArray.getJSONObject(tagKey);
 
 
-                        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!I am the catcher ;))))!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                        ex.printStackTrace();
+                        String recipeName = recipeObj.getString("name");
+                        String catName = tagObj.getString("display_name");
+
+
+                        System.out.println("The tag is: "+catName);
+                        System.out.println("This will be the name:  "+recipeName);
+                        counterOfRecipes++;
+
+                        System.out.println("Recipes Number: "+counterOfRecipes);
+                    }catch (Exception e){
+
 
                     }
 
 
+
+
+
+
+                   // String recipeTitle = inner.getString("")
+
                 }
 
-                System.out.println(response);
+
+
+
+
+
+
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
                 System.out.println("Oh noooo");
             }
-
-            //SharedPreferences.Editor editor = pref.edit();
-            //editor.putBoolean("first_time", false);
-
-            // show the recipes
 
         });
 

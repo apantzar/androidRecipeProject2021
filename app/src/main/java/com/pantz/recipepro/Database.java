@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.Date;
+
 public class Database extends SQLiteOpenHelper {
 
     private Context context;
@@ -84,7 +86,6 @@ public class Database extends SQLiteOpenHelper {
 
 
 
-
     //method that adds elements to the table
     public boolean addElement(User user){
         SQLiteDatabase db = this.getWritableDatabase(); //to write in the db
@@ -112,5 +113,40 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from "+ REGISTER_TABLE_NAME + " where " + REGISTER_COLUMN_USERNAME + " =?  and " + REGISTER_COLUMN_PASSWORD + "=?", new String[] {username, password});
         return cursor.getCount() > 0;
+    }
+
+
+    /**
+     * From JSON to the database table
+     *
+     * @authors: atzanako, apantzar
+     *
+     * @param jid -> the ID of each recipe
+     * @param jRecipeTitle -> Recipe Title
+     * @param jRecipeCat -> Category
+     * @param jBasicElement -> Basic element
+     * @param jExec -> Time to exec
+     * @param jCalories -> Calories
+     * @param jSpecialD -> Special Diet
+     * @param jDate -> date added
+     * @param jExecTime-> sum of time
+     * @param jDifRate-> rate
+     */
+
+
+    public void writeJSONtoTheDB(int jid, String jRecipeTitle, String jRecipeCat, String jBasicElement,
+                                 String jElements, double jExec, double jCalories, String jSpecialD,
+                                 Date jDate, double jExecTime, int jDifRate ){
+
+        SQLiteDatabase db = this.getWritableDatabase(); //to write in the db
+        ContentValues content = new ContentValues();
+
+
+
+
+
+
+
+
     }
 }
