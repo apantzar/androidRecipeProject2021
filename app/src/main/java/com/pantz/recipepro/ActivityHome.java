@@ -119,6 +119,8 @@ public class ActivityHome extends AppCompatActivity {
                     try{
                         String elementsStr = "";
                         String execStr="";
+                        int calories=225;
+
 
 
                         JSONArray recipesArray = inner.getJSONArray("recipes");
@@ -126,6 +128,10 @@ public class ActivityHome extends AppCompatActivity {
                         JSONArray sectionsAr = innerParser.getJSONArray("sections");
                         JSONObject innerSections = sectionsAr.getJSONObject(0);
                         JSONArray compArray = innerSections.getJSONArray("components");
+                        JSONObject nutritionObj = inner.getJSONObject("nutrition");
+                        calories = nutritionObj.getInt("calories");
+
+
                         String[] rawTextArray = new String[compArray.length()];
 
 
@@ -183,9 +189,6 @@ public class ActivityHome extends AppCompatActivity {
                          * |
                          * |
                          * |
-                         *
-                         *
-                         *
                          */
 
 
@@ -211,13 +214,14 @@ public class ActivityHome extends AppCompatActivity {
                                 //  System.out.println("First print of raw text: "+elementsStr);
                             }
 
-
-
-
-
-
                         }
                         System.out.println("Second print of exec: "+execStr);
+
+                        System.out.println("Calories==> "+calories);
+
+
+
+
 
 
 
