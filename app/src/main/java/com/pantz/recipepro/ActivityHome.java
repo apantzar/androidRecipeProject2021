@@ -117,6 +117,10 @@ public class ActivityHome extends AppCompatActivity {
                     System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!This is the id of:  "+id);
 
                     try{
+                        String elementsStr = "";
+                        String execStr="";
+
+
                         JSONArray recipesArray = inner.getJSONArray("recipes");
                         JSONObject innerParser = recipesArray.getJSONObject(0);
                         JSONArray sectionsAr = innerParser.getJSONArray("sections");
@@ -124,7 +128,16 @@ public class ActivityHome extends AppCompatActivity {
                         JSONArray compArray = innerSections.getJSONArray("components");
                         String[] rawTextArray = new String[compArray.length()];
 
+
+                        JSONArray instructionsArray = innerParser.getJSONArray("instructions");
+
+
+                        /**
+                         * This is for elements
+                         */
+
                         for(int j=0; j<compArray.length();j++){
+                            //elementsStr="";
                              //String compValue = compArray.optString("raw_text");
                             // System.out.println("The raw text is:  "+compValue);
 
@@ -135,18 +148,84 @@ public class ActivityHome extends AppCompatActivity {
 
                                     if(key.equals("raw_text")){
 
-
                                         rawTextArray[j] = (String) innerObj.get(key);
+                                        elementsStr += (String) innerObj.get(key) + "| ";
 
                                     }
+
+
+                                   //System.out.println("First print of raw text: "+elementsStr);
                                 }
 
 
+                           // System.out.println("Second print of raw text: "+elementsStr);
+
+
+
+
+                          /*  for(int k=0;k<rawTextArray.length; k++){
+
+
+
+                               elementsStr += rawTextArray[k];
+
+
+
+                            }*/
                         }
+
+
+                        System.out.println("Third print of raw text: "+elementsStr);
+
+
+                        /**
+                         * This is for instructions:
+                         * |
+                         * |
+                         * |
+                         *
+                         *
+                         *
+                         */
+
+
+
+                        for(int in=0; in<instructionsArray.length(); in++){
+
+                            JSONObject insObj = instructionsArray.getJSONObject(in);
+                            for(Iterator it = insObj.keys(); it.hasNext(); ) {
+                                String key = (String)it.next();
+                                System.out.println(key + "!!:" + insObj.get(key));
+
+                                if(key.equals("display_text")){
+
+
+                                    System.out.println("I am here baby");
+
+                                    //rawTextArray[in] = (String) insObj.get(key);
+                                    execStr += (String) insObj.get(key) + "| ";
+
+                                }
+
+
+                                //  System.out.println("First print of raw text: "+elementsStr);
+                            }
+
+
+
+
+
+
+                        }
+                        System.out.println("Second print of exec: "+execStr);
+
 
 
 
                         for(int k=0;k<rawTextArray.length; k++){
+
+
+                            //String elementsStr = rawTextArray;
 
                             System.out.println("-----------------------[here]--------------------------------------");
                             System.out.println("Raw text: "+k+ " => "+rawTextArray[k]);
@@ -165,54 +244,12 @@ public class ActivityHome extends AppCompatActivity {
                         System.out.println("\n\n=========================================================");
 
 
-
-
-                        /*for(int j=0; j<recipesArray.length(); j++){
-                            if(recipesArray.get(j).equals("tags")){
-                                tagKey = j;
-                            }
-                        }*/
-
-
-
-
-                       // JSONObject recipeObj = recipesArray.getJSONObject(0);
-
-                      //  JSONObject tagObj = recipesArray.getJSONObject(tagKey);
-
-
-
-
-
-
-
-                       // String recipeName = recipeObj.optString("name");
-
-
-                        //String catName = tagObj.getString("display_name");
-
-
-                        //System.out.println("The tag is: "+catName);
-                        //System.out.println("This will be the name:  "+recipeName);
                         counterOfRecipes++;
 
 
 
 
                         System.out.println("Recipes Number: "+counterOfRecipes);
-
-
-
-
-                        //for(int compC=0; compC<comp.length(); compC++){
-
-                            //JSONObject compObj = comp.getJSONObject(1);
-                            //String compValue = compObj.optString("raw_text");
-                           // System.out.println("The raw text is:  "+compValue);
-                       // }
-
-
-
 
 
 
