@@ -42,6 +42,8 @@ public class Database extends SQLiteOpenHelper {
         this.context = context;
     }
 
+
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         //create the table
@@ -56,17 +58,17 @@ public class Database extends SQLiteOpenHelper {
 
 
         String theQuery = "CREATE TABLE "+ RECIPE_TABLE_NAME+
-                " ("+ RECIPE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
+                " ("+ /*ok*/ RECIPE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
                 RECIPE_COLUMN_BASIC_ELEMENT +" TEXT NOT NULL,"     +
-                RECIPE_COLUMN_TITLE         +" TEXT NOT NULL,"     +
-                RECIPE_COLUMN_CALORIES      +" INTEGER NOT NULL,"  +
-                RECIPE_COLUMN_DATE_ADDED    +" DATE NOT NULL,"     +
+                /*ok*/   RECIPE_COLUMN_TITLE         +" TEXT NOT NULL,"     +
+                /**/   RECIPE_COLUMN_CALORIES      +" INTEGER NOT NULL,"  +
+                /*will be deleted*/ RECIPE_COLUMN_DATE_ADDED    +" DATE NOT NULL,"     +
                 RECIPE_COLUMN_CATEGORY      +" TEXT NOT NULL,"     +
                 RECIPE_COLUMN_DIF_RATE      +" INTEGER NOT NULL,"  +
-                RECIPE_COLUMN_EXEC_TIME     +" INTEGER NOT NULL,"  +
+                /**/  RECIPE_COLUMN_EXEC_TIME     +" INTEGER NOT NULL,"  +
                 RECIPE_COLUMN_SPECIALD      +" TEXT NOT NULL,"     +
-                RECIPE_COLUMN_ELEMENTS      +" TEXT NOT NULL,"     +
-                RECIPE_COLUMN_EXEC          +" TEXT NOT NULL);";
+                /*ok*/   RECIPE_COLUMN_ELEMENTS      +" TEXT NOT NULL,"     +
+                /*ok*/  RECIPE_COLUMN_EXEC          +" TEXT NOT NULL);";
 
         db.execSQL(theQuery); //To run theQuery
 
@@ -135,13 +137,28 @@ public class Database extends SQLiteOpenHelper {
 
 
     public void writeJSONtoTheDB(int jid, String jRecipeTitle, String jRecipeCat, String jBasicElement,
-                                 String jElements, double jExec, double jCalories, String jSpecialD,
-                                 Date jDate, double jExecTime, int jDifRate ){
+                                 String jElements, String jExec, double jCalories, String jSpecialD,
+                                 Date jDate, int jExecTime, int jDifRate ){
 
         SQLiteDatabase db = this.getWritableDatabase(); //to write in the db
         ContentValues content = new ContentValues();
 
+        content.put(RECIPE_COLUMN_ID, jid);
+        content.put(RECIPE_COLUMN_TITLE, jRecipeTitle);
+        content.put(RECIPE_COLUMN_CATEGORY, jRecipeCat);
+        content.put(RECIPE_COLUMN_BASIC_ELEMENT, jBasicElement);
+        content.put(RECIPE_COLUMN_ELEMENTS, jElements);
+        content.put(RECIPE_COLUMN_EXEC, jExec);
+        content.put(RECIPE_COLUMN_CALORIES, jCalories);
+        content.put(RECIPE_COLUMN_SPECIALD, jSpecialD);
+        content.put(RECIPE_COLUMN_DATE_ADDED, String.valueOf(jDate));
+        content.put(RECIPE_COLUMN_EXEC_TIME, jExecTime);
+        content.put(RECIPE_COLUMN_DIF_RATE, jDifRate);
 
+
+
+        //insert the inputs to the table of the db
+        db.insert(RECIPE_TABLE_NAME, null, content);
 
 
 

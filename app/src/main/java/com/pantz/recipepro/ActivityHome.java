@@ -1,6 +1,7 @@
 package com.pantz.recipepro;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -108,57 +109,188 @@ public class ActivityHome extends AppCompatActivity {
                     JSONObject inner = results.getJSONObject(i);
 
 
+
                     //For keys
 
-                    for(Iterator it = inner.keys(); it.hasNext(); ){
-
-                        String key = (String)it.next();
-
-                        if(key.equals("tags")){
-                            tagKey = Integer.parseInt(key);
-                            System.out.println("This is the tag position: "+tagKey);
-                        }
-
-                        System.out.println(key+"========> "+inner.get(key));
-                    }
 
 
-                   int id = inner.getInt("id");
+                    int id = inner.getInt("id");
                     System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!This is the id of:  "+id);
 
                     try{
+                        String elementsStr = "";
+                        String execStr="";
+                        int calories=225;
+                        // int totalTime = 20;
+
+
+
+
                         JSONArray recipesArray = inner.getJSONArray("recipes");
-                        JSONObject recipeObj = recipesArray.getJSONObject(0);
-                        JSONObject tagObj = recipesArray.getJSONObject(tagKey);
+                        // JSONObject totalTimeObj = inner.getJSONObject("total_time_minutes");
+                        JSONObject innerParser = recipesArray.getJSONObject(0);
+                        JSONArray sectionsAr = innerParser.getJSONArray("sections");
+                        JSONObject innerSections = sectionsAr.getJSONObject(0);
+                        JSONArray compArray = innerSections.getJSONArray("components");
+                        //JSONObject nutritionObj = inner.getJSONObject("nutrition");
+                        //calories = nutritionObj.getInt("calories");
+                        String recipeName = innerParser.getString("name");
+
+                        //totalTime = totalTimeObj.getInt("total_time_minutes");
+
+                        // if(totalTime<=0){
+
+                        //    totalTime = 20;
+
+                        //}
+
+                        // if(calories<=0 ){
+                        //      calories= 225;
+                        //   }
 
 
-                        String recipeName = recipeObj.getString("name");
-                        String catName = tagObj.getString("display_name");
+
+                        String[] rawTextArray = new String[compArray.length()];
 
 
-                        System.out.println("The tag is: "+catName);
-                        System.out.println("This will be the name:  "+recipeName);
+                        JSONArray instructionsArray = innerParser.getJSONArray("instructions");
+
+
+                        /**
+                         * This is for elements
+                         */
+
+                        for(int j=0; j<compArray.length();j++){
+                            //elementsStr="";
+                            //String compValue = compArray.optString("raw_text");
+                            // System.out.println("The raw text is:  "+compValue);
+
+                            JSONObject innerObj = compArray.getJSONObject(j);
+                            for(Iterator it = innerObj.keys(); it.hasNext(); ) {
+                                String key = (String)it.next();
+                                System.out.println(key + "!!:" + innerObj.get(key));
+
+                                if(key.equals("raw_text")){
+
+                                    rawTextArray[j] = (String) innerObj.get(key);
+                                    elementsStr += (String) innerObj.get(key) + "| ";
+
+                                }
+
+
+                                //System.out.println("First print of raw text: "+elementsStr);
+                            }
+
+
+                            // System.out.println("Second print of raw text: "+elementsStr);
+
+
+
+
+                          /*  for(int k=0;k<rawTextArray.length; k++){
+
+
+
+                               elementsStr += rawTextArray[k];
+
+
+
+                            }*/
+                        }
+
+
+                        System.out.println("Third print of raw text: "+elementsStr);
+
+
+                        /**
+                         * This is for instructions:
+                         */
+
+
+
+                        for(int in=0; in<instructionsArray.length(); in++){
+
+                            JSONObject insObj = instructionsArray.getJSONObject(in);
+                            for(Iterator it = insObj.keys(); it.hasNext(); ) {
+                                String key = (String)it.next();
+                                System.out.println(key + "!!:" + insObj.get(key));
+
+                                if(key.equals("display_text")){
+
+
+                                    System.out.println("I am here baby");
+
+                                    //rawTextArray[in] = (String) insObj.get(key);
+                                    execStr += (String) insObj.get(key) + "| ";
+
+                                }
+
+
+                                //  System.out.println("First print of raw text: "+elementsStr);
+                            }
+
+                        }
+
+
+
+                        sqllite.writeJSONtoTheDB(id, recipeName, "cat", "belement", elementsStr,
+                                execStr, 225, "spd", null, 25,2);
+
+
+                        //Testing for results
+                        System.out.println("Second print of exec: "+execStr);
+
+                        System.out.println("Calories ==> "+calories);
+
+                        // System.out.println("Total time ==> "+totalTime);
+
+
+
+
+
+
+
+
+                        for(int k=0;k<rawTextArray.length; k++){
+
+
+                            //String elementsStr = rawTextArray;
+
+                            System.out.println("-----------------------[here]--------------------------------------");
+                            System.out.println("Raw text: "+k+ " => "+rawTextArray[k]);
+
+                        }
+
+
+
+                        // JSONArray section = inner.getJSONArray("sections");
+                        //  JSONArray comp = section.getJSONArray(0);
+
+                        System.out.println("\n=========================================================");
+
+                        System.out.println(inner);
+
+                        System.out.println("\n\n=========================================================");
+
+
                         counterOfRecipes++;
 
+
+
+
                         System.out.println("Recipes Number: "+counterOfRecipes);
+
+
+
                     }catch (Exception e){
 
+                        e.printStackTrace();
 
                     }
 
-
-
-
-
-
-                   // String recipeTitle = inner.getString("")
+                    // String recipeTitle = inner.getString("")
 
                 }
-
-
-
-
-
 
 
             } catch (IOException | JSONException e) {
