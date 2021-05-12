@@ -114,20 +114,20 @@ public class ActivityHome extends AppCompatActivity {
 
 
 
-                   int id = inner.getInt("id");
+                    int id = inner.getInt("id");
                     System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!This is the id of:  "+id);
 
                     try{
                         String elementsStr = "";
                         String execStr="";
                         int calories=225;
-                       // int totalTime = 20;
+                        // int totalTime = 20;
 
 
 
 
                         JSONArray recipesArray = inner.getJSONArray("recipes");
-                       // JSONObject totalTimeObj = inner.getJSONObject("total_time_minutes");
+                        // JSONObject totalTimeObj = inner.getJSONObject("total_time_minutes");
                         JSONObject innerParser = recipesArray.getJSONObject(0);
                         JSONArray sectionsAr = innerParser.getJSONArray("sections");
                         JSONObject innerSections = sectionsAr.getJSONObject(0);
@@ -138,15 +138,15 @@ public class ActivityHome extends AppCompatActivity {
 
                         //totalTime = totalTimeObj.getInt("total_time_minutes");
 
-                      // if(totalTime<=0){
+                        // if(totalTime<=0){
 
                         //    totalTime = 20;
 
                         //}
 
-                       // if(calories<=0 ){
-                      //      calories= 225;
-                     //   }
+                        // if(calories<=0 ){
+                        //      calories= 225;
+                        //   }
 
 
 
@@ -162,27 +162,27 @@ public class ActivityHome extends AppCompatActivity {
 
                         for(int j=0; j<compArray.length();j++){
                             //elementsStr="";
-                             //String compValue = compArray.optString("raw_text");
+                            //String compValue = compArray.optString("raw_text");
                             // System.out.println("The raw text is:  "+compValue);
 
-                                JSONObject innerObj = compArray.getJSONObject(j);
-                                for(Iterator it = innerObj.keys(); it.hasNext(); ) {
-                                    String key = (String)it.next();
-                                    System.out.println(key + "!!:" + innerObj.get(key));
+                            JSONObject innerObj = compArray.getJSONObject(j);
+                            for(Iterator it = innerObj.keys(); it.hasNext(); ) {
+                                String key = (String)it.next();
+                                System.out.println(key + "!!:" + innerObj.get(key));
 
-                                    if(key.equals("raw_text")){
+                                if(key.equals("raw_text")){
 
-                                        rawTextArray[j] = (String) innerObj.get(key);
-                                        elementsStr += (String) innerObj.get(key) + "| ";
+                                    rawTextArray[j] = (String) innerObj.get(key);
+                                    elementsStr += (String) innerObj.get(key) + "| ";
 
-                                    }
-
-
-                                   //System.out.println("First print of raw text: "+elementsStr);
                                 }
 
 
-                           // System.out.println("Second print of raw text: "+elementsStr);
+                                //System.out.println("First print of raw text: "+elementsStr);
+                            }
+
+
+                            // System.out.println("Second print of raw text: "+elementsStr);
 
 
 
@@ -242,7 +242,7 @@ public class ActivityHome extends AppCompatActivity {
 
                         System.out.println("Calories ==> "+calories);
 
-                       // System.out.println("Total time ==> "+totalTime);
+                        // System.out.println("Total time ==> "+totalTime);
 
 
 
@@ -263,8 +263,8 @@ public class ActivityHome extends AppCompatActivity {
 
 
 
-                       // JSONArray section = inner.getJSONArray("sections");
-                      //  JSONArray comp = section.getJSONArray(0);
+                        // JSONArray section = inner.getJSONArray("sections");
+                        //  JSONArray comp = section.getJSONArray(0);
 
                         System.out.println("\n=========================================================");
 
@@ -288,7 +288,7 @@ public class ActivityHome extends AppCompatActivity {
 
                     }
 
-                   // String recipeTitle = inner.getString("")
+                    // String recipeTitle = inner.getString("")
 
                 }
 
