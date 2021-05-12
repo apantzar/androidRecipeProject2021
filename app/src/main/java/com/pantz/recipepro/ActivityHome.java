@@ -1,6 +1,7 @@
 package com.pantz.recipepro;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -120,16 +121,33 @@ public class ActivityHome extends AppCompatActivity {
                         String elementsStr = "";
                         String execStr="";
                         int calories=225;
+                       // int totalTime = 20;
+
 
 
 
                         JSONArray recipesArray = inner.getJSONArray("recipes");
+                       // JSONObject totalTimeObj = inner.getJSONObject("total_time_minutes");
                         JSONObject innerParser = recipesArray.getJSONObject(0);
                         JSONArray sectionsAr = innerParser.getJSONArray("sections");
                         JSONObject innerSections = sectionsAr.getJSONObject(0);
                         JSONArray compArray = innerSections.getJSONArray("components");
-                        JSONObject nutritionObj = inner.getJSONObject("nutrition");
-                        calories = nutritionObj.getInt("calories");
+                        //JSONObject nutritionObj = inner.getJSONObject("nutrition");
+                        //calories = nutritionObj.getInt("calories");
+                        String recipeName = innerParser.getString("name");
+
+                        //totalTime = totalTimeObj.getInt("total_time_minutes");
+
+                      // if(totalTime<=0){
+
+                        //    totalTime = 20;
+
+                        //}
+
+                       // if(calories<=0 ){
+                      //      calories= 225;
+                     //   }
+
 
 
                         String[] rawTextArray = new String[compArray.length()];
@@ -186,9 +204,6 @@ public class ActivityHome extends AppCompatActivity {
 
                         /**
                          * This is for instructions:
-                         * |
-                         * |
-                         * |
                          */
 
 
@@ -215,9 +230,19 @@ public class ActivityHome extends AppCompatActivity {
                             }
 
                         }
+
+
+
+                        sqllite.writeJSONtoTheDB(id, recipeName, "cat", "belement", elementsStr,
+                                execStr, 225, "spd", null, 25,2);
+
+
+                        //Testing for results
                         System.out.println("Second print of exec: "+execStr);
 
-                        System.out.println("Calories==> "+calories);
+                        System.out.println("Calories ==> "+calories);
+
+                       // System.out.println("Total time ==> "+totalTime);
 
 
 
