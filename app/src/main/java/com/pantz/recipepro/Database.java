@@ -17,10 +17,10 @@ public class Database extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 2;
 
 
-    private static final String REGISTER_TABLE_NAME = "register";
-    private static final String REGISTER_COLUMN_ID ="_id";
-    private static final String REGISTER_COLUMN_USERNAME="username";
-    private static final String REGISTER_COLUMN_PASSWORD="password";
+    public static final String REGISTER_TABLE_NAME = "register";
+    public static final String REGISTER_COLUMN_ID ="_id";
+    public static final String REGISTER_COLUMN_USERNAME="username";
+    public static final String REGISTER_COLUMN_PASSWORD="password";
 
 
     public static final String RECIPE_TABLE_NAME = "bizRecipe";
