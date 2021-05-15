@@ -60,12 +60,6 @@ public class ActivityHome extends AppCompatActivity {
         theNavFunction();
 
 
-        try {
-            new LocalFileParser();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
 
         Button button = (Button)findViewById(R.id.button2);
 
@@ -356,6 +350,19 @@ public class ActivityHome extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }*/
+
+
+                LocalFileParser lf;
+
+                {
+                    try {
+                        lf = new LocalFileParser();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
             };
 
            Thread thread = new Thread(runnable);
@@ -363,9 +370,15 @@ public class ActivityHome extends AppCompatActivity {
 
 
 
+
+
+
+
         });
 
     }
+
+
 
 
     /**

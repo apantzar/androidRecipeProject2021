@@ -29,6 +29,7 @@ import android.view.Display;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.opencsv.CSVReader;
 
@@ -41,16 +42,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class LocalFileParser  extends ActivityHome{
+public class LocalFileParser extends ActivityHome {
 
 
 
-  final static Path PATH = Paths.get("src\\main\\res\\Recipes.csv");
+  final static Path PATH = Paths.get("src\\main\\res\\raw\\recipescsv.csv");
 
 
   File file = new File(String.valueOf(PATH));
@@ -65,23 +68,32 @@ public class LocalFileParser  extends ActivityHome{
       System.out.println("I am in the class");
 
 
-        buffer = new BufferedReader(new FileReader(file));
+     // buffer = new BufferedReader(new FileReader(file));
 
+          try {
 
+              InputStream inputStream = getResources().openRawResource(R.raw.recipescsv);
+              BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
 
-      while((line = buffer.readLine()) != null){
+              reader.readLine();
+              reader.readLine();
+              reader.readLine();
+              reader.readLine();
+              reader.readLine();
+              reader.readLine();
+              reader.readLine();
+              while ((line = reader.readLine()) != null) {
 
-        System.out.println("I am in while the class");
-        str = line.trim().split(",");
-      }
+                  System.out.println("I am in while the class");
+                  str = line.trim().split(",");
+              }
 
+          }catch (IOException e){
+              e.printStackTrace();
+          }
 
-
-
-      parseToDb();
+          parseToDb();
     }
-
-
 
 
   private void parseToDb(){
