@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.widget.Button;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -37,6 +39,7 @@ public class ActivityHome extends AppCompatActivity {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -55,6 +58,14 @@ public class ActivityHome extends AppCompatActivity {
          */
 
         theNavFunction();
+
+
+        try {
+            new LocalFileParser();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         Button button = (Button)findViewById(R.id.button2);
 
@@ -325,11 +336,30 @@ public class ActivityHome extends AppCompatActivity {
                     Log.i(TAG, "run: Finished");
 
                 }
+
+
+                /**
+                 * for local file to db because API sucks
+                 * @authors: atzanako ,apantzar
+                 */
+
+
+
+                /*LocalFileParser fileParser;
+
+                {
+                    try {
+
+                        System.out.println("I am in try (HomeActivity)");
+                        fileParser = new LocalFileParser();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }*/
             };
 
            Thread thread = new Thread(runnable);
            thread.start();
-
 
 
 
