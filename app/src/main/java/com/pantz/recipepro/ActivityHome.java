@@ -352,7 +352,7 @@ public class ActivityHome extends AppCompatActivity {
                 }*/
 
 
-                LocalFileParser lf;
+          /*      LocalFileParser lf;
 
                 {
                     try {
@@ -362,8 +362,10 @@ public class ActivityHome extends AppCompatActivity {
                     }
                 }
 
-
+  */
             };
+
+
 
            Thread thread = new Thread(runnable);
            thread.start();
