@@ -1,6 +1,9 @@
 package com.pantz.recipepro;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,11 +15,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
 //@RequiresApi(api = Build.VERSION_CODES.O)
-public class LocalFileParser extends ActivityHome {
+public class LocalFileParser  extends ActivityHome {
+
+    final Database sqllitec =  new Database(this);
+    //SQLiteDatabase db = sqllite.getWritableDatabase();
+
 
 
 
@@ -88,6 +96,7 @@ public class LocalFileParser extends ActivityHome {
     List<String> values = new ArrayList<>();
 
     public LocalFileParser(Context context, String fileName) {
+
         this.context = context;
         this.fileName = fileName;
 
@@ -148,6 +157,22 @@ public class LocalFileParser extends ActivityHome {
             values.add("#");
 
 
+
+
+            try {
+                System.out.println("I am in try LFP");
+                sqllitec.writeJSONtoTheDB(Integer.parseInt(id),recipeTitle,recipeCategory,"belement",elements,exec,
+                        580,"",null,20,2);
+            }catch (Exception e){
+                System.out.println("I am in exception LFP");
+
+                e.printStackTrace();
+            }
+
+
+
+
+
         }
         return values;
 
@@ -169,6 +194,10 @@ public class LocalFileParser extends ActivityHome {
       //--------------------------------------------------
     }
 
+
+    public List<String> getValues() {
+        return values;
+    }
 }
 
 

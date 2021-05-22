@@ -389,18 +389,62 @@ public class ActivityHome extends AppCompatActivity {
            thread.start();
 
 
-            List<String> rows;
+            List<String> rows = new ArrayList<>();
             LocalFileParser localFileParser = new LocalFileParser(this, "recipes.json");
 
             try{
                 rows = localFileParser.readJSON();
                 System.out.println("Element: "+ rows);
 
+
+
+
+                try{
+
+
+                    for(int i =0; i<rows.size();i++){
+                        for(int j=0; j<10; j++){
+
+                            System.out.println("Caltest "+rows.get(6));
+                            System.out.println("CATtEST "+rows.get(2));
+
+                            sqllite.writeJSONtoTheDB(Integer.parseInt(rows.get(0)),rows.get(1), rows.get(2),
+                                    rows.get(3),rows.get(4), rows.get(5), Double.parseDouble(rows.get(6)), rows.get(7),
+                                    null, Integer.parseInt(rows.get(9)), Integer.parseInt(rows.get(10)));
+                        }
+                    }
+
+
+                }catch (NumberFormatException e){
+                    e.printStackTrace();
+                }
+
+
+
+
             }catch (IOException | JSONException e){
 
                 System.out.println("!!!!!!!!!!!!!!!!I am in exception for csv!!!!!!!!!!!!!!!");
                 e.printStackTrace();
             }
+
+
+
+/*
+            Database theDatabase = new Database(this);
+
+            for(int i=0; i< rows.size(); i++){
+                System.out.println("Inside the loop");
+                System.out.println(rows.get(i));
+                theDatabase.writeJSONtoTheDB(Integer.parseInt(rows.get(0)),rows.get(1) , "cat", "noth"
+                ,"elelel","sddd",50,"sddd",null,20,2);
+
+            }
+
+*/
+
+
+
 
 
            // for(int i =0; i<rows.size();i++){
