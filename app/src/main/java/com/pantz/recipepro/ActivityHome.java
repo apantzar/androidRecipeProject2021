@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.provider.SyncStateContract;
 import android.util.Log;
 import android.widget.Button;
 
@@ -17,6 +18,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.opencsv.CSVReader;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -28,7 +30,10 @@ import org.json.JSONObject;
 
 
 import java.io.IOException;
+import java.net.ProtocolException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 
 public class ActivityHome extends AppCompatActivity {
@@ -362,6 +367,24 @@ public class ActivityHome extends AppCompatActivity {
                     }
                 }
 
+
+
+
+                List<String[]> rows = new ArrayList<>();
+        CSVReader csvReader = new CSVReader(RatingActivity.this, "movies.csv");
+        try {
+            rows = csvReader.readCSV();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < rows.size(); i++) {
+            Log.d(Constants.TAG, String.format("row %s: %s, %s", i, rows.get(i)[0], rows.get(i)[1]));
+        }
+    }
+
+
+
   */
             };
 
@@ -369,6 +392,26 @@ public class ActivityHome extends AppCompatActivity {
 
            Thread thread = new Thread(runnable);
            thread.start();
+
+
+            List<String[]> rows = new ArrayList<>();
+            LocalFileParser localFileParser = new LocalFileParser(this, "recipescsv.scv");
+
+            try{
+                rows = localFileParser.readCSV();
+
+            }catch (IOException e){
+
+                System.out.println("!!!!!!!!!!!!!!!!I am in exception for csv!!!!!!!!!!!!!!!");
+                e.printStackTrace();
+            }
+
+
+            for(int i =0; i<rows.size();i++){
+                System.out.println("Element: "+rows.get(i));
+            }
+
+
 
 
 
