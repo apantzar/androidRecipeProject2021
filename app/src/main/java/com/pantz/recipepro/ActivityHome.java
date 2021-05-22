@@ -415,6 +415,12 @@ public class ActivityHome extends AppCompatActivity {
 
 
 
+            InsideCSVParser insider = new InsideCSVParser();
+            insider.giveTheRecipesNow();
+
+
+
+
 
 
 
