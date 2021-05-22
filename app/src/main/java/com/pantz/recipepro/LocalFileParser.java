@@ -1,12 +1,19 @@
 package com.pantz.recipepro;
 
 import android.content.Context;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+
 
 //@RequiresApi(api = Build.VERSION_CODES.O)
 public class LocalFileParser extends ActivityHome {
@@ -78,7 +85,7 @@ public class LocalFileParser extends ActivityHome {
         Context context;
         String fileName;
         List<String[]> rows = new ArrayList<>();
-
+    List<String> values = new ArrayList<>();
 
     public LocalFileParser(Context context, String fileName) {
         this.context = context;
@@ -87,20 +94,79 @@ public class LocalFileParser extends ActivityHome {
     }
 
 
-    public List<String[]> readCSV() throws IOException {
+    public List<String> readJSON() throws IOException, JSONException {
+        String jsonFile = " ";
         InputStream is = context.getAssets().open(fileName);
-        InputStreamReader isr = new InputStreamReader(is);
-        BufferedReader br = new BufferedReader(isr);
-        String line;
-        String csvSplitBy = ",";
+      //  InputStreamReader isr = new InputStreamReader(is);
 
-        br.readLine();
+        int size = is.available();
+        byte[] bufferData = new byte[size];
+        is.read(bufferData);
+        is.close();
+        jsonFile = new String(bufferData, StandardCharsets.UTF_8);
 
-        while ((line = br.readLine()) != null) {
-            String[] row = line.split(csvSplitBy);
-            rows.add(row);
+
+        JSONObject reader = new JSONObject(jsonFile);
+        JSONArray recipeResults = reader.getJSONArray("recipe2");
+
+        for(int i = 0; i<recipeResults.length(); i++){
+            JSONObject innerArray = recipeResults.getJSONObject(i);
+
+            String id = innerArray.getString("_id");
+            values.add(id);
+
+            System.out.println("===================id of our JSON: "+ id+"===============");
+
+            String recipeCategory = innerArray.getString("recipe_category");
+            values.add(recipeCategory);
+            String recipeTitle = innerArray.getString("recipe_title");
+            values.add(recipeTitle);
+            String dateAdded = innerArray.getString("date_added");
+            values.add(dateAdded);
+            String elements = innerArray.getString("_elements");
+            values.add(elements);
+            String exec = innerArray.getString("exec");
+            values.add(exec);
+
+            try {
+                String basicElement =innerArray.getString("basic_element");
+                values.add(basicElement);
+                String calories =innerArray.getString("calories");
+                values.add(calories);
+                String difRate =innerArray.getString("dif_rate");
+                values.add(difRate);
+                String execTime =innerArray.getString("exec_time");
+                values.add(execTime);
+                String specialD =innerArray.getString("special_d");
+                values.add(specialD);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                System.out.println("==========IM IN LOCALFILE READ JSON EXCEPTION==============");
+            }
+
+            values.add("#");
+
+
         }
-        return rows;
+        return values;
+
+        //-----------------------for JSON-----------------
+
+
+        //---------------------for csv----------------------
+       // BufferedReader br = new BufferedReader(isr);
+       // String line;
+        //String csvSplitBy = ",";
+
+      //  br.readLine();
+
+      //  while ((line = br.readLine()) != null) {
+      //      String[] row = line.split(csvSplitBy);
+      //      rows.add(row);
+      //  }
+     //   return rows;
+      //--------------------------------------------------
     }
 
 }
