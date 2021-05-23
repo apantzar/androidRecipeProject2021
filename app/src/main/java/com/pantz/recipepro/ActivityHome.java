@@ -475,11 +475,6 @@ public class ActivityHome extends AppCompatActivity {
 
 
 
-
-
-
-
-
         });
 
     }
