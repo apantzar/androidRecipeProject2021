@@ -46,13 +46,14 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_fast_filters"
 
+                android:drawableLeft="@drawable/pizza_x24"
                 android:padding="15dip"
                 android:text="Pizza"
-                android:textSize="18dp"
 
 
                 android:textAllCaps="false"
-                android:drawableLeft="@drawable/pizza_x24"/>
+                android:textSize="18dp" />
+
             <Space
                 android:layout_width="15dp"
                 android:layout_height="1dp"
@@ -124,11 +125,40 @@
         android:textColor="#171616"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
-        app:layout_constraintVertical_bias="0.018" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popular_recycler"
+        android:layout_width="411dp"
+        android:layout_height="440dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/layout_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
