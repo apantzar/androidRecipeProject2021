@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -93,7 +94,7 @@ public class LocalFileParser  extends ActivityHome {
         Context context;
         String fileName;
         List<String[]> rows = new ArrayList<>();
-    List<String> values = new ArrayList<>();
+        HashMap<Integer, String> values = new HashMap<>();
 
     public LocalFileParser(Context context, String fileName) {
 
@@ -103,8 +104,9 @@ public class LocalFileParser  extends ActivityHome {
     }
 
 
-    public List<String> readJSON() throws IOException, JSONException {
+    public HashMap<Integer, String> readJSON() throws IOException, JSONException {
         String jsonFile = " ";
+        int keyCounter = 0;
         InputStream is = context.getAssets().open(fileName);
       //  InputStreamReader isr = new InputStreamReader(is);
 
@@ -114,6 +116,18 @@ public class LocalFileParser  extends ActivityHome {
         is.close();
         jsonFile = new String(bufferData, StandardCharsets.UTF_8);
 
+        String id="";
+        String recipeCategory="";
+        String recipeTitle="";
+        String dateAdded="";
+        String elements="";
+        String exec="";
+        String basicElement="";
+        String calories="";
+        String difRate="";
+        String execTime="";
+        String specialD="";
+
 
         JSONObject reader = new JSONObject(jsonFile);
         JSONArray recipeResults = reader.getJSONArray("recipe2");
@@ -121,44 +135,45 @@ public class LocalFileParser  extends ActivityHome {
         for(int i = 0; i<recipeResults.length(); i++){
             JSONObject innerArray = recipeResults.getJSONObject(i);
 
-            String id = innerArray.getString("_id");
-            values.add(id);
-
-            System.out.println("===================id of our JSON: "+ id+"===============");
-
-            String recipeCategory = innerArray.getString("recipe_category");
-            values.add(recipeCategory);
-            String recipeTitle = innerArray.getString("recipe_title");
-            values.add(recipeTitle);
-            String dateAdded = innerArray.getString("date_added");
-            values.add(dateAdded);
-            String elements = innerArray.getString("_elements");
-            values.add(elements);
-            String exec = innerArray.getString("exec");
-            values.add(exec);
 
             try {
-                String basicElement =innerArray.getString("basic_element");
-                values.add(basicElement);
-                String calories =innerArray.getString("calories");
-                values.add(calories);
-                String difRate =innerArray.getString("dif_rate");
-                values.add(difRate);
-                String execTime =innerArray.getString("exec_time");
-                values.add(execTime);
-                String specialD =innerArray.getString("special_d");
-                values.add(specialD);
+                id = innerArray.getString("_id");
+                System.out.println("===================id of our JSON: "+ id+"===============");
+                recipeCategory = innerArray.getString("recipe_category");
+                recipeTitle = innerArray.getString("recipe_title");
+                dateAdded = innerArray.getString("date_added");
+                elements = innerArray.getString("_elements");
+                exec = innerArray.getString("exec");
+                basicElement =innerArray.getString("basic_element");
+                calories =innerArray.getString("calories");
+                difRate =innerArray.getString("dif_rate");
+                execTime =innerArray.getString("exec_time");
+                specialD =innerArray.getString("special_d");
+
+
+                values.put(keyCounter++, id);
+                values.put(keyCounter++, recipeTitle);
+                values.put(keyCounter++, recipeCategory);
+                values.put(keyCounter++, basicElement);
+                values.put(keyCounter++, elements);
+                values.put(keyCounter++, exec);
+                values.put(keyCounter++, calories);
+                values.put(keyCounter++, specialD);
+                values.put(keyCounter++, dateAdded);
+                values.put(keyCounter++, execTime);
+                values.put(keyCounter++, difRate);
+               // values.put(keyCounter++, "#");
 
             } catch (JSONException e) {
                 e.printStackTrace();
                 System.out.println("==========IM IN LOCALFILE READ JSON EXCEPTION==============");
             }
 
-            values.add("#");
 
 
 
 
+/*
             try {
                 System.out.println("I am in try LFP");
                 sqllitec.writeJSONtoTheDB(Integer.parseInt(id),recipeTitle,recipeCategory,"belement",elements,exec,
@@ -168,6 +183,8 @@ public class LocalFileParser  extends ActivityHome {
 
                 e.printStackTrace();
             }
+
+ */
 
 
 
@@ -195,9 +212,9 @@ public class LocalFileParser  extends ActivityHome {
     }
 
 
-    public List<String> getValues() {
-        return values;
-    }
+   // public List<String> getValues() {
+  //      return values;
+  //  }
 }
 
 

@@ -1,11 +1,16 @@
 package com.pantz.recipepro;
 
+import android.annotation.SuppressLint;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.widget.Button;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +32,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -39,6 +45,7 @@ public class ActivityHome extends AppCompatActivity {
 
 
 
+    @SuppressLint("SimpleDateFormat")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -389,37 +396,45 @@ public class ActivityHome extends AppCompatActivity {
            thread.start();
 
 
-            List<String> rows = new ArrayList<>();
+            HashMap<Integer, String> rows = new HashMap<>();
             LocalFileParser localFileParser = new LocalFileParser(this, "recipes.json");
 
             try{
                 rows = localFileParser.readJSON();
-                System.out.println("Element: "+ rows);
+                //System.out.println("Element: "+ rows);
+                System.out.println("IM IN TH ROWS HASHMAP=============================");
+                for(int i = 0; i<rows.size(); i++){
+                   // if(rows.get(i)=="#"){
+                    //    i++;
+                   // }else{
+                        System.out.println(rows.get(i));
+                  //  }
+                }
 
 
 
 
                 try{
 
+                    int counter = 0;
 
-                    for(int i =0; i<rows.size();i++){
-                        for(int j=0; j<10; j++){
+                    for(int i =0; i<49;i++){
 
                             System.out.println("Caltest "+rows.get(6));
                             System.out.println("CATtEST "+rows.get(2));
 
-                            sqllite.writeJSONtoTheDB(Integer.parseInt(rows.get(0)),rows.get(1), rows.get(2),
-                                    rows.get(3),rows.get(4), rows.get(5), Double.parseDouble(rows.get(6)), rows.get(7),
-                                    null, Integer.parseInt(rows.get(9)), Integer.parseInt(rows.get(10)));
-                        }
+                            sqllite.writeJSONtoTheDB(Integer.parseInt(rows.get(counter++)),rows.get(counter++), rows.get(counter++),
+                                    rows.get(counter++),rows.get(counter++), rows.get(counter++), Double.parseDouble(rows.get(counter++)), rows.get(counter++),
+                                    new SimpleDateFormat("dd/MM/yyyy").parse(rows.get(counter++)), Integer.parseInt(rows.get(counter++)), Integer.parseInt(rows.get(counter++)));
+
                     }
 
 
                 }catch (NumberFormatException e){
                     e.printStackTrace();
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
-
-
 
 
             }catch (IOException | JSONException e){
