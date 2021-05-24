@@ -14,7 +14,12 @@ public class Database extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME="Recipe.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
+
+    public static final String IMAGES_TABLE_NAME = "images";
+    public static final String IMAGES_COLUMN_ID = "id";
+    public static final String IMAGES_COLUMN_RECIPE_ID = "recipe_id";
+
 
 
     public static final String REGISTER_TABLE_NAME = "register";
@@ -35,6 +40,8 @@ public class Database extends SQLiteOpenHelper {
     private static final String RECIPE_COLUMN_DATE_ADDED="date_added";
     private static final String RECIPE_COLUMN_EXEC_TIME="exec_time";
     private static final String RECIPE_COLUMN_DIF_RATE="dif_rate";
+    private  static final String IMAGES_COLUMN_PATH = "path";
+
 
 
     public Database(@Nullable Context context) {
@@ -43,10 +50,19 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
+    /**
+     * Table for images (image id, path, recipe id->(as foreign_key)
+     * @param db the database
+     */
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         //create the table
+   //     String imagesTable = "CREATE TABLE " + IMAGES_TABLE_NAME+ " ("+ IMAGES_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
+  //              IMAGES_COLUMN_RECIPE_ID + "INTEGER, " + IMAGES_COLUMN_PATH +" TEXT NOT NULL);";
+
+   //     db.execSQL(imagesTable);
+
         String table = "CREATE TABLE "+ REGISTER_TABLE_NAME+
                 " ("+ REGISTER_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
                 REGISTER_COLUMN_USERNAME +" TEXT NOT NULL,"     +
@@ -68,7 +84,9 @@ public class Database extends SQLiteOpenHelper {
                 /**/  RECIPE_COLUMN_EXEC_TIME     +" INTEGER NOT NULL,"  +
                 RECIPE_COLUMN_SPECIALD      +" TEXT NOT NULL,"     +
                 /*ok*/   RECIPE_COLUMN_ELEMENTS      +" TEXT NOT NULL,"     +
-                /*ok*/  RECIPE_COLUMN_EXEC          +" TEXT NOT NULL);";
+                /*ok*/  RECIPE_COLUMN_EXEC          +" TEXT NOT NULL,"    +
+                IMAGES_COLUMN_PATH +" TEXT NOT NULL);";
+
 
         db.execSQL(theQuery); //To run theQuery
 
@@ -83,6 +101,8 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS "+ REGISTER_TABLE_NAME); //in order to delete the table
         db.execSQL("DROP TABLE IF EXISTS "+ RECIPE_TABLE_NAME); //in order to delete the table
+        db.execSQL("ALTER TABLE bizRecipe  ADD COLUMN path TEXT NOT NULL");
+       // db.execSQL("DROP TABLE IF EXISTS "+ IMAGES_TABLE_NAME); //in order to delete the table FOR IMAGES
         onCreate(db); // to create again
     }
 
@@ -138,7 +158,7 @@ public class Database extends SQLiteOpenHelper {
 
     public void writeJSONtoTheDB(int jid, String jRecipeTitle, String jRecipeCat, String jBasicElement,
                                  String jElements, String jExec, double jCalories, String jSpecialD,
-                                 Date jDate, int jExecTime, int jDifRate ){
+                                 Date jDate, int jExecTime, int jDifRate,String jImagePath ){
 
         SQLiteDatabase db = this.getWritableDatabase(); //to write in the db
         ContentValues content = new ContentValues();
@@ -154,6 +174,8 @@ public class Database extends SQLiteOpenHelper {
         content.put(RECIPE_COLUMN_DATE_ADDED, String.valueOf(jDate));
         content.put(RECIPE_COLUMN_EXEC_TIME, jExecTime);
         content.put(RECIPE_COLUMN_DIF_RATE, jDifRate);
+        content.put(IMAGES_COLUMN_PATH, jImagePath );
+
 
 
 
@@ -163,4 +185,44 @@ public class Database extends SQLiteOpenHelper {
 
 
     }
+
+
+    /**
+     *
+     * @param imgId -> image's id
+     * @param imgPath -> image's path
+     * @param imgFkey-> key from recipe
+     */
+
+/*
+    public void addTheImageToDatabaseNow(int imgId, String imgPath, int imgFkey){
+        SQLiteDatabase sqLiteDatabaseimg = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+
+
+        values.put(IMAGES_COLUMN_ID, imgId );
+        values.put(IMAGES_COLUMN_PATH, imgPath);
+        values.put(IMAGES_COLUMN_RECIPE_ID, imgFkey );
+
+        sqLiteDatabaseimg.insert(IMAGES_TABLE_NAME, null, values);
+
+    }*/
+
+
+
+    /**
+     * In order to execute the SQL query and select the data
+     * @return selected data with cursor
+     */
+
+    Cursor readTheData(){
+        String theQuery="SELECT * FROM "+RECIPE_TABLE_NAME;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor=null;
+        if(sqLiteDatabase!=null){
+            cursor = sqLiteDatabase.rawQuery(theQuery, null);
+        }
+        return cursor;
+    }
+
 }

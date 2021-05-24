@@ -96,6 +96,8 @@ public class LocalFileParser  extends ActivityHome {
         List<String[]> rows = new ArrayList<>();
         HashMap<Integer, String> values = new HashMap<>();
 
+
+
     public LocalFileParser(Context context, String fileName) {
 
         this.context = context;
@@ -107,6 +109,7 @@ public class LocalFileParser  extends ActivityHome {
     public HashMap<Integer, String> readJSON() throws IOException, JSONException {
         String jsonFile = " ";
         int keyCounter = 0;
+
         InputStream is = context.getAssets().open(fileName);
       //  InputStreamReader isr = new InputStreamReader(is);
 
@@ -127,6 +130,7 @@ public class LocalFileParser  extends ActivityHome {
         String difRate="";
         String execTime="";
         String specialD="";
+        String imgPath="";
 
 
         JSONObject reader = new JSONObject(jsonFile);
@@ -150,6 +154,8 @@ public class LocalFileParser  extends ActivityHome {
                 execTime =innerArray.getString("exec_time");
                 specialD =innerArray.getString("special_d");
 
+                imgPath=innerArray.getString("img");
+
 
                 values.put(keyCounter++, id);
                 values.put(keyCounter++, recipeTitle);
@@ -162,7 +168,9 @@ public class LocalFileParser  extends ActivityHome {
                 values.put(keyCounter++, dateAdded);
                 values.put(keyCounter++, execTime);
                 values.put(keyCounter++, difRate);
+                values.put(keyCounter++, imgPath);
                // values.put(keyCounter++, "#");
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -211,8 +219,11 @@ public class LocalFileParser  extends ActivityHome {
       //--------------------------------------------------
     }
 
+    /*public HashMap<Integer, String> getImgValues() {
+        return imgValues;
+    }*/
 
-   // public List<String> getValues() {
+    // public List<String> getValues() {
   //      return values;
   //  }
 }

@@ -262,8 +262,8 @@ public class ActivityHome extends AppCompatActivity {
 
 
 
-                                        sqllite.writeJSONtoTheDB(id, recipeName, "cat", "belement", elementsStr,
-                                                execStr, 225, "spd", null, 25,2);
+                                       sqllite.writeJSONtoTheDB(id, recipeName, "cat", "belement", elementsStr,
+                                                execStr, 225, "spd", null, 25,2, null);
 
 
                                         //Testing for results
@@ -397,19 +397,25 @@ public class ActivityHome extends AppCompatActivity {
 
 
             HashMap<Integer, String> rows = new HashMap<>();
+            HashMap<Integer, String> imgRows = new HashMap<>();
+
             LocalFileParser localFileParser = new LocalFileParser(this, "recipes.json");
 
             try{
+
                 rows = localFileParser.readJSON();
+               // imgRows = localFileParser.getImgValues();
                 //System.out.println("Element: "+ rows);
                 System.out.println("IM IN TH ROWS HASHMAP=============================");
-                for(int i = 0; i<rows.size(); i++){
+               /* for(int i = 0; i<imgRows.size(); i++){
                    // if(rows.get(i)=="#"){
                     //    i++;
                    // }else{
-                        System.out.println(rows.get(i));
+
+                    System.out.println(imgRows.get(i));
+                      //  System.out.println(rows.get(i));
                   //  }
-                }
+                }*/
 
 
 
@@ -425,7 +431,10 @@ public class ActivityHome extends AppCompatActivity {
 
                             sqllite.writeJSONtoTheDB(Integer.parseInt(rows.get(counter++)),rows.get(counter++), rows.get(counter++),
                                     rows.get(counter++),rows.get(counter++), rows.get(counter++), Double.parseDouble(rows.get(counter++)), rows.get(counter++),
-                                    new SimpleDateFormat("dd/MM/yyyy").parse(rows.get(counter++)), Integer.parseInt(rows.get(counter++)), Integer.parseInt(rows.get(counter++)));
+                                    new SimpleDateFormat("dd/MM/yyyy").parse(rows.get(counter++)),
+                                    Integer.parseInt(rows.get(counter++)), Integer.parseInt(rows.get(counter++)), rows.get(counter++));
+
+
 
                     }
 
