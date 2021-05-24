@@ -1,5 +1,6 @@
 package com.pantz.recipepro;
 
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,27 +66,36 @@ public class FourthFragment extends Fragment {
 
 
 
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
+        Database db = new Database(getContext());
+         String [] array = db.getData("SELECT * FROM bizRecipe WHERE basic_element='pasta'", "recipe_title" );
+        System.out.println("From array: ");
+         for(int i=0; i<array.length; i++){
+
+             System.out.println(array[i]);
+         }
+        //Cursor cursor= db.readTheData("SELECT * FROM ");
         // Inflate the layout for this fragment
 
 
         View view = inflater.inflate(R.layout.fragment_fourth, container, false);
 
-        String[] itemsInList = {"Chicken" ,
-                "Pasta" ,
-                "Nothing"};
 
         ListView listView = (ListView) view.findViewById(R.id.mainView);
 
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
-                itemsInList
-
+                array
 
 
         );

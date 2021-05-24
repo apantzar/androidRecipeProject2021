@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Database extends SQLiteOpenHelper {
@@ -215,14 +216,28 @@ public class Database extends SQLiteOpenHelper {
      * @return selected data with cursor
      */
 
-    Cursor readTheData(){
-        String theQuery="SELECT * FROM "+RECIPE_TABLE_NAME;
+    Cursor readTheData(String string){
+        String theQuery=string+RECIPE_TABLE_NAME;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor=null;
         if(sqLiteDatabase!=null){
             cursor = sqLiteDatabase.rawQuery(theQuery, null);
         }
         return cursor;
+    }
+
+
+
+    public String[] getData(String query, String column ){
+        Cursor cursor = getReadableDatabase().rawQuery(query, null);
+        cursor.moveToFirst();
+        ArrayList<String> recipes = new ArrayList<String>();
+        while(!cursor.isAfterLast()) {
+            recipes.add(cursor.getString(cursor.getColumnIndex(column)));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return recipes.toArray(new String[recipes.size()]);
     }
 
 }

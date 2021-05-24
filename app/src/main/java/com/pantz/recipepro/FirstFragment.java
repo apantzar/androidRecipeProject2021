@@ -1,7 +1,9 @@
 package com.pantz.recipepro;
 
+import android.database.Cursor;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,7 +15,7 @@ import android.view.ViewGroup;
  * Use the {@link FirstFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FirstFragment extends Fragment {
+public class FirstFragment extends Fragment{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -53,6 +55,11 @@ public class FirstFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
+
+
     }
 
     @Override
@@ -61,4 +68,6 @@ public class FirstFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_first, container, false);
     }
+
+
 }
