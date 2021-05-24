@@ -1,6 +1,7 @@
 package com.pantz.recipepro;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -149,6 +151,7 @@ public class FourthFragment extends Fragment{
 
 
         SearchView viewid = getView().findViewById(R.id.searchView);
+        ListView list = getView().findViewById(R.id.mainView);
 
 
 
@@ -168,7 +171,18 @@ public class FourthFragment extends Fragment{
                 adapter.getFilter().filter(newText);
                 return false;
             }
+
+
         });
+
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(FourthFragment.this.getActivity(), activity_details.class));
+            }
+        });
+
 
 
 
