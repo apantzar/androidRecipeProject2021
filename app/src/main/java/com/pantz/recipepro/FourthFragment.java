@@ -33,6 +33,7 @@ public class FourthFragment extends Fragment{
     private  String [] array;
 
 
+    private  Database db;
     private Activity class2;
     public static ArrayList<String> list = new ArrayList<>();
     private ListView listView;
@@ -106,13 +107,13 @@ public class FourthFragment extends Fragment{
         home.getIdOfBox();*/
 
 
-        Database db = new Database(getContext());
-        array = db.getData("SELECT * FROM bizRecipe", "recipe_title" );
-        System.out.println("From array: ");
+      /*  db = new Database(getContext());
+        array = db.getData("SELECT * FROM bizRecipe", "recipe_title" );*/
+       /* System.out.println("From array: ");
          for(int i=0; i<array.length; i++){
 
              System.out.println(array[i]);
-         }
+         }*/
         //Cursor cursor= db.readTheData("SELECT * FROM ");
         // Inflate the layout for this fragment
 
@@ -121,16 +122,16 @@ public class FourthFragment extends Fragment{
 
 
          listView = (ListView) view.findViewById(R.id.mainView);
-
+/*
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
                 array
 
 
-        );
+        );*/
 
-        listView.setAdapter(listViewAdapter);
+        //listView.setAdapter(listViewAdapter);
 
 
         return view;
@@ -149,8 +150,7 @@ public class FourthFragment extends Fragment{
 
         SearchView viewid = getView().findViewById(R.id.searchView);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,array);
-        listView.setAdapter(adapter);
+
 
         viewid.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -160,6 +160,10 @@ public class FourthFragment extends Fragment{
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                db = new Database(getContext());
+                array = db.getData("SELECT * FROM bizRecipe where basic_element like '%"+newText+ "%' OR recipe_title like '%"+newText+"%'", "recipe_title" );
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,array);
+                listView.setAdapter(adapter);
 
                 adapter.getFilter().filter(newText);
                 return false;
