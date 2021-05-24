@@ -163,20 +163,4 @@ public class Database extends SQLiteOpenHelper {
 
 
     }
-
-
-    /**
-     * In order to execute the SQL query and select the data
-     * @return selected data with cursor
-     */
-
-    Cursor readTheData(){
-        String theQuery="SELECT * FROM "+RECIPE_TABLE_NAME;
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        Cursor cursor=null;
-        if(sqLiteDatabase!=null){
-            cursor = sqLiteDatabase.rawQuery(theQuery, null);
-        }
-        return cursor;
-    }
 }
