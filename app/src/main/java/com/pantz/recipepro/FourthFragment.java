@@ -1,15 +1,23 @@
 package com.pantz.recipepro;
 
+import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +27,13 @@ import java.util.List;
  * Use the {@link FourthFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FourthFragment extends Fragment {
+public class FourthFragment extends Fragment{
 
 
+    private  String [] array;
+
+
+    private Activity class2;
     public static ArrayList<String> list = new ArrayList<>();
     private ListView listView;
     // TODO: Rename parameter arguments, choose names that match
@@ -64,20 +76,38 @@ public class FourthFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+       class2 = new Activity();
+
+
+
+
+/*
+        SearchView view = (SearchView)getSomething();
+        String givenString= view.getQuery().toString();
+
+
+        System.out.println("The given "+givenString);*/
+
 
 
 
 
     }
+    public AutoCompleteTextView getSomething(){
+        return class2.findViewById(R.id.searchView);
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+/*
+        ActivityHome home = new ActivityHome();
+        home.getIdOfBox();*/
 
 
         Database db = new Database(getContext());
-         String [] array = db.getData("SELECT * FROM bizRecipe WHERE basic_element='pasta'", "recipe_title" );
+        array = db.getData("SELECT * FROM bizRecipe", "recipe_title" );
         System.out.println("From array: ");
          for(int i=0; i<array.length; i++){
 
@@ -90,7 +120,7 @@ public class FourthFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fourth, container, false);
 
 
-        ListView listView = (ListView) view.findViewById(R.id.mainView);
+         listView = (ListView) view.findViewById(R.id.mainView);
 
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
                 getActivity(),
@@ -102,12 +132,47 @@ public class FourthFragment extends Fragment {
 
         listView.setAdapter(listViewAdapter);
 
+
         return view;
 
 
 
     }
 
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+
+
+        SearchView viewid = getView().findViewById(R.id.searchView);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,array);
+        listView.setAdapter(adapter);
+
+        viewid.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+
+
+
+
+
+
+    }
 
 
 }

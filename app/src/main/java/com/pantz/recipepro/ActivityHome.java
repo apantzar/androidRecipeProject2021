@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import java.text.ParseException;
@@ -490,6 +491,12 @@ public class ActivityHome extends AppCompatActivity {
 
 
 
+    public View getIdOfBox(){
+
+       View id = findViewById(R.id.searchView);
+       return id;
+
+    }
 
     /**
      * For each nav button <- fragment
