@@ -9,6 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,8 +45,14 @@ import java.util.List;
 
 public class ActivityHome extends AppCompatActivity {
 
+    static final  String path = "/data/data/com.pantz.recipepro/databases/";
+    static final  String DB_NAME="Recipe";
+    static final  String Query = "Select * from bizRecipe";
+
+
     private static int tagKey = 0;
 
+    private String title;
     public String elementsIn = "ssss";
 
 
@@ -50,6 +61,9 @@ public class ActivityHome extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        title = getIntent().getStringExtra("TEXT");
+
 
         final String TAG = "MainActivity";
 
@@ -72,6 +86,9 @@ public class ActivityHome extends AppCompatActivity {
         Button button = (Button)findViewById(R.id.button2);
 
         button.setOnClickListener(v -> {
+
+
+            //getData();
 
             Runnable runnable = new Runnable() {
                 @Override
@@ -400,6 +417,9 @@ public class ActivityHome extends AppCompatActivity {
             HashMap<Integer, String> rows = new HashMap<>();
             HashMap<Integer, String> imgRows = new HashMap<>();
 
+
+
+
             LocalFileParser localFileParser = new LocalFileParser(this, "recipes.json");
 
             try{
@@ -447,6 +467,10 @@ public class ActivityHome extends AppCompatActivity {
                 }
 
 
+
+
+
+
             }catch (IOException | JSONException e){
 
                 System.out.println("!!!!!!!!!!!!!!!!I am in exception for csv!!!!!!!!!!!!!!!");
@@ -487,7 +511,40 @@ public class ActivityHome extends AppCompatActivity {
 
         });
 
+
+
+
     }
+
+
+   /* public void getData(){
+        try(
+
+                Class.forName("org.sqlite.JDBC");
+            Connection conn = DriverManager.getConnection(path, "", "");
+            Statement statement = conn.createStatement();
+            ResultSet result  = statement.executeQuery(Query);
+
+        ){
+
+            while(result.next()){
+
+                System.out.println("ID: "+result.getInt("_id"));
+                System.out.println("BASIC ELEMENT"+result.getString("basic_element"));
+
+            }
+
+
+        }catch (SQLException | ClassNotFoundException e){
+
+
+            System.out.println("NEW EXCEPRION AGAINNNNNNNNNNNNNNN");
+
+            e.printStackTrace();
+        }
+
+
+    }*/
 
 
 

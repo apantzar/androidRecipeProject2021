@@ -35,6 +35,12 @@ public class FourthFragment extends Fragment{
     private  String [] array;
 
 
+    private String displayText;
+    private String exec;
+
+
+
+    private  Database qdb;
     private  Database db;
     private Activity class2;
     public static ArrayList<String> list = new ArrayList<>();
@@ -179,17 +185,31 @@ public class FourthFragment extends Fragment{
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(FourthFragment.this.getActivity(), activity_details.class));
+
+                displayText= (String)listView.getItemAtPosition(position);
+
+                System.out.println("DSPTEXT "+displayText );
+
+               // startActivity(new Intent(FourthFragment.this.getActivity(), activity_details.class));
+
+                qdb = new Database(getContext());
+                exec = qdb.getExec("SELECT exec FROM bizRecipe where recipe_title like '%"+displayText+"%'","exec" );
+                Intent intent = new Intent(FourthFragment.this.getActivity(), activity_details.class);
+                intent.putExtra("TEXT", displayText);
+                intent.putExtra("EXEC", exec);
+                System.out.println(exec);
+                startActivity(intent);
+
             }
         });
 
 
 
+    }
 
+    public String getDisplayText() {
 
-
-
-
+        return displayText;
     }
 
 

@@ -228,6 +228,20 @@ public class Database extends SQLiteOpenHelper {
 
 
 
+    public String getExec(String query, String column){
+        String txtExec="";
+        Cursor cursor = getReadableDatabase().rawQuery(query,null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            txtExec = cursor.getString(cursor.getColumnIndex(column));
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        return txtExec;
+    }
+
+
     public String[] getData(String query, String column ){
         Cursor cursor = getReadableDatabase().rawQuery(query, null);
         cursor.moveToFirst();
