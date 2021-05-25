@@ -59,10 +59,10 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //create the table
-   //     String imagesTable = "CREATE TABLE " + IMAGES_TABLE_NAME+ " ("+ IMAGES_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
-  //              IMAGES_COLUMN_RECIPE_ID + "INTEGER, " + IMAGES_COLUMN_PATH +" TEXT NOT NULL);";
+        //     String imagesTable = "CREATE TABLE " + IMAGES_TABLE_NAME+ " ("+ IMAGES_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
+        //              IMAGES_COLUMN_RECIPE_ID + "INTEGER, " + IMAGES_COLUMN_PATH +" TEXT NOT NULL);";
 
-   //     db.execSQL(imagesTable);
+        //     db.execSQL(imagesTable);
 
         String table = "CREATE TABLE "+ REGISTER_TABLE_NAME+
                 " ("+ REGISTER_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
@@ -102,8 +102,8 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS "+ REGISTER_TABLE_NAME); //in order to delete the table
         db.execSQL("DROP TABLE IF EXISTS "+ RECIPE_TABLE_NAME); //in order to delete the table
-        db.execSQL("ALTER TABLE bizRecipe  ADD COLUMN path TEXT NOT NULL");
-       // db.execSQL("DROP TABLE IF EXISTS "+ IMAGES_TABLE_NAME); //in order to delete the table FOR IMAGES
+        //db.execSQL("ALTER TABLE bizRecipe  ADD COLUMN path TEXT NOT NULL");//
+        // db.execSQL("DROP TABLE IF EXISTS "+ IMAGES_TABLE_NAME); //in order to delete the table FOR IMAGES
         onCreate(db); // to create again
     }
 
