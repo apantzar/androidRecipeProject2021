@@ -37,6 +37,11 @@ public class FourthFragment extends Fragment{
 
     private String displayText;
     private String exec;
+    private String cal;
+    private String difRate;
+    private String execTime;
+    private String elements;
+    private String cat;
 
 
 
@@ -194,10 +199,30 @@ public class FourthFragment extends Fragment{
 
                 qdb = new Database(getContext());
                 exec = qdb.getExec("SELECT exec FROM bizRecipe where recipe_title like '%"+displayText+"%'","exec" );
+                cal = qdb.getExec("SELECT calories FROM bizRecipe where recipe_title like '%"+displayText+"%'","calories" );
+                difRate = qdb.getExec("SELECT dif_rate  FROM bizRecipe where recipe_title like '%"+displayText+"%'","dif_rate" ).toString();
+                execTime = qdb.getExec("SELECT exec_time  FROM bizRecipe where recipe_title like '%"+displayText+"%'","exec_time" ).toString();
+                elements = qdb.getExec("SELECT _elements FROM bizRecipe where recipe_title like '%"+displayText+"%'","_elements" );
+                cat = qdb.getExec("SELECT recipe_category FROM bizRecipe where recipe_title like '%"+displayText+"%'","recipe_category" );
+
+
+
+
+
+
                 Intent intent = new Intent(FourthFragment.this.getActivity(), activity_details.class);
                 intent.putExtra("TEXT", displayText);
                 intent.putExtra("EXEC", exec);
+                intent.putExtra("CAL", cal);
+                intent.putExtra("DIFRATE", difRate);
+                intent.putExtra("EXECTIME",execTime);
+                intent.putExtra("ELEMENTS",elements);
+                intent.putExtra("CAT",cat);
+
+
+
                 System.out.println(exec);
+                System.out.println(cal);
                 startActivity(intent);
 
             }

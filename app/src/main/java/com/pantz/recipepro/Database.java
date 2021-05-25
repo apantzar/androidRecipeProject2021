@@ -102,7 +102,7 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS "+ REGISTER_TABLE_NAME); //in order to delete the table
         db.execSQL("DROP TABLE IF EXISTS "+ RECIPE_TABLE_NAME); //in order to delete the table
-        db.execSQL("ALTER TABLE bizRecipe  ADD COLUMN path TEXT NOT NULL");
+        //db.execSQL("ALTER TABLE bizRecipe  ADD COLUMN path TEXT NOT NULL");
        // db.execSQL("DROP TABLE IF EXISTS "+ IMAGES_TABLE_NAME); //in order to delete the table FOR IMAGES
         onCreate(db); // to create again
     }
@@ -158,7 +158,7 @@ public class Database extends SQLiteOpenHelper {
 
 
     public void writeJSONtoTheDB(int jid, String jRecipeTitle, String jRecipeCat, String jBasicElement,
-                                 String jElements, String jExec, double jCalories, String jSpecialD,
+                                 String jElements, String jExec, int jCalories, String jSpecialD,
                                  Date jDate, int jExecTime, int jDifRate,String jImagePath ){
 
         SQLiteDatabase db = this.getWritableDatabase(); //to write in the db

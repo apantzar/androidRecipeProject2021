@@ -1,14 +1,14 @@
 package com.pantz.recipepro;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
 public class activity_details extends AppCompatActivity {
 
-    private String textTitle, textExec;
+    private String textTitle, textExec, cat, elements, exectime, calories, difrate;
+
 
 
 
@@ -23,6 +23,12 @@ public class activity_details extends AppCompatActivity {
 
         textTitle=getIntent().getStringExtra("TEXT");
         textExec=getIntent().getStringExtra("EXEC");
+        calories=getIntent().getStringExtra("CAL");
+        difrate = getIntent().getStringExtra("DIFRATE");
+        exectime = getIntent().getStringExtra("EXECTIME").toString();
+        cat = getIntent().getStringExtra("CAT");
+        elements = getIntent().getStringExtra("ELEMENTS");
+
 
 
         System.out.println("txtTITLE "+textTitle);
@@ -31,7 +37,23 @@ public class activity_details extends AppCompatActivity {
         view.setText(textTitle);
 
         TextView exec = findViewById(R.id.textExec);
-        exec.setText(textExec);
+        exec.setText("Elements:\n"+ elements+ "\n\n" +"Execution:\n"+textExec );
+
+        TextView cal = findViewById(R.id.textView5);
+        cal.setText(calories);
+
+        TextView dif = findViewById(R.id.textView3);
+        dif.setText(difrate);
+
+        TextView sExecTime = findViewById(R.id.textView6);
+        sExecTime.setText(exectime);
+
+        TextView catTxt = findViewById(R.id.textView10);
+        catTxt.setText(cat);
+
+
+
+
 
         exec.setMovementMethod(new ScrollingMovementMethod());
 

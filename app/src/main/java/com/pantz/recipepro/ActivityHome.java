@@ -451,7 +451,7 @@ public class ActivityHome extends AppCompatActivity {
                             System.out.println("CATtEST "+rows.get(2));
 
                             sqllite.writeJSONtoTheDB(Integer.parseInt(rows.get(counter++)),rows.get(counter++), rows.get(counter++),
-                                    rows.get(counter++),rows.get(counter++), rows.get(counter++), Double.parseDouble(rows.get(counter++)), rows.get(counter++),
+                                    rows.get(counter++),rows.get(counter++), rows.get(counter++), Integer.parseInt(rows.get(counter++)), rows.get(counter++),
                                     new SimpleDateFormat("dd/MM/yyyy").parse(rows.get(counter++)),
                                     Integer.parseInt(rows.get(counter++)), Integer.parseInt(rows.get(counter++)), rows.get(counter++));
 
