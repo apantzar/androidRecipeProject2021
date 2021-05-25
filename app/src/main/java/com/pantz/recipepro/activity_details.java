@@ -1,13 +1,26 @@
 package com.pantz.recipepro;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class activity_details extends AppCompatActivity {
 
-    private String textTitle, textExec, cat, elements, exectime, calories, difrate;
+    private String textTitle, textExec, cat, elements, exectime, calories, difrate, path;
+    private Bitmap bitmap;
+    ImageView imageView;
 
 
 
@@ -28,6 +41,31 @@ public class activity_details extends AppCompatActivity {
         exectime = getIntent().getStringExtra("EXECTIME").toString();
         cat = getIntent().getStringExtra("CAT");
         elements = getIntent().getStringExtra("ELEMENTS");
+        path = getIntent().getStringExtra("IMAGE");
+
+        System.out.println("PATHHHHHHHHH "+path);
+
+
+        String uri=path;
+
+        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+
+        imageView= (ImageView)findViewById(R.id.imageView8);
+        Drawable res = getResources().getDrawable(imageResource);
+        imageView.setImageDrawable(res);
+
+
+/*
+        File imgFile = new  File(path);
+
+
+        if(imgFile.exists()){
+
+            bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+
+        }else {
+            System.out.println("Not found");
+        }*/
 
 
 
@@ -51,6 +89,8 @@ public class activity_details extends AppCompatActivity {
         TextView catTxt = findViewById(R.id.textView10);
         catTxt.setText(cat);
 
+        ImageView imageView = findViewById(R.id.imageView8);
+       // imageView.setImageBitmap(bitmap);
 
 
 

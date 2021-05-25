@@ -42,6 +42,7 @@ public class FourthFragment extends Fragment{
     private String execTime;
     private String elements;
     private String cat;
+    private String path;
 
 
 
@@ -204,6 +205,7 @@ public class FourthFragment extends Fragment{
                 execTime = qdb.getExec("SELECT exec_time  FROM bizRecipe where recipe_title like '%"+displayText+"%'","exec_time" ).toString();
                 elements = qdb.getExec("SELECT _elements FROM bizRecipe where recipe_title like '%"+displayText+"%'","_elements" );
                 cat = qdb.getExec("SELECT recipe_category FROM bizRecipe where recipe_title like '%"+displayText+"%'","recipe_category" );
+                path = qdb.getExec("SELECT path FROM bizRecipe where recipe_title like '%"+displayText+"%'","path" );
 
 
 
@@ -218,6 +220,7 @@ public class FourthFragment extends Fragment{
                 intent.putExtra("EXECTIME",execTime);
                 intent.putExtra("ELEMENTS",elements);
                 intent.putExtra("CAT",cat);
+                intent.putExtra("IMAGE", path);
 
 
 
