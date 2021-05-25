@@ -3,6 +3,7 @@ package com.pantz.recipepro;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
 public class activity_details extends AppCompatActivity {
@@ -31,6 +32,8 @@ public class activity_details extends AppCompatActivity {
 
         TextView exec = findViewById(R.id.textExec);
         exec.setText(textExec);
+
+        exec.setMovementMethod(new ScrollingMovementMethod());
 
         System.out.println("From details exec "+textExec);
 
