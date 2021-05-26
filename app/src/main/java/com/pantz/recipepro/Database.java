@@ -3,6 +3,7 @@ package com.pantz.recipepro;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -79,14 +80,14 @@ public class Database extends SQLiteOpenHelper {
                 RECIPE_COLUMN_BASIC_ELEMENT +" TEXT NOT NULL,"     +
                 /*ok*/   RECIPE_COLUMN_TITLE         +" TEXT NOT NULL,"     +
                 /**/   RECIPE_COLUMN_CALORIES      +" INTEGER NOT NULL,"  +
-                /*will be deleted*/ RECIPE_COLUMN_DATE_ADDED    +" DATE NOT NULL,"     +
+                /*will be deleted*/ RECIPE_COLUMN_DATE_ADDED    +" DATE ,"     +
                 RECIPE_COLUMN_CATEGORY      +" TEXT NOT NULL,"     +
                 RECIPE_COLUMN_DIF_RATE      +" INTEGER NOT NULL,"  +
                 /**/  RECIPE_COLUMN_EXEC_TIME     +" INTEGER NOT NULL,"  +
                 RECIPE_COLUMN_SPECIALD      +" TEXT NOT NULL,"     +
                 /*ok*/   RECIPE_COLUMN_ELEMENTS      +" TEXT NOT NULL,"     +
                 /*ok*/  RECIPE_COLUMN_EXEC          +" TEXT NOT NULL,"    +
-                IMAGES_COLUMN_PATH +" TEXT NOT NULL);";
+                IMAGES_COLUMN_PATH +" TEXT );";
 
 
         db.execSQL(theQuery); //To run theQuery
@@ -180,8 +181,13 @@ public class Database extends SQLiteOpenHelper {
 
 
 
-        //insert the inputs to the table of the db
-        db.insert(RECIPE_TABLE_NAME, null, content);
+        try{
+            //insert the inputs to the table of the db
+            db.insert(RECIPE_TABLE_NAME, null, content);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
 
 
 

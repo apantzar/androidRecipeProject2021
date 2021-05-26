@@ -10,12 +10,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Random;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FirstFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class FirstFragment extends Fragment{
+
+    private int r1,r2,r3,r4,r5,r6,r7,r8;
+    Database db;
+    private String[] array;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,6 +64,40 @@ public class FirstFragment extends Fragment{
 
 
 
+        Random random = new Random();
+        int lowLimit = 1;
+        int highLimit =49 ;
+
+
+        r1 = random.nextInt(highLimit - lowLimit)+lowLimit;
+        r2 = random.nextInt(highLimit - lowLimit)+lowLimit;
+        r3 = random.nextInt(highLimit - lowLimit)+lowLimit;
+        r4 = random.nextInt(highLimit - lowLimit)+lowLimit;
+        r5 = random.nextInt(highLimit - lowLimit)+lowLimit;
+        r6 = random.nextInt(highLimit - lowLimit)+lowLimit;
+        r7 = random.nextInt(highLimit - lowLimit)+lowLimit;
+        r8 = random.nextInt(highLimit - lowLimit)+lowLimit;
+
+
+
+
+        db = new Database(getContext());
+        array = db.getData("SELECT * from bizRecipe where _id ="+ r1 +" OR  _id="+ r2 +" OR _id="+ r3+
+                " OR  _id="+ r4 +" OR _id="+ r5
+                +" OR  _id="+ r6 +" OR _id="+ r7+" OR  _id="+ r8 , "recipe_title");
+
+        System.out.println("r1, r2, r3, r4, r5, r6, r7, r8 "+ r1+" "+r2+" "+r3+" "+ r4+" "+r5+" "+r6 +" "+r7+" "+r8);
+
+
+        for(int i=0; i<array.length; i++){
+            System.out.println("This is Array: "+ array[i]);
+        }
+
+
+
+
+
+
 
 
     }
@@ -66,6 +106,12 @@ public class FirstFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+
+
+
+
+
         return inflater.inflate(R.layout.fragment_first, container, false);
     }
 
