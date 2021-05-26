@@ -161,8 +161,8 @@
         android:layout_width="397dp"
         android:layout_height="488dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="50sp"
+        android:layout_marginEnd="8sp"
         app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -198,10 +198,10 @@
                     android:layout_weight="1" />
 
                 <androidx.cardview.widget.CardView
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_width="175dp"
-                    android:layout_height="175dp"
+                    android:layout_width="160dp"
+                    android:layout_height="200dp"
                     android:layout_row="0"
                     android:layout_column="0"
                     android:padding="10dp"
@@ -241,10 +241,10 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_width="175dp"
-                    android:layout_height="175dp"
+                    android:layout_width="160dp"
+                    android:layout_height="200dp"
 
                     android:layout_row="0"
                     android:layout_column="1"
@@ -282,17 +282,19 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_width="175dp"
-                    android:layout_height="175dp"
+                    android:layout_width="160dp"
+                    android:layout_height="200dp"
                     android:layout_row="1"
                     android:layout_column="0"
                     android:padding="50dp"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp">
+                    app:cardMaxElevation="1dp"
+
+                    >
 
 
                     <LinearLayout
@@ -300,16 +302,20 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/id_13"></ImageView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Test"></TextView>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/id_13"
+                            android:scaleType="fitXY"></ImageView>
+
+
 
 
                     </LinearLayout>
@@ -318,10 +324,10 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_width="175dp"
-                    android:layout_height="175dp"
+                    android:layout_width="160dp"
+                    android:layout_height="200dp"
                     android:layout_row="1"
                     android:layout_column="1"
                     android:padding="50dp"
@@ -336,16 +342,19 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/id_13"></ImageView>
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Test"></TextView>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/id_13"
+                            android:scaleType="fitXY"></ImageView>
+
+
 
 
                     </LinearLayout>
@@ -354,10 +363,10 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_width="175dp"
-                    android:layout_height="175dp"
+                    android:layout_width="160dp"
+                    android:layout_height="200dp"
                     android:layout_row="2"
                     android:layout_column="0"
                     android:padding="50dp"
@@ -372,16 +381,20 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/id_13"></ImageView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Test"></TextView>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/id_13"
+                            android:scaleType="fitXY"></ImageView>
+
+
 
 
                     </LinearLayout>
@@ -390,10 +403,10 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_width="175dp"
-                    android:layout_height="175dp"
+                    android:layout_width="160dp"
+                    android:layout_height="200dp"
                     android:layout_row="2"
                     android:layout_column="1"
                     android:padding="50dp"
@@ -408,16 +421,20 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/id_13"></ImageView>
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Test"></TextView>
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/id_13"
+                            android:scaleType="fitXY"></ImageView>
+
+
 
 
                     </LinearLayout>
@@ -426,10 +443,10 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_width="175dp"
-                    android:layout_height="175dp"
+                    android:layout_width="160dp"
+                    android:layout_height="200dp"
                     android:layout_row="3"
                     android:layout_column="0"
                     android:padding="50dp"
@@ -454,7 +471,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@drawable/id_13">
+                            android:src="@drawable/id_13"
+                            android:scaleType="fitXY">
 
                         </ImageView>
 
@@ -465,10 +483,10 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_width="175dp"
-                    android:layout_height="175dp"
+                    android:layout_width="160dp"
+                    android:layout_height="200dp"
                     android:layout_row="3"
                     android:layout_column="1"
                     android:padding="50dp"
@@ -493,7 +511,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@drawable/id_13">
+                            android:src="@drawable/id_13"
+                            android:scaleType="fitXY">
 
                         </ImageView>
 
