@@ -1,15 +1,19 @@
 package com.pantz.recipepro;
 
+import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -69,14 +73,33 @@ public class FirstFragment extends Fragment{
         int highLimit =49 ;
 
 
-        r1 = random.nextInt(highLimit - lowLimit)+lowLimit;
-        r2 = random.nextInt(highLimit - lowLimit)+lowLimit;
-        r3 = random.nextInt(highLimit - lowLimit)+lowLimit;
-        r4 = random.nextInt(highLimit - lowLimit)+lowLimit;
-        r5 = random.nextInt(highLimit - lowLimit)+lowLimit;
-        r6 = random.nextInt(highLimit - lowLimit)+lowLimit;
-        r7 = random.nextInt(highLimit - lowLimit)+lowLimit;
-        r8 = random.nextInt(highLimit - lowLimit)+lowLimit;
+        /**
+         * :/ I know....
+         *
+         *
+         * In order to be unique each (r)
+         */
+        while((r4==r3 || r4==r2 || r4==r1 ) || (r3==r2 || r3==r1) || (r2==r1)   ||
+
+              (r5==r4 || r5==r3 || r5==r2 ) || (r5==r1 || r6==r5) || (r6==r4) ||
+
+              (r6==r3 || r6==r2 || r6==r1 ) || (r7==r6 || r7==r5) || (r7==r4) ||
+
+              (r7==r3 || r7==r2 || r7==r1 ) || (r8==r7 || r8==r6) || (r8==r5) ||
+
+              (r8==r4 || r8==r3 || r8==r2 ) || (r8==r1) || (r1==9 || r2==9 || r3==9 || r4==9 || r5==9||r6==9||r7==9|| r8==9) ){
+
+          r1 = random.nextInt(highLimit - lowLimit)+lowLimit;
+          r2 = random.nextInt(highLimit - lowLimit)+lowLimit;
+          r3 = random.nextInt(highLimit - lowLimit)+lowLimit;
+          r4 = random.nextInt(highLimit - lowLimit)+lowLimit;
+          r5 = random.nextInt(highLimit - lowLimit)+lowLimit;
+          r6 = random.nextInt(highLimit - lowLimit)+lowLimit;
+          r7 = random.nextInt(highLimit - lowLimit)+lowLimit;
+          r8 = random.nextInt(highLimit - lowLimit)+lowLimit;
+
+
+      }
 
 
 
@@ -89,12 +112,17 @@ public class FirstFragment extends Fragment{
         System.out.println("r1, r2, r3, r4, r5, r6, r7, r8 "+ r1+" "+r2+" "+r3+" "+ r4+" "+r5+" "+r6 +" "+r7+" "+r8);
 
 
-        for(int i=0; i<array.length; i++){
-            System.out.println("This is Array: "+ array[i]);
+        for (String s : array) {
+            System.out.println("This is Array: " + s);
         }
 
 
+      //  System.out.println(array[0]);
 
+
+
+
+        //giveTitlesNow();
 
 
 
@@ -102,17 +130,83 @@ public class FirstFragment extends Fragment{
 
     }
 
+
+
+
+    private void giveTitlesNow(){
+
+
+       /* TextView view = requireView().findViewById(R.id.recipe1txt);
+        view.setText(array[0]);
+
+        TextView view1 = getView().findViewById(R.id.recipe2txt);
+        view1.setText(array[1]);
+*/
+        /*TextView view2 = getView().findViewById(R.id.recipe3txt);
+        view2.setText(array[2]);
+
+        TextView view3 = getView().findViewById(R.id.recipe4txt);
+        view3.setText(array[3]);
+
+        TextView view4 = getView().findViewById(R.id.recipe5txt);
+        view4.setText(array[4]);
+
+
+        TextView view5 = getView().findViewById(R.id.recipe6txt);
+        view5.setText(array[5]);
+
+
+        TextView view6 = getView().findViewById(R.id.recipe7txt);
+        view6.setText(array[6]);
+
+        TextView view7 = getView().findViewById(R.id.recipe8txt);
+        view7.setText(array[7]);
+
+*/
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        View view = inflater.inflate(R.layout.fragment_first, container, false);
+
+
+
+        TextView view0 = view.findViewById(R.id.recipe1txt);
+        view0.setText(array[0]);
+
+
+        TextView view1 = view.findViewById(R.id.recipe2txt);
+        view1.setText(array[1]);
+
+
+        TextView view2 = view.findViewById(R.id.recipe3txt);
+        view2.setText(array[2]);
+
+        TextView view3 = view.findViewById(R.id.recipe4txt);
+        view3.setText(array[3]);
+
+        TextView view4 = view.findViewById(R.id.recipe5txt);
+        view4.setText(array[4]);
+
+
+        TextView view5 = view.findViewById(R.id.recipe6txt);
+        view5.setText(array[5]);
+
+
+        TextView view6 = view.findViewById(R.id.recipe7txt);
+        view6.setText(array[6]);
+
+        TextView view7 = view.findViewById(R.id.recipe8txt);
+        view7.setText(array[7]);
 
 
 
 
 
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        return view;
     }
 
 
