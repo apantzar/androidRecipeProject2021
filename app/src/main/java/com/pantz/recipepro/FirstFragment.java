@@ -2,6 +2,7 @@ package com.pantz.recipepro;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Objects;
@@ -25,7 +27,7 @@ public class FirstFragment extends Fragment{
 
     private int r1,r2,r3,r4,r5,r6,r7,r8;
     Database db;
-    private String[] array;
+    private String[] array , imgArray;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,7 +66,15 @@ public class FirstFragment extends Fragment{
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
+
+
+
+
         }
+
+
 
 
 
@@ -109,11 +119,22 @@ public class FirstFragment extends Fragment{
                 " OR  _id="+ r4 +" OR _id="+ r5
                 +" OR  _id="+ r6 +" OR _id="+ r7+" OR  _id="+ r8 , "recipe_title");
 
+
+        imgArray = db.getData("SELECT path from bizRecipe where _id ="+ r1 +" OR  _id="+ r2 +" OR _id="+ r3+
+                " OR  _id="+ r4 +" OR _id="+ r5
+                +" OR  _id="+ r6 +" OR _id="+ r7+" OR  _id="+ r8 , "path");
+
         System.out.println("r1, r2, r3, r4, r5, r6, r7, r8 "+ r1+" "+r2+" "+r3+" "+ r4+" "+r5+" "+r6 +" "+r7+" "+r8);
 
 
         for (String s : array) {
             System.out.println("This is Array: " + s);
+
+        }
+
+        for (String s : imgArray ) {
+            System.out.println("This is Array: " + s);
+
         }
 
 
@@ -128,42 +149,12 @@ public class FirstFragment extends Fragment{
 
 
 
+
+
+
     }
 
 
-
-
-    private void giveTitlesNow(){
-
-
-       /* TextView view = requireView().findViewById(R.id.recipe1txt);
-        view.setText(array[0]);
-
-        TextView view1 = getView().findViewById(R.id.recipe2txt);
-        view1.setText(array[1]);
-*/
-        /*TextView view2 = getView().findViewById(R.id.recipe3txt);
-        view2.setText(array[2]);
-
-        TextView view3 = getView().findViewById(R.id.recipe4txt);
-        view3.setText(array[3]);
-
-        TextView view4 = getView().findViewById(R.id.recipe5txt);
-        view4.setText(array[4]);
-
-
-        TextView view5 = getView().findViewById(R.id.recipe6txt);
-        view5.setText(array[5]);
-
-
-        TextView view6 = getView().findViewById(R.id.recipe7txt);
-        view6.setText(array[6]);
-
-        TextView view7 = getView().findViewById(R.id.recipe8txt);
-        view7.setText(array[7]);
-
-*/
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -171,6 +162,8 @@ public class FirstFragment extends Fragment{
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_first, container, false);
+
+
 
 
 
@@ -204,9 +197,39 @@ public class FirstFragment extends Fragment{
 
 
 
+        ImageView img1 = view.findViewById(R.id.imgView0);
+        ImageView img2 = view.findViewById(R.id.imgView1);
+        ImageView img3 = view.findViewById(R.id.imgView2);
+        ImageView img4 = view.findViewById(R.id.imgView3);
+        ImageView img5 = view.findViewById(R.id.imgView4);
+        ImageView img6 = view.findViewById(R.id.imgView);
+        ImageView img7 = view.findViewById(R.id.imgView6);
+        ImageView img8 = view.findViewById(R.id.imgView7);
+
+        initTheImages(imgArray[0], img1);
+        initTheImages(imgArray[1], img2);
+        initTheImages(imgArray[2], img3);
+        initTheImages(imgArray[3], img4);
+        initTheImages(imgArray[4], img5);
+        initTheImages(imgArray[5], img6);
+        initTheImages(imgArray[6], img7);
+        initTheImages(imgArray[7], img8);
 
 
         return view;
+    }
+
+
+
+    private void initTheImages(String uri, ImageView imageView){
+
+
+        int imageResource = getResources().getIdentifier(uri, null, getActivity().getPackageName());
+
+
+        Drawable res = getResources().getDrawable(imageResource);
+        imageView.setImageDrawable(res);
+
     }
 
 

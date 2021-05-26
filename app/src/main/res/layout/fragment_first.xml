@@ -226,6 +226,7 @@
 
                         <ImageView
 
+                            android:id="@+id/imgView0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -268,6 +269,7 @@
                             android:text="Test 1"/>
 
                         <ImageView
+                            android:id="@+id/imgView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -309,6 +311,7 @@
                             android:text="Test"></TextView>
 
                         <ImageView
+                            android:id="@+id/imgView2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -347,6 +350,7 @@
                             android:text="Test"></TextView>
 
                         <ImageView
+                            android:id="@+id/imgView3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -386,6 +390,7 @@
                             android:text="Test"></TextView>
 
                         <ImageView
+                            android:id="@+id/imgView4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -425,6 +430,7 @@
 
 
                         <ImageView
+                            android:id="@+id/imgView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -464,6 +470,7 @@
                             android:text="Test"></TextView>
 
                         <ImageView
+                            android:id="@+id/imgView6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -505,6 +512,7 @@
                             android:text="Test"></TextView>
 
                         <ImageView
+                            android:id="@+id/imgView7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
