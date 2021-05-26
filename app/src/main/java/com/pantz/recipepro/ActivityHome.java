@@ -461,16 +461,10 @@ public class ActivityHome extends AppCompatActivity {
                     }
 
 
-                }catch (NumberFormatException e){
-                    e.printStackTrace();
-                } catch (ParseException e) {
+                }catch (NumberFormatException | ParseException e){
+                    System.out.println("WHY DONT YOU TAKE 9????????");
                     e.printStackTrace();
                 }
-
-
-
-
-
 
 
             }catch (IOException | JSONException e){

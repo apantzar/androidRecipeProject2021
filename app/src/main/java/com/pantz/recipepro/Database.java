@@ -79,11 +79,11 @@ public class Database extends SQLiteOpenHelper {
                 " ("+ /*ok*/ RECIPE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
                 RECIPE_COLUMN_BASIC_ELEMENT +" TEXT NOT NULL,"     +
                 /*ok*/   RECIPE_COLUMN_TITLE         +" TEXT NOT NULL,"     +
-                /**/   RECIPE_COLUMN_CALORIES      +" INTEGER NOT NULL,"  +
+                /**/   RECIPE_COLUMN_CALORIES      +" INTEGER ,"  +
                 /*will be deleted*/ RECIPE_COLUMN_DATE_ADDED    +" DATE ,"     +
                 RECIPE_COLUMN_CATEGORY      +" TEXT NOT NULL,"     +
-                RECIPE_COLUMN_DIF_RATE      +" INTEGER NOT NULL,"  +
-                /**/  RECIPE_COLUMN_EXEC_TIME     +" INTEGER NOT NULL,"  +
+                RECIPE_COLUMN_DIF_RATE      +" INTEGER ,"  +
+                /**/  RECIPE_COLUMN_EXEC_TIME     +" INTEGER ,"  +
                 RECIPE_COLUMN_SPECIALD      +" TEXT NOT NULL,"     +
                 /*ok*/   RECIPE_COLUMN_ELEMENTS      +" TEXT NOT NULL,"     +
                 /*ok*/  RECIPE_COLUMN_EXEC          +" TEXT NOT NULL,"    +
