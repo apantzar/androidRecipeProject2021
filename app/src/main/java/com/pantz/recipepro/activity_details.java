@@ -34,6 +34,7 @@ public class activity_details extends AppCompatActivity {
 
         System.out.println("Text test "+text);*/
 
+        try{
         textTitle=getIntent().getStringExtra("TEXT");
         textExec=getIntent().getStringExtra("EXEC");
         calories=getIntent().getStringExtra("CAL");
@@ -41,18 +42,23 @@ public class activity_details extends AppCompatActivity {
         exectime = getIntent().getStringExtra("EXECTIME").toString();
         cat = getIntent().getStringExtra("CAT");
         elements = getIntent().getStringExtra("ELEMENTS");
-        path = getIntent().getStringExtra("IMAGE");
+        path = getIntent().getStringExtra("IMAGE");}catch (NullPointerException ignored){}
 
         System.out.println("PATHHHHHHHHH "+path);
 
 
-        String uri=path;
+        try{
+            String uri=path;
 
-        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+            int imageResource = getResources().getIdentifier(uri, null, getPackageName());
 
-        imageView= (ImageView)findViewById(R.id.imageView8);
-        Drawable res = getResources().getDrawable(imageResource);
-        imageView.setImageDrawable(res);
+            imageView= (ImageView)findViewById(R.id.imageView8);
+            Drawable res = getResources().getDrawable(imageResource);
+            imageView.setImageDrawable(res);
+        }catch(NullPointerException ignored){}
+
+
+
 
 
 /*

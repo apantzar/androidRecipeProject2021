@@ -198,6 +198,7 @@
                     android:layout_weight="1" />
 
                 <androidx.cardview.widget.CardView
+                    android:clickable="true"
                     android:layout_width="160dp"
                     android:layout_height="200dp"
                     android:layout_row="0"
@@ -208,7 +209,9 @@
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp">
+                    app:cardMaxElevation="1dp"
+                    android:id="@+id/card1"
+                    >
 
 
                     <LinearLayout
@@ -247,14 +250,15 @@
                     android:layout_height="200dp"
                     android:layout_row="0"
                     android:layout_column="1"
-
+                    android:clickable="true"
                     android:layout_marginLeft="25dp"
                     android:layout_marginBottom="10dp"
                     android:padding="50dp"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp">
+                    app:cardMaxElevation="1dp"
+                    android:id="@+id/card2">
 
 
                     <LinearLayout
@@ -294,7 +298,8 @@
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
                     app:cardMaxElevation="1dp"
-
+                    android:clickable="true"
+                    android:id="@+id/card3"
                     >
 
 
@@ -325,6 +330,7 @@
 
 
                 <androidx.cardview.widget.CardView
+                    android:clickable="true"
                     android:layout_width="160dp"
                     android:layout_height="200dp"
                     android:layout_row="1"
@@ -335,7 +341,8 @@
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp">
+                    app:cardMaxElevation="1dp"
+                    android:id="@+id/card4">
 
 
                     <LinearLayout
@@ -374,7 +381,9 @@
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp">
+                    app:cardMaxElevation="1dp"
+                    android:clickable="true"
+                    android:id="@+id/card5">
 
 
                     <LinearLayout
@@ -414,7 +423,10 @@
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp">
+                    app:cardMaxElevation="1dp"
+                    android:clickable="true"
+                    android:id="@+id/card6"
+                    >
 
 
                     <LinearLayout
@@ -453,8 +465,9 @@
                     android:padding="50dp"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
-
-                    app:cardElevation="1dp">
+                    android:clickable="true"
+                    app:cardElevation="1dp"
+                    android:id="@+id/card7">
 
 
                     <LinearLayout
@@ -496,7 +509,9 @@
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp">
+                    app:cardMaxElevation="1dp"
+                    android:clickable="true"
+                    android:id="@+id/card8">
 
 
                     <LinearLayout

@@ -1,11 +1,13 @@
 package com.pantz.recipepro;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -156,6 +158,10 @@ public class FirstFragment extends Fragment{
 
 
 
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -216,9 +222,46 @@ public class FirstFragment extends Fragment{
         initTheImages(imgArray[7], img8);
 
 
+        CardView cardView1 = view.findViewById(R.id.card1) ;
+        CardView cardView2 = view.findViewById(R.id.card2) ;
+        CardView cardView3 = view.findViewById(R.id.card3) ;
+        CardView cardView4 = view.findViewById(R.id.card4) ;
+        CardView cardView5 = view.findViewById(R.id.card5) ;
+        CardView cardView6 = view.findViewById(R.id.card6) ;
+        CardView cardView7 = view.findViewById(R.id.card7) ;
+        CardView cardView8 = view.findViewById(R.id.card8) ;
+
+
+        openCardWithClickNow(cardView1);
+        openCardWithClickNow(cardView2);
+        openCardWithClickNow(cardView3);
+        openCardWithClickNow(cardView4);
+        openCardWithClickNow(cardView5);
+        openCardWithClickNow(cardView6);
+        openCardWithClickNow(cardView7);
+        openCardWithClickNow(cardView8);
+
+
+
+
+
         return view;
     }
 
+
+
+
+
+    private void openCardWithClickNow(CardView cardView){
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(FirstFragment.this.getActivity(), activity_details.class);
+                startActivity(intent);
+            }
+        });
+    }
 
 
     private void initTheImages(String uri, ImageView imageView){
