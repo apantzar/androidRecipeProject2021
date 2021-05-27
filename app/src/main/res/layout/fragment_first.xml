@@ -148,9 +148,9 @@
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="@android:color/holo_orange_dark"
+                            android:textColor="#00ACFF"
                             android:textFontWeight="50"
-                            android:textSize="20sp" />
+                            android:textSize="24sp" />
 
 
 
@@ -208,11 +208,12 @@
                             android:layout_marginEnd="4dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
+                            android:shadowColor="#010101"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="@android:color/holo_orange_dark"
+                            android:textColor="#00ACFF"
                             android:textFontWeight="50"
-                            android:textSize="20sp" />
+                            android:textSize="24sp" />
 
                     </RelativeLayout>
 
@@ -274,9 +275,9 @@
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="@android:color/holo_orange_dark"
+                            android:textColor="#00ACFF"
                             android:textFontWeight="50"
-                            android:textSize="20sp"></TextView>
+                            android:textSize="24sp"></TextView>
 
                     </RelativeLayout>
 
@@ -333,9 +334,9 @@
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="@android:color/holo_orange_dark"
+                            android:textColor="#00ACFF"
                             android:textFontWeight="50"
-                            android:textSize="20sp"></TextView></RelativeLayout>
+                            android:textSize="24sp"></TextView></RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -392,9 +393,9 @@
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="@android:color/holo_orange_dark"
+                            android:textColor="#00ACFF"
                             android:textFontWeight="50"
-                            android:textSize="20sp"></TextView>
+                            android:textSize="24sp"></TextView>
 
                     </RelativeLayout>
 
@@ -454,9 +455,9 @@
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="@android:color/holo_orange_dark"
+                            android:textColor="#00ACFF"
                             android:textFontWeight="50"
-                            android:textSize="20sp"></TextView></RelativeLayout>
+                            android:textSize="24sp"></TextView></RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -513,9 +514,9 @@
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="@android:color/holo_orange_dark"
+                            android:textColor="#00ACFF"
                             android:textFontWeight="50"
-                            android:textSize="20sp"></TextView></RelativeLayout>
+                            android:textSize="24sp"></TextView></RelativeLayout>
 
 
                 </androidx.cardview.widget.CardView>
@@ -575,9 +576,9 @@
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="@android:color/holo_orange_dark"
+                            android:textColor="#00ACFF"
                             android:textFontWeight="50"
-                            android:textSize="20sp"></TextView></RelativeLayout>
+                            android:textSize="24sp"></TextView></RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
