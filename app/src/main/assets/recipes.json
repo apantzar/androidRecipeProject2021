@@ -309,7 +309,7 @@
         },
         {
             "_id": "23",
-            "basic_element": "Raspberry ",
+            "basic_element": "Raspberry",
             "recipe_title": "Baked raspberry cheesecake",
             "calories": "623",
             "date_added": "15/3/2021",
@@ -351,7 +351,7 @@
         },
         {
             "_id": "26",
-            "basic_element": " Black-eyed peas",
+            "basic_element": "Black-eyed peas",
             "recipe_title": "Slow Cooker Spicy Black-Eyed Peas",
             "calories": "199",
             "date_added": "30/5/2021",
@@ -505,7 +505,7 @@
         },
         {
             "_id": "37",
-            "basic_element": "tomato",
+            "basic_element": "Tomato",
             "recipe_title": "Gazpacho",
             "calories": "425",
             "date_added": "5/9/21",
@@ -575,7 +575,7 @@
         },
         {
             "_id": "42",
-            "basic_element": "spaghetti",
+            "basic_element": "Pasta",
             "recipe_title": "Seafood spaghetti",
             "calories": "498",
             "date_added": "4/6/21",
@@ -603,7 +603,7 @@
         },
         {
             "_id": "44",
-            "basic_element": "Spaghetti ",
+            "basic_element": "Pasta",
             "recipe_title": "Spaghetti Bolognese",
             "calories": "457",
             "date_added": "19/2/2021",
@@ -617,7 +617,7 @@
         },
         {
             "_id": "45",
-            "basic_element": "noodles",
+            "basic_element": "Pasta",
             "recipe_title": "Tuna & tomato noodles",
             "calories": "327",
             "date_added": "1/5/21",
@@ -631,7 +631,7 @@
         },
         {
             "_id": "46",
-            "basic_element": "chicken",
+            "basic_element": "Pasta",
             "recipe_title": "Peppered chicken pasta",
             "calories": "301",
             "date_added": "14/5/2021",
@@ -645,7 +645,7 @@
         },
         {
             "_id": "47",
-            "basic_element": "tagliatelle",
+            "basic_element": "Pasta",
             "recipe_title": "Fig & chilli tagliatelle",
             "calories": "442",
             "date_added": "10/4/21",
@@ -659,7 +659,7 @@
         },
         {
             "_id": "48",
-            "basic_element": "egg",
+            "basic_element": "Egg",
             "recipe_title": "Spanish omelette",
             "calories": "458",
             "date_added": "4/5/21",
@@ -673,7 +673,7 @@
         },
         {
             "_id": "49",
-            "basic_element": "Couscous ",
+            "basic_element": "Couscous",
             "recipe_title": "Couscous salad",
             "calories": "341",
             "date_added": "17/3/2021",
