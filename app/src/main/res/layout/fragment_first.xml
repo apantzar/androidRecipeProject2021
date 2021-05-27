@@ -44,17 +44,15 @@
 
                 <android.widget.Button
                     android:id="@+id/btn1"
+                    android:clickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_fast_filters"
-
-                    android:drawableLeft="@drawable/pizza_x24"
                     android:padding="15dip"
-                    android:text="Pizza"
-
-
+                    android:text="Pasta"
                     android:textAllCaps="false"
                     android:textSize="18dp" />
+                <!--android:drawableLeft="@drawable/pizza_x24"-->
 
                 <Space
                     android:layout_width="15dp"
@@ -66,9 +64,8 @@
                     android:id="@+id/btn2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:clickable="true"
                     android:background="@drawable/ic_fast_filters"
-
                     android:drawableLeft="@drawable/chicken_x24"
                     android:padding="15dip"
                     android:text="Chicken"
@@ -85,13 +82,14 @@
                     android:id="@+id/btn3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
                     android:background="@drawable/ic_fast_filters"
-
-                    android:drawableLeft="@drawable/cocktail"
                     android:padding="15dip"
-                    android:text="Cocktails"
+                    android:text="Soups"
                     android:textAllCaps="false"
                     android:textSize="18dp" />
+                  <!--  android:drawableLeft="@drawable/cocktail"-->
+
 
                 <Space
                     android:layout_width="15dp"
@@ -103,13 +101,15 @@
                     android:id="@+id/btn4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
                     android:background="@drawable/ic_fast_filters"
-
-                    android:drawableLeft="@drawable/cupcake_x24"
                     android:padding="15dip"
-                    android:text="Sweets"
+                    android:text="Deserts"
                     android:textAllCaps="false"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:drawableLeft="@drawable/cupcake_x24"/>
+
+
 
                 <Space
                     android:layout_width="30dp"

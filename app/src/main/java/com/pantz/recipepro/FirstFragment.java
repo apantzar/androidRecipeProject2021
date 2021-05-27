@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,7 +41,7 @@ public class FirstFragment extends Fragment{
     private  Database qdb;
     private int r1,r2,r3,r4,r5,r6,r7,r8;
     Database db;
-    private String[] array , imgArray;
+    private String[] array , imgArray, image, title;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -181,10 +182,6 @@ public class FirstFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
 
-
-
-
-
             TextView view0 = view.findViewById(R.id.recipe1txt);
             view0.setText(array[0]);
 
@@ -249,19 +246,13 @@ public class FirstFragment extends Fragment{
 
 
 
-
-
-
         return view;
     }
 
 
 
-
     public void titleValueByClickCard(View view, CardView cardView1,  CardView cardView2,  CardView cardView3,  CardView cardView4,
                                       CardView cardView5,  CardView cardView6,  CardView cardView7, CardView cardView8 ){
-
-
 
 
         TextView view1T =view.findViewById(R.id.recipe1txt);
@@ -306,8 +297,70 @@ public class FirstFragment extends Fragment{
     }
 
 
+ /*   private void openFilters(View view){
+        Button pasta = view.findViewById(R.id.btn1);
+        Button chicken = view.findViewById(R.id.btn2);
+        Button soups = view.findViewById(R.id.btn3);
+        Button deserts = view.findViewById(R.id.btn4);
+
+        pasta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                qdb = new Database(getContext());
+                title = qdb.getData("SELECT recipe_title FROM bizRecipe where basic_element=Pasta","recipe_title" );
+                image = qdb.getData("SELECT path FROM bizRecipe where basic_element=Pasta","path");
+
+                TextView view0 = view.findViewById(R.id.recipe1txt);
+                view0.setText(title[0]);
+
+                TextView view1 = view.findViewById(R.id.recipe2txt);
+                view1.setText(title[1]);
 
 
+                TextView view2 = view.findViewById(R.id.recipe3txt);
+                view2.setText(title[2]);
+
+                TextView view3 = view.findViewById(R.id.recipe4txt);
+                view3.setText(title[3]);
+
+                TextView view4 = view.findViewById(R.id.recipe5txt);
+                view4.setText(title[4]);
+
+
+                TextView view5 = view.findViewById(R.id.recipe6txt);
+                view5.setText(title[5]);
+
+
+                TextView view6 = view.findViewById(R.id.recipe7txt);
+                view6.setText(title[6]);
+
+                TextView view7 = view.findViewById(R.id.recipe8txt);
+                view7.setText(title[7]);
+
+
+                ImageView img1 = view.findViewById(R.id.imgView0);
+                ImageView img2 = view.findViewById(R.id.imgView1);
+                ImageView img3 = view.findViewById(R.id.imgView2);
+                ImageView img4 = view.findViewById(R.id.imgView3);
+                ImageView img5 = view.findViewById(R.id.imgView4);
+                ImageView img6 = view.findViewById(R.id.imgView);
+                ImageView img7 = view.findViewById(R.id.imgView6);
+                ImageView img8 = view.findViewById(R.id.imgView7);
+
+                initTheImages(image[0], img1);
+                initTheImages(image[1], img2);
+                initTheImages(image[2], img3);
+                initTheImages(image[3], img4);
+                initTheImages(image[4], img5);
+                initTheImages(image[5], img6);
+                initTheImages(image[6], img7);
+                initTheImages(image[7], img8);
+            }
+        });
+
+    }
+
+  */
 
     private void openCardWithClickNow(CardView cardView, String displayText){
         cardView.setOnClickListener(new View.OnClickListener() {
@@ -340,11 +393,6 @@ public class FirstFragment extends Fragment{
                 path = qdb.getExec("SELECT path FROM bizRecipe where recipe_title like '%"+displayText+"%'","path" );
 
 
-
-
-
-
-
                 Intent intent = new Intent(FirstFragment.this.getActivity(), activity_details.class);
                 intent.putExtra("TEXT", displayText);
                 intent.putExtra("EXEC", exec);
@@ -353,7 +401,7 @@ public class FirstFragment extends Fragment{
                 intent.putExtra("EXECTIME",execTime);
                 intent.putExtra("ELEMENTS",elements);
                 intent.putExtra("CAT",cat);
-                //intent.putExtra("IMAGE", path);
+                intent.putExtra("IMAGE", path);
                 startActivity(intent);
             }
         });
