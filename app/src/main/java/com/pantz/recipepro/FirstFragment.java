@@ -1,5 +1,6 @@
 package com.pantz.recipepro;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -27,6 +28,16 @@ import java.util.Random;
  */
 public class FirstFragment extends Fragment{
 
+
+    private String displayText;
+    private String exec;
+    private String cal;
+    private String difRate;
+    private String execTime;
+    private String elements;
+    private String cat;
+    private String path;
+    private  Database qdb;
     private int r1,r2,r3,r4,r5,r6,r7,r8;
     Database db;
     private String[] array , imgArray;
@@ -232,14 +243,10 @@ public class FirstFragment extends Fragment{
         CardView cardView8 = view.findViewById(R.id.card8) ;
 
 
-        openCardWithClickNow(cardView1);
-        openCardWithClickNow(cardView2);
-        openCardWithClickNow(cardView3);
-        openCardWithClickNow(cardView4);
-        openCardWithClickNow(cardView5);
-        openCardWithClickNow(cardView6);
-        openCardWithClickNow(cardView7);
-        openCardWithClickNow(cardView8);
+        titleValueByClickCard(view, cardView1, cardView2, cardView3, cardView4,
+       cardView5,cardView6,cardView7,cardView8 );
+
+
 
 
 
@@ -251,13 +258,102 @@ public class FirstFragment extends Fragment{
 
 
 
+    public void titleValueByClickCard(View view, CardView cardView1,  CardView cardView2,  CardView cardView3,  CardView cardView4,
+                                      CardView cardView5,  CardView cardView6,  CardView cardView7, CardView cardView8 ){
 
-    private void openCardWithClickNow(CardView cardView){
+
+
+
+        TextView view1T =view.findViewById(R.id.recipe1txt);
+        String t1 = view1T.getText().toString();
+
+        TextView view2T =view.findViewById(R.id.recipe2txt);
+        String t2 = view2T.getText().toString();
+
+        TextView view3T =view.findViewById(R.id.recipe3txt);
+        String t3 = view3T.getText().toString();
+
+        TextView view4T =view.findViewById(R.id.recipe4txt);
+        String t4 = view4T.getText().toString();
+
+        TextView view5T =view.findViewById(R.id.recipe5txt);
+        String t5 = view5T.getText().toString();
+
+        TextView view6T =view.findViewById(R.id.recipe6txt);
+        String t6 = view6T.getText().toString();
+
+        TextView view7T =view.findViewById(R.id.recipe7txt);
+        String t7 = view7T.getText().toString();
+
+        TextView view8T =view.findViewById(R.id.recipe8txt);
+        String t8 = view8T.getText().toString();
+
+
+
+        openCardWithClickNow(cardView1, t1);
+        openCardWithClickNow(cardView2, t2);
+        openCardWithClickNow(cardView3, t3);
+        openCardWithClickNow(cardView4, t4);
+        openCardWithClickNow(cardView5, t5);
+        openCardWithClickNow(cardView6, t6);
+        openCardWithClickNow(cardView7, t7);
+        openCardWithClickNow(cardView8, t8);
+
+
+
+
+
+    }
+
+
+
+
+
+    private void openCardWithClickNow(CardView cardView, String displayText){
         cardView.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
+                /*TextView theText= v.findViewById(R.id.recipe1txt);
+                int id=0;
+
+
+                  *//* theText.findViewById(R.id.recipe1txt);
+                   displayText = theText.getText().toString();*//*
+
+                    id = cardView.getChildAt(1).getId();
+
+                     System.out.println(id);
+                    theText= v.findViewById(id);
+                    displayText = theText.getText().toString();
+
+
+*/
+
+                qdb = new Database(getContext());
+                exec = qdb.getExec("SELECT exec FROM bizRecipe where recipe_title like '%"+displayText+"%'","exec" );
+                cal = qdb.getExec("SELECT calories FROM bizRecipe where recipe_title like '%"+displayText+"%'","calories" );
+                difRate = qdb.getExec("SELECT dif_rate  FROM bizRecipe where recipe_title like '%"+displayText+"%'","dif_rate" ).toString();
+                execTime = qdb.getExec("SELECT exec_time  FROM bizRecipe where recipe_title like '%"+displayText+"%'","exec_time" ).toString();
+                elements = qdb.getExec("SELECT _elements FROM bizRecipe where recipe_title like '%"+displayText+"%'","_elements" );
+                cat = qdb.getExec("SELECT recipe_category FROM bizRecipe where recipe_title like '%"+displayText+"%'","recipe_category" );
+                path = qdb.getExec("SELECT path FROM bizRecipe where recipe_title like '%"+displayText+"%'","path" );
+
+
+
+
+
+
 
                 Intent intent = new Intent(FirstFragment.this.getActivity(), activity_details.class);
+                intent.putExtra("TEXT", displayText);
+                intent.putExtra("EXEC", exec);
+                intent.putExtra("CAL", cal);
+                intent.putExtra("DIFRATE", difRate);
+                intent.putExtra("EXECTIME",execTime);
+                intent.putExtra("ELEMENTS",elements);
+                intent.putExtra("CAT",cat);
+                //intent.putExtra("IMAGE", path);
                 startActivity(intent);
             }
         });
