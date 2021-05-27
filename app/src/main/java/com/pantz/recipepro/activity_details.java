@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -104,6 +105,18 @@ public class activity_details extends AppCompatActivity {
         exec.setMovementMethod(new ScrollingMovementMethod());
 
         System.out.println("From details exec "+textExec);
+
+
+        /**
+         * To close the activity
+         */
+        ImageView imageView1 = findViewById(R.id.imageVBack);
+        imageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
