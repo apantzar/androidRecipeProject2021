@@ -100,7 +100,7 @@ public class ActivityHome extends AppCompatActivity {
                 public void run() {
 
                     /**
-                     * The API runs is different Thread now
+                     * The API runs in different Thread now
                      * @author apantzar
                      */
                     synchronized (this){
