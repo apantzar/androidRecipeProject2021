@@ -184,67 +184,67 @@ public class FirstFragment extends Fragment{
 
 
 
-        TextView view0 = view.findViewById(R.id.recipe1txt);
-        view0.setText(array[0]);
+
+            TextView view0 = view.findViewById(R.id.recipe1txt);
+            view0.setText(array[0]);
 
 
-        TextView view1 = view.findViewById(R.id.recipe2txt);
-        view1.setText(array[1]);
+            TextView view1 = view.findViewById(R.id.recipe2txt);
+            view1.setText(array[1]);
 
 
-        TextView view2 = view.findViewById(R.id.recipe3txt);
-        view2.setText(array[2]);
+            TextView view2 = view.findViewById(R.id.recipe3txt);
+            view2.setText(array[2]);
 
-        TextView view3 = view.findViewById(R.id.recipe4txt);
-        view3.setText(array[3]);
+            TextView view3 = view.findViewById(R.id.recipe4txt);
+            view3.setText(array[3]);
 
-        TextView view4 = view.findViewById(R.id.recipe5txt);
-        view4.setText(array[4]);
-
-
-        TextView view5 = view.findViewById(R.id.recipe6txt);
-        view5.setText(array[5]);
+            TextView view4 = view.findViewById(R.id.recipe5txt);
+            view4.setText(array[4]);
 
 
-        TextView view6 = view.findViewById(R.id.recipe7txt);
-        view6.setText(array[6]);
-
-        TextView view7 = view.findViewById(R.id.recipe8txt);
-        view7.setText(array[7]);
+            TextView view5 = view.findViewById(R.id.recipe6txt);
+            view5.setText(array[5]);
 
 
+            TextView view6 = view.findViewById(R.id.recipe7txt);
+            view6.setText(array[6]);
 
-        ImageView img1 = view.findViewById(R.id.imgView0);
-        ImageView img2 = view.findViewById(R.id.imgView1);
-        ImageView img3 = view.findViewById(R.id.imgView2);
-        ImageView img4 = view.findViewById(R.id.imgView3);
-        ImageView img5 = view.findViewById(R.id.imgView4);
-        ImageView img6 = view.findViewById(R.id.imgView);
-        ImageView img7 = view.findViewById(R.id.imgView6);
-        ImageView img8 = view.findViewById(R.id.imgView7);
-
-        initTheImages(imgArray[0], img1);
-        initTheImages(imgArray[1], img2);
-        initTheImages(imgArray[2], img3);
-        initTheImages(imgArray[3], img4);
-        initTheImages(imgArray[4], img5);
-        initTheImages(imgArray[5], img6);
-        initTheImages(imgArray[6], img7);
-        initTheImages(imgArray[7], img8);
+            TextView view7 = view.findViewById(R.id.recipe8txt);
+            view7.setText(array[7]);
 
 
-        CardView cardView1 = view.findViewById(R.id.card1) ;
-        CardView cardView2 = view.findViewById(R.id.card2) ;
-        CardView cardView3 = view.findViewById(R.id.card3) ;
-        CardView cardView4 = view.findViewById(R.id.card4) ;
-        CardView cardView5 = view.findViewById(R.id.card5) ;
-        CardView cardView6 = view.findViewById(R.id.card6) ;
-        CardView cardView7 = view.findViewById(R.id.card7) ;
-        CardView cardView8 = view.findViewById(R.id.card8) ;
+            ImageView img1 = view.findViewById(R.id.imgView0);
+            ImageView img2 = view.findViewById(R.id.imgView1);
+            ImageView img3 = view.findViewById(R.id.imgView2);
+            ImageView img4 = view.findViewById(R.id.imgView3);
+            ImageView img5 = view.findViewById(R.id.imgView4);
+            ImageView img6 = view.findViewById(R.id.imgView);
+            ImageView img7 = view.findViewById(R.id.imgView6);
+            ImageView img8 = view.findViewById(R.id.imgView7);
+
+            initTheImages(imgArray[0], img1);
+            initTheImages(imgArray[1], img2);
+            initTheImages(imgArray[2], img3);
+            initTheImages(imgArray[3], img4);
+            initTheImages(imgArray[4], img5);
+            initTheImages(imgArray[5], img6);
+            initTheImages(imgArray[6], img7);
+            initTheImages(imgArray[7], img8);
 
 
-        titleValueByClickCard(view, cardView1, cardView2, cardView3, cardView4,
-       cardView5,cardView6,cardView7,cardView8 );
+            CardView cardView1 = view.findViewById(R.id.card1);
+            CardView cardView2 = view.findViewById(R.id.card2);
+            CardView cardView3 = view.findViewById(R.id.card3);
+            CardView cardView4 = view.findViewById(R.id.card4);
+            CardView cardView5 = view.findViewById(R.id.card5);
+            CardView cardView6 = view.findViewById(R.id.card6);
+            CardView cardView7 = view.findViewById(R.id.card7);
+            CardView cardView8 = view.findViewById(R.id.card8);
+
+
+            titleValueByClickCard(view, cardView1, cardView2, cardView3, cardView4,
+                    cardView5, cardView6, cardView7, cardView8);
 
 
 

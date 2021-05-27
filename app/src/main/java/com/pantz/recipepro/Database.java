@@ -260,4 +260,22 @@ public class Database extends SQLiteOpenHelper {
         return recipes.toArray(new String[recipes.size()]);
     }
 
+
+
+    public boolean isFull(){
+
+        SQLiteDatabase db = getWritableDatabase();
+        String count = "SELECT count(*) FROM bizRecipe";
+        Cursor mcursor = db.rawQuery(count, null);
+        mcursor.moveToFirst();
+        int icount = mcursor.getInt(0);
+        if(icount>0){
+            return true;
+        }else {
+            return false;
+        }
+
+
+    }
+
 }
