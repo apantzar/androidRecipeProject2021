@@ -7,19 +7,6 @@
     tools:context=".ActivityHome">
 
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="75dp"
-        android:layout_height="40dp"
-        android:text="API"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.952"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fragment"
-        app:layout_constraintVertical_bias="0.973"
-        tools:visibility="gone" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"

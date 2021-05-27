@@ -297,70 +297,8 @@ public class FirstFragment extends Fragment{
     }
 
 
- /*   private void openFilters(View view){
-        Button pasta = view.findViewById(R.id.btn1);
-        Button chicken = view.findViewById(R.id.btn2);
-        Button soups = view.findViewById(R.id.btn3);
-        Button deserts = view.findViewById(R.id.btn4);
-
-        pasta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                qdb = new Database(getContext());
-                title = qdb.getData("SELECT recipe_title FROM bizRecipe where basic_element=Pasta","recipe_title" );
-                image = qdb.getData("SELECT path FROM bizRecipe where basic_element=Pasta","path");
-
-                TextView view0 = view.findViewById(R.id.recipe1txt);
-                view0.setText(title[0]);
-
-                TextView view1 = view.findViewById(R.id.recipe2txt);
-                view1.setText(title[1]);
 
 
-                TextView view2 = view.findViewById(R.id.recipe3txt);
-                view2.setText(title[2]);
-
-                TextView view3 = view.findViewById(R.id.recipe4txt);
-                view3.setText(title[3]);
-
-                TextView view4 = view.findViewById(R.id.recipe5txt);
-                view4.setText(title[4]);
-
-
-                TextView view5 = view.findViewById(R.id.recipe6txt);
-                view5.setText(title[5]);
-
-
-                TextView view6 = view.findViewById(R.id.recipe7txt);
-                view6.setText(title[6]);
-
-                TextView view7 = view.findViewById(R.id.recipe8txt);
-                view7.setText(title[7]);
-
-
-                ImageView img1 = view.findViewById(R.id.imgView0);
-                ImageView img2 = view.findViewById(R.id.imgView1);
-                ImageView img3 = view.findViewById(R.id.imgView2);
-                ImageView img4 = view.findViewById(R.id.imgView3);
-                ImageView img5 = view.findViewById(R.id.imgView4);
-                ImageView img6 = view.findViewById(R.id.imgView);
-                ImageView img7 = view.findViewById(R.id.imgView6);
-                ImageView img8 = view.findViewById(R.id.imgView7);
-
-                initTheImages(image[0], img1);
-                initTheImages(image[1], img2);
-                initTheImages(image[2], img3);
-                initTheImages(image[3], img4);
-                initTheImages(image[4], img5);
-                initTheImages(image[5], img6);
-                initTheImages(image[6], img7);
-                initTheImages(image[7], img8);
-            }
-        });
-
-    }
-
-  */
 
     private void openCardWithClickNow(CardView cardView, String displayText){
         cardView.setOnClickListener(new View.OnClickListener() {

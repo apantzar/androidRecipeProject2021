@@ -87,7 +87,7 @@ public class ActivityHome extends AppCompatActivity {
         theNavFunction();
 
 
-        Button button = (Button)findViewById(R.id.button2);
+       // Button button = (Button)findViewById(R.id.button2);
 
        // button.setOnClickListener(v -> {
 
