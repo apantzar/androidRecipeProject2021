@@ -145,7 +145,7 @@
                             android:layout_marginTop="128dp"
                             android:layout_marginEnd="4dp"
                             android:layout_marginBottom="8dp"
-                            android:fontFamily="casual"
+                            android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
                             android:textColor="@android:color/holo_orange_dark"
@@ -196,23 +196,23 @@
                     </LinearLayout>
 
 
-                    <TextView
-                        android:id="@+id/recipe2txt"
-                        android:layout_width="176dp"
-                        android:layout_height="82dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="128dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="casual"
-                        android:text="Test"
-                        android:textAlignment="textStart"
-                        android:textColor="@android:color/holo_orange_dark"
-                        android:textFontWeight="50"
-                        android:textSize="20sp"/>
+                        <TextView
+                            android:id="@+id/recipe2txt"
+                            android:layout_width="176dp"
+                            android:layout_height="82dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="128dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/titan_one"
+                            android:text="Test"
+                            android:textAlignment="textStart"
+                            android:textColor="@android:color/holo_orange_dark"
+                            android:textFontWeight="50"
+                            android:textSize="20sp" />
 
                     </RelativeLayout>
 
@@ -259,23 +259,24 @@
 
 
                     </LinearLayout>
-                    <TextView
-                    android:id="@+id/recipe3txt"
-                        android:layout_width="176dp"
-                        android:layout_height="82dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="128dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="casual"
-                        android:text="Test"
-                        android:textAlignment="textStart"
-                        android:textColor="@android:color/holo_orange_dark"
-                        android:textFontWeight="50"
-                        android:textSize="20sp"></TextView>
+
+                        <TextView
+                            android:id="@+id/recipe3txt"
+                            android:layout_width="176dp"
+                            android:layout_height="82dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="128dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/titan_one"
+                            android:text="Test"
+                            android:textAlignment="textStart"
+                            android:textColor="@android:color/holo_orange_dark"
+                            android:textFontWeight="50"
+                            android:textSize="20sp"></TextView>
 
                     </RelativeLayout>
 
@@ -317,23 +318,24 @@
 
 
                     </LinearLayout>
-                    <TextView
-                        android:id="@+id/recipe4txt"
-                        android:layout_width="176dp"
-                        android:layout_height="82dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="128dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="casual"
-                        android:text="Test"
-                        android:textAlignment="textStart"
-                        android:textColor="@android:color/holo_orange_dark"
-                        android:textFontWeight="50"
-                        android:textSize="20sp"></TextView></RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/recipe4txt"
+                            android:layout_width="176dp"
+                            android:layout_height="82dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="128dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/titan_one"
+                            android:text="Test"
+                            android:textAlignment="textStart"
+                            android:textColor="@android:color/holo_orange_dark"
+                            android:textFontWeight="50"
+                            android:textSize="20sp"></TextView></RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -375,23 +377,24 @@
 
 
                     </LinearLayout>
-                    <TextView
-                    android:id="@+id/recipe5txt"
-                        android:layout_width="176dp"
-                        android:layout_height="82dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="128dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="casual"
-                        android:text="Test"
-                        android:textAlignment="textStart"
-                        android:textColor="@android:color/holo_orange_dark"
-                        android:textFontWeight="50"
-                        android:textSize="20sp"></TextView>
+
+                        <TextView
+                            android:id="@+id/recipe5txt"
+                            android:layout_width="176dp"
+                            android:layout_height="82dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="128dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/titan_one"
+                            android:text="Test"
+                            android:textAlignment="textStart"
+                            android:textColor="@android:color/holo_orange_dark"
+                            android:textFontWeight="50"
+                            android:textSize="20sp"></TextView>
 
                     </RelativeLayout>
 
@@ -437,23 +440,23 @@
 
                     </LinearLayout>
 
-                    <TextView
-                    android:id="@+id/recipe6txt"
-                    android:layout_width="176dp"
-                    android:layout_height="82dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="128dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="casual"
-                    android:text="Test"
-                    android:textAlignment="textStart"
-                    android:textColor="@android:color/holo_orange_dark"
-                    android:textFontWeight="50"
-                    android:textSize="20sp"></TextView></RelativeLayout>
+                        <TextView
+                            android:id="@+id/recipe6txt"
+                            android:layout_width="176dp"
+                            android:layout_height="82dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="128dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/titan_one"
+                            android:text="Test"
+                            android:textAlignment="textStart"
+                            android:textColor="@android:color/holo_orange_dark"
+                            android:textFontWeight="50"
+                            android:textSize="20sp"></TextView></RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -496,23 +499,23 @@
 
                     </LinearLayout>
 
-                    <TextView
-                    android:id="@+id/recipe7txt"
-                    android:layout_width="176dp"
-                    android:layout_height="82dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="128dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="casual"
-                    android:text="Test"
-                    android:textAlignment="textStart"
-                    android:textColor="@android:color/holo_orange_dark"
-                    android:textFontWeight="50"
-                    android:textSize="20sp"></TextView></RelativeLayout>
+                        <TextView
+                            android:id="@+id/recipe7txt"
+                            android:layout_width="176dp"
+                            android:layout_height="82dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="128dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/titan_one"
+                            android:text="Test"
+                            android:textAlignment="textStart"
+                            android:textColor="@android:color/holo_orange_dark"
+                            android:textFontWeight="50"
+                            android:textSize="20sp"></TextView></RelativeLayout>
 
 
                 </androidx.cardview.widget.CardView>
@@ -558,23 +561,23 @@
 
                     </LinearLayout>
 
-                    <TextView
-                    android:id="@+id/recipe8txt"
-                    android:layout_width="176dp"
-                    android:layout_height="82dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="128dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="casual"
-                    android:text="Test"
-                    android:textAlignment="textStart"
-                    android:textColor="@android:color/holo_orange_dark"
-                    android:textFontWeight="50"
-                    android:textSize="20sp"></TextView></RelativeLayout>
+                        <TextView
+                            android:id="@+id/recipe8txt"
+                            android:layout_width="176dp"
+                            android:layout_height="82dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="128dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/titan_one"
+                            android:text="Test"
+                            android:textAlignment="textStart"
+                            android:textColor="@android:color/holo_orange_dark"
+                            android:textFontWeight="50"
+                            android:textSize="20sp"></TextView></RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
