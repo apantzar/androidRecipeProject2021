@@ -38,6 +38,7 @@ public class SecondFragment extends Fragment {
 
 
 
+
     private  Database qdb;
     private String displayText;
     private String exec;
@@ -200,8 +201,25 @@ public class SecondFragment extends Fragment {
 
                         displayText= (String)favList.getItemAtPosition(position);
                         System.out.println("I am the display text "+displayText);
-
                         db.deleteFromFav(displayText);
+                        favArray = db.getData("SELECT * FROM favorite_list ", "fav_title");
+                        Boolean areYouFull = db.isFavFull();
+                        ArrayAdapter<String> favAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, favArray);
+                        favList.setAdapter(favAdapter);
+
+
+                        if(!areYouFull){
+
+                            imageView.setVisibility(View.VISIBLE);
+                            fillMeUp.setVisibility(View.VISIBLE);
+                        }
+
+
+
+
+
+                       /* Object toRemove = favAdapter.getItem(position);
+                        favAdapter.remove((String) toRemove);*/
 
                     /*    try {
                             Database db = new Database(getContext());
