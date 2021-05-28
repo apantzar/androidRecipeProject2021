@@ -23,6 +23,14 @@ public class Database extends SQLiteOpenHelper {
     public static final String IMAGES_COLUMN_RECIPE_ID = "recipe_id";
 
 
+    /**
+     * For FAVORITE
+     */
+    public static  final String FAV_TABLE_NAME="favorite_list";
+    private static final String FAV_ID ="id";
+    private static final String FAV_TITLE ="fav_title";
+
+
 
     public static final String REGISTER_TABLE_NAME = "register";
     public static final String REGISTER_COLUMN_ID ="_id";
@@ -71,7 +79,18 @@ public class Database extends SQLiteOpenHelper {
                 REGISTER_COLUMN_PASSWORD         +" TEXT NOT NULL);";
 
 
+
+        String favTable = "CREATE TABLE "+ FAV_TABLE_NAME+
+                " ("+ FAV_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
+                FAV_TITLE +" TEXT NOT NULL);";
+
+
+
+
         db.execSQL(table);
+        db.execSQL(favTable);
+
+
 
 
 
@@ -103,6 +122,7 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS "+ REGISTER_TABLE_NAME); //in order to delete the table
         db.execSQL("DROP TABLE IF EXISTS "+ RECIPE_TABLE_NAME); //in order to delete the table
+        db.execSQL("DROP TABLE IF EXISTS "+ FAV_TABLE_NAME); //in order to delete the table
         //db.execSQL("ALTER TABLE bizRecipe  ADD COLUMN path TEXT NOT NULL");
        // db.execSQL("DROP TABLE IF EXISTS "+ IMAGES_TABLE_NAME); //in order to delete the table FOR IMAGES
         onCreate(db); // to create again
@@ -132,6 +152,17 @@ public class Database extends SQLiteOpenHelper {
         return cursor.getCount() > 0;
 
     }
+
+
+    public Boolean uniqueFavTitle(String title){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from " + FAV_TABLE_NAME + " where " + FAV_TITLE + " = ?", new String[] {title});
+        return cursor.getCount() > 0;
+
+    }
+
+
+
 
     public Boolean usernamePasswordMatch(String username, String password){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -196,24 +227,23 @@ public class Database extends SQLiteOpenHelper {
 
     /**
      *
-     * @param imgId -> image's id
-     * @param imgPath -> image's path
-     * @param imgFkey-> key from recipe
+     *
+     * @param title -> recipe's title
      */
 
-/*
-    public void addTheImageToDatabaseNow(int imgId, String imgPath, int imgFkey){
-        SQLiteDatabase sqLiteDatabaseimg = this.getReadableDatabase();
-        ContentValues values = new ContentValues();
+    public void addFavToDatabaseNow( String title){
 
 
-        values.put(IMAGES_COLUMN_ID, imgId );
-        values.put(IMAGES_COLUMN_PATH, imgPath);
-        values.put(IMAGES_COLUMN_RECIPE_ID, imgFkey );
+        if(!uniqueFavTitle(title)){
+            SQLiteDatabase sqLiteDatabase= this.getReadableDatabase();
+            ContentValues values = new ContentValues();
 
-        sqLiteDatabaseimg.insert(IMAGES_TABLE_NAME, null, values);
+            values.put(FAV_TITLE, title);
 
-    }*/
+            sqLiteDatabase.insert(FAV_TABLE_NAME, null, values);
+        }
+
+    }
 
 
 

@@ -51,6 +51,7 @@ public class ActivityHome extends AppCompatActivity {
     static final  String Query = "Select * from bizRecipe";
 
 
+
     private static int tagKey = 0;
 
     private String title;

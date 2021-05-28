@@ -19,7 +19,7 @@ import java.io.InputStream;
 
 public class activity_details extends AppCompatActivity {
 
-    private String textTitle, textExec, cat, elements, exectime, calories, difrate, path;
+    private String textTitle, textExec, cat, elements, exectime, calories, difrate, path, titleToFav;
     private Bitmap bitmap;
     ImageView imageView;
 
@@ -115,6 +115,29 @@ public class activity_details extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+
+
+
+
+        ImageView favButton = findViewById(R.id.imageViewFav);
+        favButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                TextView textView = findViewById(R.id.txtTitle);
+                titleToFav = textView.getText().toString();
+
+
+                System.out.println("FAV FAV FAV FAV"+titleToFav);
+                Database favDb = new Database(getApplicationContext());
+                favDb.addFavToDatabaseNow(titleToFav);
+
+
+
+
             }
         });
 
