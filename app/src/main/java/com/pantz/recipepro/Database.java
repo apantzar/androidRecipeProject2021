@@ -252,6 +252,30 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
+    public void deleteFromFav(String title){
+      /*  try{
+            SQLiteDatabase sqLiteDatabase= this.getReadableDatabase();
+            sqLiteDatabase.execSQL("delete from "+FAV_TABLE_NAME+" where fav_title="+title);
+        }catch (SQLException e){
+            System.out.println("-------From delete-------");
+            e.printStackTrace();
+        }*/
+
+
+        try{
+            SQLiteDatabase db = getWritableDatabase();
+            String delete = "delete from "+FAV_TABLE_NAME+" where fav_title='"+title+"'";
+            Cursor mcursor = db.rawQuery(delete, null);
+            mcursor.moveToFirst();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+
 
     /**
      * In order to execute the SQL query and select the data

@@ -1,8 +1,11 @@
 package com.pantz.recipepro;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,6 +17,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
+
+import java.sql.SQLException;
 
 import jp.wasabeef.blurry.Blurry;
 
@@ -38,7 +48,7 @@ public class SecondFragment extends Fragment {
     private String cat;
     private String path;
 
-    ListView favList;
+    SwipeMenuListView favList;
     String favArray[];
     Database db;
     ImageView imageView;
@@ -86,6 +96,10 @@ public class SecondFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
+
     }
 
     @Override
@@ -99,7 +113,7 @@ public class SecondFragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_second, container, false);
         imageView = (ImageView) view.findViewById(R.id.imageView4);
         fillMeUp = (TextView) view.findViewById(R.id.textView2);
-        favList = (ListView) view.findViewById(R.id.listViewFav) ;
+        favList = (SwipeMenuListView) view.findViewById(R.id.listViewFav) ;
         db = new Database(getContext());
         favArray = db.getData("SELECT * FROM favorite_list ", "fav_title");
         Boolean areYouFull = db.isFavFull();
@@ -147,6 +161,69 @@ public class SecondFragment extends Fragment {
 
             }
         });
+
+
+
+
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu menu) {
+
+                // create "delete" item
+                SwipeMenuItem deleteItem = new SwipeMenuItem(
+                        view.getContext());
+                // set item background
+                deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
+                        0x3F, 0x25)));
+                // set item width
+                deleteItem.setWidth(170);
+                // set a icon
+                deleteItem.setIcon(R.drawable.ic_delete);
+                // add to menu
+                menu.addMenuItem(deleteItem);
+            }
+        };
+
+
+        favList.setMenuCreator(creator);
+
+
+
+
+       favList.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                switch (index) {
+                    case 0:
+                        // delete case
+
+                        displayText= (String)favList.getItemAtPosition(position);
+                        System.out.println("I am the display text "+displayText);
+
+                        db.deleteFromFav(displayText);
+
+                    /*    try {
+                            Database db = new Database(getContext());
+                            db.deleteFromFav(displayText);
+                        }catch (SQLException e){
+                            e.printStackTrace();
+                        }*/
+
+                        break;
+
+                }
+                // false : close the menu; true : not close the menu
+                return false;
+            }
+        });
+
+
+
+
+
+
+
 
 
         return view;
