@@ -44,7 +44,7 @@ public class ActivityLogin extends AppCompatActivity {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        Boolean isMatching = Database.usernamePasswordMatch(user.getUsername(), user.getPassword());
+        Boolean isMatching = Database.usernamePasswordMatch(username.getText().toString(), password.getText().toString());
         if(isMatching){
             Toast.makeText(ActivityLogin.this, "Successful sign in", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), ActivityHome.class);

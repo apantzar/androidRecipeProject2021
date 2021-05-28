@@ -1,5 +1,6 @@
 package com.pantz.recipepro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -58,6 +59,10 @@ public class ThirdFragment extends Fragment {
         }
 
 
+
+
+
+
     }
 
 
@@ -94,6 +99,17 @@ public class ThirdFragment extends Fragment {
                 FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                 transaction.replace(R.id.thrirdFragment, passwordFragment);
                 transaction.commit();
+
+            }
+        });
+
+
+        Button signOutBtn = v.findViewById(R.id.buttonSignOut);
+        signOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ThirdFragment.this.getActivity(), ActivityLogin.class);
+                startActivity(intent);
 
             }
         });
