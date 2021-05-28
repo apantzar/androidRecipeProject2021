@@ -11,12 +11,12 @@
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="191dp"
-        android:layout_height="59dp"
+        android:layout_width="194dp"
+        android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="96dp"
         android:layout_marginEnd="50dp"
-        android:text="New Recipes "
+        android:text="Explore"
         android:textColor="#171616"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -24,6 +24,35 @@
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="423dp"
+        android:layout_height="68dp"
+        android:background="@drawable/ic_main_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    <TextView
+        android:id="@+id/app_title"
+        android:layout_width="74dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/allan"
+        android:text="Tupper"
+        android:textColor="#FFAB00"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
@@ -46,24 +75,25 @@
           app:layout_constraintTop_toBottomOf="@+id/textView13" />-->
 
 
-    <ScrollView
-        android:scrollbars="none"
-        android:layout_width="397dp"
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
         android:layout_height="488dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="8sp"
+        android:scrollbars="none"
         app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13">
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="1.0">
 
 
         <LinearLayout
 
             android:layout_width="wrap_content"
-            android:layout_height="200dp">
+            android:layout_height="match_parent">
 
             <GridLayout
 
@@ -71,87 +101,77 @@
                 android:layout_width="match_parent"
 
 
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="65dp"
-                android:columnCount="2"
+                android:layout_height="match_parent"
+                android:columnCount="8"
 
-                android:rowCount="4"
+                android:rowCount="1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
 
-                <Space
+                <!-- <Space
                     android:layout_width="5dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1" />
+                    android:layout_height="1dp" /> -->
 
                 <androidx.cardview.widget.CardView
-                    android:clickable="true"
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
+                    android:id="@+id/card1"
+                    android:layout_width="320dp"
+                    android:layout_height="420dp"
                     android:layout_row="0"
                     android:layout_column="0"
-                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:padding="10dp"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp"
-                    android:id="@+id/card1"
-                    >
+                    app:cardMaxElevation="1dp">
 
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
 
+                            <ImageView
+
+                                android:id="@+id/imgView0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/id_13">
 
 
-
-                        <ImageView
-
-                            android:id="@+id/imgView0"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/id_13">
+                            </ImageView>
 
 
-                        </ImageView>
-
-
-
-
-
-                    </LinearLayout>
+                        </LinearLayout>
 
                         <TextView
                             android:id="@+id/recipe1txt"
-                            android:layout_width="176dp"
-                            android:layout_height="82dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="128dp"
-                            android:layout_marginEnd="4dp"
+                            android:layout_width="306dp"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="330dp"
+                            android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="#00ACFF"
+                            android:textColor="#FFFFFF"
                             android:textFontWeight="50"
                             android:textSize="24sp" />
-
 
 
                     </RelativeLayout>
@@ -160,58 +180,56 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
+                    android:id="@+id/card2"
+                    android:layout_width="320dp"
+                    android:layout_height="420dp"
+                    android:layout_gravity="center"
                     android:layout_row="0"
                     android:layout_column="1"
-                    android:clickable="true"
                     android:layout_marginLeft="25dp"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
                     android:padding="50dp"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp"
-                    android:id="@+id/card2">
+                    app:cardMaxElevation="1dp">
 
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
 
-
-                        <ImageView
-                            android:id="@+id/imgView1"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/id_1"></ImageView>
+                            android:orientation="vertical">
 
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/imgView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/id_1"></ImageView>
+
+
+                        </LinearLayout>
 
 
                         <TextView
                             android:id="@+id/recipe2txt"
-                            android:layout_width="176dp"
-                            android:layout_height="82dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="128dp"
-                            android:layout_marginEnd="4dp"
+                            android:layout_width="306dp"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="330dp"
+                            android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
-                            android:shadowColor="#010101"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="#00ACFF"
+                            android:textColor="#FFFFFF"
                             android:textFontWeight="50"
                             android:textSize="24sp" />
 
@@ -222,60 +240,55 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
-                    android:layout_row="1"
-                    android:layout_column="0"
-                    android:layout_marginLeft="5dp"
+                    android:id="@+id/card3"
+                    android:layout_width="320dp"
+                    android:layout_height="420dp"
+                    android:layout_row="0"
+                    android:layout_column="2"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
                     android:padding="50dp"
+                    android:layout_gravity="center"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp"
-                    android:clickable="true"
-                    android:id="@+id/card3"
-                    >
+                    app:cardMaxElevation="1dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-
-
-
-                        <ImageView
-                            android:id="@+id/imgView2"
-
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/id_13"></ImageView>
+                            android:orientation="vertical">
 
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/imgView2"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/id_13"></ImageView>
+
+
+                        </LinearLayout>
 
                         <TextView
                             android:id="@+id/recipe3txt"
-                            android:layout_width="176dp"
-                            android:layout_height="82dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="128dp"
-                            android:layout_marginEnd="4dp"
+                            android:layout_width="306dp"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="330dp"
+                            android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="#00ACFF"
+                            android:textColor="#FFFFFF"
                             android:textFontWeight="50"
                             android:textSize="24sp"></TextView>
 
@@ -285,115 +298,111 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:clickable="true"
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
-                    android:layout_row="1"
-                    android:layout_column="1"
+                    android:id="@+id/card4"
+                    android:layout_width="320dp"
+                    android:layout_height="420dp"
+                    android:layout_row="0"
+                    android:layout_column="3"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="25dp"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
                     android:padding="50dp"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp"
-                    android:id="@+id/card4">
+                    app:cardMaxElevation="1dp">
 
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
 
-
-                        <ImageView
-                            android:id="@+id/imgView3"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/id_13"></ImageView>
+                            android:orientation="vertical">
 
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/imgView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/id_13"></ImageView>
+
+
+                        </LinearLayout>
 
                         <TextView
                             android:id="@+id/recipe4txt"
-                            android:layout_width="176dp"
-                            android:layout_height="82dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="128dp"
-                            android:layout_marginEnd="4dp"
+                            android:layout_width="306dp"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="330dp"
+                            android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="#00ACFF"
+                            android:textColor="#FFFFFF"
                             android:textFontWeight="50"
-                            android:textSize="24sp"></TextView></RelativeLayout>
+                            android:textSize="24sp"></TextView>
+                    </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
-                    android:layout_row="2"
-                    android:layout_column="0"
-                    android:layout_marginLeft="5dp"
+                    android:id="@+id/card5"
+                    android:layout_width="320dp"
+                    android:layout_height="420dp"
+                    android:layout_row="0"
+                    android:layout_column="4"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
                     android:padding="50dp"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp"
-                    android:clickable="true"
-                    android:id="@+id/card5">
+                    app:cardMaxElevation="1dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-
-
-
-                        <ImageView
-                            android:id="@+id/imgView4"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/id_13"></ImageView>
+                            android:orientation="vertical">
 
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/imgView4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/id_13"></ImageView>
+
+
+                        </LinearLayout>
 
                         <TextView
                             android:id="@+id/recipe5txt"
-                            android:layout_width="176dp"
-                            android:layout_height="82dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="128dp"
-                            android:layout_marginEnd="4dp"
+                            android:layout_width="306dp"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="330dp"
+                            android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="#00ACFF"
+                            android:textColor="#FFFFFF"
                             android:textFontWeight="50"
                             android:textSize="24sp"></TextView>
 
@@ -403,182 +412,174 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
-                    android:layout_row="2"
-                    android:layout_column="1"
+                    android:id="@+id/card6"
+                    android:layout_width="320dp"
+                    android:layout_height="420dp"
+                    android:layout_row="0"
+                    android:layout_column="5"
                     android:layout_marginLeft="25dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
                     android:padding="50dp"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp"
-                    android:clickable="true"
-                    android:id="@+id/card6"
-                    >
+                    app:cardMaxElevation="1dp">
 
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
 
-
-
-
-                        <ImageView
-                            android:id="@+id/imgView"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/id_13"></ImageView>
+                            android:orientation="vertical">
 
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/imgView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/id_13"></ImageView>
+                        </LinearLayout>
 
                         <TextView
                             android:id="@+id/recipe6txt"
-                            android:layout_width="176dp"
-                            android:layout_height="82dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="128dp"
-                            android:layout_marginEnd="4dp"
+                            android:layout_width="306dp"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="330dp"
+                            android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="#00ACFF"
+                            android:textColor="#FFFFFF"
                             android:textFontWeight="50"
-                            android:textSize="24sp"></TextView></RelativeLayout>
+                            android:textSize="24sp"></TextView>
+
+                    </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
-                    android:layout_row="3"
-                    android:layout_column="0"
-                    android:layout_marginLeft="5dp"
+                    android:id="@+id/card7"
+                    android:layout_width="320dp"
+                    android:layout_height="420dp"
+                    android:layout_row="0"
+                    android:layout_column="6"
+                    android:layout_marginLeft="8dp"
+                    android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
                     android:padding="50dp"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
-                    android:clickable="true"
-                    app:cardElevation="1dp"
-                    android:id="@+id/card7">
+                    app:cardElevation="1dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-
-
-
-                        <ImageView
-                            android:id="@+id/imgView6"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/id_13">
+                            android:orientation="vertical">
 
-                        </ImageView>
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/imgView6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/id_13">
+
+                            </ImageView>
+
+                        </LinearLayout>
 
                         <TextView
                             android:id="@+id/recipe7txt"
-                            android:layout_width="176dp"
-                            android:layout_height="82dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="128dp"
-                            android:layout_marginEnd="4dp"
+                            android:layout_width="306dp"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="330dp"
+                            android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="#00ACFF"
+                            android:textColor="#FFFFFF"
                             android:textFontWeight="50"
-                            android:textSize="24sp"></TextView></RelativeLayout>
+                            android:textSize="24sp"></TextView>
+                    </RelativeLayout>
 
 
                 </androidx.cardview.widget.CardView>
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="180dp"
-                    android:layout_height="210dp"
-                    android:layout_row="3"
-                    android:layout_column="1"
-                    android:layout_marginLeft="25dp"
+                    android:id="@+id/card8"
+                    android:layout_width="320dp"
+                    android:layout_height="420dp"
+                    android:layout_gravity="center"
+                    android:layout_row="0"
+                    android:layout_column="7"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
                     android:padding="50dp"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
-                    app:cardMaxElevation="1dp"
-                    android:clickable="true"
-                    android:id="@+id/card8">
+                    app:cardMaxElevation="1dp">
 
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
 
-
-
-
-                        <ImageView
-                            android:id="@+id/imgView7"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/id_13">
-
-                        </ImageView>
+                            android:orientation="vertical">
 
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/imgView7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/id_13">
+
+                            </ImageView>
+
+
+                        </LinearLayout>
 
                         <TextView
                             android:id="@+id/recipe8txt"
-                            android:layout_width="176dp"
-                            android:layout_height="82dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="128dp"
-                            android:layout_marginEnd="4dp"
+                            android:layout_width="306dp"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="330dp"
+                            android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
                             android:text="Test"
                             android:textAlignment="textStart"
-                            android:textColor="#00ACFF"
+                            android:textColor="#FFFFFF"
                             android:textFontWeight="50"
-                            android:textSize="24sp"></TextView></RelativeLayout>
+                            android:textSize="24sp"></TextView>
+                    </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -588,7 +589,7 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </HorizontalScrollView>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
