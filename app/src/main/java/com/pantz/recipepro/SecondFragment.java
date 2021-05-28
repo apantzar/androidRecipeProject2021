@@ -1,14 +1,21 @@
 package com.pantz.recipepro;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import jp.wasabeef.blurry.Blurry;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,9 +26,23 @@ public class SecondFragment extends Fragment {
 
 
 
+
+
+    private  Database qdb;
+    private String displayText;
+    private String exec;
+    private String cal;
+    private String difRate;
+    private String execTime;
+    private String elements;
+    private String cat;
+    private String path;
+
     ListView favList;
     String favArray[];
     Database db;
+    ImageView imageView;
+    TextView fillMeUp;
 
 
 
@@ -73,12 +94,60 @@ public class SecondFragment extends Fragment {
         // Inflate the layout for this fragment
 
 
+
+
         View view =inflater.inflate(R.layout.fragment_second, container, false);
+        imageView = (ImageView) view.findViewById(R.id.imageView4);
+        fillMeUp = (TextView) view.findViewById(R.id.textView2);
         favList = (ListView) view.findViewById(R.id.listViewFav) ;
         db = new Database(getContext());
         favArray = db.getData("SELECT * FROM favorite_list ", "fav_title");
+        Boolean areYouFull = db.isFavFull();
         ArrayAdapter<String> favAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, favArray);
         favList.setAdapter(favAdapter);
+
+        if(areYouFull){
+
+            imageView.setVisibility(View.GONE);
+            fillMeUp.setVisibility(View.GONE);
+        }
+
+
+        favList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                displayText= (String)favList.getItemAtPosition(position);
+
+                qdb = new Database(getContext());
+                exec = qdb.getExec("SELECT exec FROM bizRecipe where recipe_title like '%"+displayText+"%'","exec" );
+                cal = qdb.getExec("SELECT calories FROM bizRecipe where recipe_title like '%"+displayText+"%'","calories" );
+                difRate = qdb.getExec("SELECT dif_rate  FROM bizRecipe where recipe_title like '%"+displayText+"%'","dif_rate" ).toString();
+                execTime = qdb.getExec("SELECT exec_time  FROM bizRecipe where recipe_title like '%"+displayText+"%'","exec_time" ).toString();
+                elements = qdb.getExec("SELECT _elements FROM bizRecipe where recipe_title like '%"+displayText+"%'","_elements" );
+                cat = qdb.getExec("SELECT recipe_category FROM bizRecipe where recipe_title like '%"+displayText+"%'","recipe_category" );
+                path = qdb.getExec("SELECT path FROM bizRecipe where recipe_title like '%"+displayText+"%'","path" );
+
+
+
+
+
+
+                Intent intent = new Intent(SecondFragment.this.getActivity(), activity_details.class);
+                intent.putExtra("TEXT", displayText);
+                intent.putExtra("EXEC", exec);
+                intent.putExtra("CAL", cal);
+                intent.putExtra("DIFRATE", difRate);
+                intent.putExtra("EXECTIME",execTime);
+                intent.putExtra("ELEMENTS",elements);
+                intent.putExtra("CAT",cat);
+                intent.putExtra("IMAGE", path);
+                startActivity(intent);
+
+
+            }
+        });
+
 
         return view;
     }

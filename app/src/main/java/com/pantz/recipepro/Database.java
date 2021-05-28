@@ -314,4 +314,20 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+
+    public boolean isFavFull(){
+
+        SQLiteDatabase db = getWritableDatabase();
+        String count = "SELECT count(*) FROM favorite_list";
+        Cursor mcursor = db.rawQuery(count, null);
+        mcursor.moveToFirst();
+        int icount = mcursor.getInt(0);
+        if(icount>0){
+            return true;
+        }else {
+            return false;
+        }
+
+    }
+
 }
