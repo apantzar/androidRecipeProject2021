@@ -154,6 +154,12 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
+    /**
+     * Checks id the favorite title is already in db
+     * @param title title of the recipe
+     * @return true/false
+     */
+
     public Boolean uniqueFavTitle(String title){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from " + FAV_TABLE_NAME + " where " + FAV_TITLE + " = ?", new String[] {title});

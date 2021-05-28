@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +16,14 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class SecondFragment extends Fragment {
+
+
+
+    ListView favList;
+    String favArray[];
+    Database db;
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +71,15 @@ public class SecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second, container, false);
+
+
+        View view =inflater.inflate(R.layout.fragment_second, container, false);
+        favList = (ListView) view.findViewById(R.id.listViewFav) ;
+        db = new Database(getContext());
+        favArray = db.getData("SELECT * FROM favorite_list ", "fav_title");
+        ArrayAdapter<String> favAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, favArray);
+        favList.setAdapter(favAdapter);
+
+        return view;
     }
 }
