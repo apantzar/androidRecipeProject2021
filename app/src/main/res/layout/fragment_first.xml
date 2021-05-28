@@ -27,7 +27,7 @@
         app:layout_constraintVertical_bias="0.121" />
 
     <ImageView
-        android:layout_width="423dp"
+        android:layout_width="match_parent"
         android:layout_height="68dp"
         android:background="@drawable/ic_main_logo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,9 +78,9 @@
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
-        android:layout_height="488dp"
+        android:layout_height="495sp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="50sp"
         android:layout_marginEnd="8sp"
         android:scrollbars="none"
         app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
@@ -118,8 +118,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card1"
-                    android:layout_width="320dp"
-                    android:layout_height="420dp"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
                     android:layout_row="0"
                     android:layout_column="0"
                     android:layout_gravity="bottom"
@@ -164,7 +164,7 @@
                             android:layout_width="306dp"
                             android:layout_height="80dp"
                             android:layout_marginStart="8dp"
-                            android:layout_marginTop="330dp"
+                            android:layout_marginTop="385dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
@@ -182,8 +182,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card2"
-                    android:layout_width="320dp"
-                    android:layout_height="420dp"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_row="0"
                     android:layout_column="1"
@@ -224,7 +224,7 @@
                             android:layout_width="306dp"
                             android:layout_height="80dp"
                             android:layout_marginStart="8dp"
-                            android:layout_marginTop="330dp"
+                            android:layout_marginTop="385dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
@@ -242,8 +242,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card3"
-                    android:layout_width="320dp"
-                    android:layout_height="420dp"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
                     android:layout_row="0"
                     android:layout_column="2"
                     android:layout_marginLeft="25dp"
@@ -283,7 +283,7 @@
                             android:layout_width="306dp"
                             android:layout_height="80dp"
                             android:layout_marginStart="8dp"
-                            android:layout_marginTop="330dp"
+                            android:layout_marginTop="385dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
@@ -300,8 +300,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card4"
-                    android:layout_width="320dp"
-                    android:layout_height="420dp"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
                     android:layout_row="0"
                     android:layout_column="3"
                     android:layout_gravity="bottom"
@@ -341,7 +341,7 @@
                             android:layout_width="306dp"
                             android:layout_height="80dp"
                             android:layout_marginStart="8dp"
-                            android:layout_marginTop="330dp"
+                            android:layout_marginTop="385dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
@@ -357,8 +357,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card5"
-                    android:layout_width="320dp"
-                    android:layout_height="420dp"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
                     android:layout_row="0"
                     android:layout_column="4"
                     android:layout_marginLeft="25dp"
@@ -397,7 +397,7 @@
                             android:layout_width="306dp"
                             android:layout_height="80dp"
                             android:layout_marginStart="8dp"
-                            android:layout_marginTop="330dp"
+                            android:layout_marginTop="385dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
@@ -414,8 +414,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card6"
-                    android:layout_width="320dp"
-                    android:layout_height="420dp"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
                     android:layout_row="0"
                     android:layout_column="5"
                     android:layout_marginLeft="25dp"
@@ -453,7 +453,7 @@
                             android:layout_width="306dp"
                             android:layout_height="80dp"
                             android:layout_marginStart="8dp"
-                            android:layout_marginTop="330dp"
+                            android:layout_marginTop="385dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
@@ -470,8 +470,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card7"
-                    android:layout_width="320dp"
-                    android:layout_height="420dp"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
                     android:layout_row="0"
                     android:layout_column="6"
                     android:layout_marginLeft="25dp"
@@ -510,7 +510,7 @@
                             android:layout_width="306dp"
                             android:layout_height="80dp"
                             android:layout_marginStart="8dp"
-                            android:layout_marginTop="330dp"
+                            android:layout_marginTop="385dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
@@ -527,8 +527,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card8"
-                    android:layout_width="320dp"
-                    android:layout_height="420dp"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_row="0"
                     android:layout_column="7"
@@ -571,7 +571,7 @@
                             android:layout_width="306dp"
                             android:layout_height="80dp"
                             android:layout_marginStart="8dp"
-                            android:layout_marginTop="330dp"
+                            android:layout_marginTop="385dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/titan_one"
