@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,13 @@ import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +32,7 @@ public class GeneralFragment extends Fragment {
 
     private static boolean is_edit_mode;
 
+    View viewC;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,7 +79,8 @@ public class GeneralFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_general, container, false);
+        viewC = inflater.inflate(R.layout.fragment_general, container, false);
+        return viewC;
     }
 
     @Override
@@ -119,6 +129,9 @@ public class GeneralFragment extends Fragment {
         });
 
 
+
+
+
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,18 +139,44 @@ public class GeneralFragment extends Fragment {
                 startActivity(intent);*/
 
 
-                ThirdFragment nextFrag= new ThirdFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
+
+
+
+
+
+                /*getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.generalInfo, nextFrag, "findThisFragment")
                         .addToBackStack(null)
-                        .commit();
+                        .commit()*/;
+           /*             ThirdFragment fragment = view.findd(R.layout.fragment_general);
+
+                fragment.getView().setFocusableInTouchMode(true);
+                fragment.getView().requestFocus();
+                fragment.getView().setOnKeyListener( new View.OnKeyListener()
+                {
+                    @Override
+                    public boolean onKey( View v, int keyCode, KeyEvent event )
+                    {
+                        if( keyCode == KeyEvent.KEYCODE_BACK )
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                } );*/
 
                 backBtn.setVisibility(View.GONE);
                 btnEdit.setVisibility(View.GONE);
 
 
 
+
+
+
             }
         });
+
+
+
     }
 }
