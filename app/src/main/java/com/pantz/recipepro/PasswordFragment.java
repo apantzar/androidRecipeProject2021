@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -84,7 +85,9 @@ public class PasswordFragment extends Fragment {
         txt_new_password.setText("");
 
         Button editProfile = view.findViewById(R.id.editProfile);
-        Button close = view.findViewById(R.id.buttonGenralBack);
+        /*Button close = view.findViewById(R.id.buttonGenralBack);*/
+
+        ImageView backBtn = view.findViewById(R.id.imageVBack);
 
         is_edit_mode = false;
 
@@ -146,7 +149,7 @@ public class PasswordFragment extends Fragment {
 
 
 
-        close.setOnClickListener(new View.OnClickListener() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -158,7 +161,7 @@ public class PasswordFragment extends Fragment {
 
 
                 editProfile.setVisibility(View.GONE);
-                close.setVisibility(View.GONE);
+                backBtn.setVisibility(View.GONE);
             }
         });
     }

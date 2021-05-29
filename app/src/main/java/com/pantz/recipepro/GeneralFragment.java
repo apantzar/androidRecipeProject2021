@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -85,7 +86,8 @@ public class GeneralFragment extends Fragment {
         Button editProfile = view.findViewById(R.id.editProfile);
 
         Button btnEdit = view.findViewById(R.id.editProfile);
-        Button close = view.findViewById(R.id.buttonGenralBack);
+
+        ImageView backBtn = view.findViewById(R.id.imageVBack);
 
         is_edit_mode = false;
 
@@ -117,7 +119,7 @@ public class GeneralFragment extends Fragment {
         });
 
 
-        close.setOnClickListener(new View.OnClickListener() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                /* Intent intent = new Intent(GeneralFragment.this.getActivity(), ThirdFragment.class);
@@ -130,7 +132,7 @@ public class GeneralFragment extends Fragment {
                         .addToBackStack(null)
                         .commit();
 
-                close.setVisibility(View.GONE);
+                backBtn.setVisibility(View.GONE);
 
                 btnEdit.setVisibility(View.GONE);
             }
