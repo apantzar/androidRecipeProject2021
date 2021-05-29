@@ -133,8 +133,10 @@ public class GeneralFragment extends Fragment {
                         .commit();
 
                 backBtn.setVisibility(View.GONE);
-
                 btnEdit.setVisibility(View.GONE);
+
+
+
             }
         });
     }
