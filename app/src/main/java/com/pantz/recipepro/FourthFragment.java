@@ -3,15 +3,18 @@ package com.pantz.recipepro;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -21,8 +24,11 @@ import android.widget.SearchView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+
+import pl.droidsonroids.gif.GifImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -85,11 +91,14 @@ public class FourthFragment extends Fragment{
     @Override
     public void onCreate( Bundle savedInstanceState) {
 
+
+
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
 
        class2 = new Activity();
 
@@ -116,6 +125,10 @@ public class FourthFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
+
 /*
         ActivityHome home = new ActivityHome();
         home.getIdOfBox();*/
@@ -155,6 +168,7 @@ public class FourthFragment extends Fragment{
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -162,30 +176,85 @@ public class FourthFragment extends Fragment{
 
 
 
+
         SearchView viewid = getView().findViewById(R.id.searchView);
         ListView list = getView().findViewById(R.id.mainView);
+        GifImageView gif = getView().findViewById(R.id.gifImageView);
 
 
 
         viewid.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+
+
+
+
+                System.out.println("TRUE??? -> "+viewid.isHovered());
+
                 db = new Database(getContext());
                 array = db.getData("SELECT * FROM bizRecipe where basic_element like '%"+newText+ "%' OR recipe_title like '%"+newText+"%'", "recipe_title" );
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,array);
                 listView.setAdapter(adapter);
 
                 adapter.getFilter().filter(newText);
+
+                list.setVisibility(View.VISIBLE);
+
+
+
+
                 return false;
             }
 
 
+
+
+
+
+
+
         });
+
+
+
+        System.out.println("TRUE??? 2 -> "+viewid.isHovered());
+
+
+       viewid.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+           @Override
+           public void onFocusChange(View v, boolean hasFocus) {
+
+               if(hasFocus){
+
+                   System.out.println("Text is ===> "+viewid.getQuery().toString());
+                   if(viewid.getQuery().toString().equals("")|| viewid.getQuery().toString().equals("Search for recipes")){
+                       list.setVisibility(View.GONE);
+
+                       gif.setVisibility(View.VISIBLE);
+
+                   }
+                   gif.setVisibility(View.GONE);
+               }else {
+
+                   if(viewid.getQuery().toString().equals("")|| viewid.getQuery().toString().equals("Search for recipes")){
+
+                       gif.setVisibility(View.VISIBLE);}
+                   list.setVisibility(View.GONE);
+               }
+
+           }
+       });
+
+
+
+
 
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
