@@ -1,6 +1,7 @@
 package com.pantz.recipepro;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -83,6 +84,9 @@ public class GeneralFragment extends Fragment {
 
         Button editProfile = view.findViewById(R.id.editProfile);
 
+        Button btnEdit = view.findViewById(R.id.editProfile);
+        Button close = view.findViewById(R.id.buttonGenralBack);
+
         is_edit_mode = false;
 
         editProfile.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +113,26 @@ public class GeneralFragment extends Fragment {
                     username.setEnabled(true);
                     editProfile.setText("Save");
                 }
+            }
+        });
+
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               /* Intent intent = new Intent(GeneralFragment.this.getActivity(), ThirdFragment.class);
+                startActivity(intent);*/
+
+
+                ThirdFragment nextFrag= new ThirdFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.generalInfo, nextFrag, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+
+                close.setVisibility(View.GONE);
+
+                btnEdit.setVisibility(View.GONE);
             }
         });
     }

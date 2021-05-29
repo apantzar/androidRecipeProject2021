@@ -2,17 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/generalInfo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
     android:background="#f2f2f7"
-    tools:context=".GeneralFragment"
-    >
-
+    android:clickable="true"
+    tools:context=".GeneralFragment">
 
 
     <!-- TODO: Update blank fragment layout -->
-
 
 
     <Button
@@ -44,11 +42,11 @@
         app:layout_constraintVertical_bias="0.114" />
 
     <Button
-        android:id="@+id/button7"
-        android:layout_width="128dp"
+        android:id="@+id/buttonGenralBack"
+        android:layout_width="101dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
-        android:text="Account"
+        android:text="Back"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.056"

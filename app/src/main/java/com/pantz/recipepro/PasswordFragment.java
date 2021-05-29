@@ -84,6 +84,7 @@ public class PasswordFragment extends Fragment {
         txt_new_password.setText("");
 
         Button editProfile = view.findViewById(R.id.editProfile);
+        Button close = view.findViewById(R.id.buttonGenralBack);
 
         is_edit_mode = false;
 
@@ -140,6 +141,24 @@ public class PasswordFragment extends Fragment {
                     txt_new_password.setEnabled(true);
                     editProfile.setText("Save");
                 }
+            }
+        });
+
+
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ThirdFragment nextFrag= new ThirdFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.passWordFrag, nextFrag, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+
+
+                editProfile.setVisibility(View.GONE);
+                close.setVisibility(View.GONE);
             }
         });
     }
