@@ -1,16 +1,23 @@
 package com.pantz.recipepro;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,6 +29,9 @@ public class activity_details extends AppCompatActivity {
     private String textTitle, textExec, cat, elements, exectime, calories, difrate, path, titleToFav;
     private Bitmap bitmap;
     ImageView imageView;
+    String [] lovedRecipes;
+    Database db;
+    Boolean flagOfLove = false;
 
 
 
@@ -33,7 +43,13 @@ public class activity_details extends AppCompatActivity {
         FourthFragment fg = new FourthFragment();
        /* String text = fg.getDisplayText();
 
+
+
         System.out.println("Text test "+text);*/
+
+        ImageView favButton = findViewById(R.id.imageViewFav);
+
+
 
         try{
         textTitle=getIntent().getStringExtra("TEXT");
@@ -59,6 +75,43 @@ public class activity_details extends AppCompatActivity {
         }catch(NullPointerException ignored){}
 
 
+
+
+        try {
+            db = new Database(this);
+            lovedRecipes = db.getData("SELECT * FROM favorite_list ", "fav_title");
+
+            System.out.println("<-------------------------------------------------->");
+            System.out.println("Array : ");
+            for(int i =0; i<lovedRecipes.length;i++){
+
+                System.out.println("TextTitle "+textTitle);
+                if(lovedRecipes[i].trim().equals(textTitle)){
+
+                   flagOfLove=true;
+
+
+                }
+            }
+
+
+            if(flagOfLove){
+
+                favButton.setImageDrawable(ContextCompat.getDrawable(activity_details.this, R.drawable.heart_close));
+
+
+            }else {
+                favButton.setImageDrawable(ContextCompat.getDrawable(activity_details.this, R.drawable.heart_open));
+
+            }
+
+            System.out.println("<-------------------------------------------------->");
+
+        }catch (NullPointerException e){
+
+            System.out.println("Catch Catch Catch");;
+            e.printStackTrace();
+        }
 
 
 
@@ -122,10 +175,17 @@ public class activity_details extends AppCompatActivity {
 
 
 
-        ImageView favButton = findViewById(R.id.imageViewFav);
+
         favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+
+                //favButton.setBackgroundResource(R.drawable.heart_close);
+                favButton.setImageDrawable(ContextCompat.getDrawable(activity_details.this, R.drawable.heart_close));
+
 
                 TextView textView = findViewById(R.id.txtTitle);
                 titleToFav = textView.getText().toString();
@@ -143,4 +203,11 @@ public class activity_details extends AppCompatActivity {
 
     }
 
+
+    @Nullable
+    @org.jetbrains.annotations.Nullable
+    @Override
+    public View onCreateView(@NonNull @NotNull String name, @NonNull @NotNull Context context, @NonNull @NotNull AttributeSet attrs) {
+        return super.onCreateView(name, context, attrs);
+    }
 }

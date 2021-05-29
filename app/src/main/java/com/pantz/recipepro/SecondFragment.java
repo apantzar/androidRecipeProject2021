@@ -246,4 +246,24 @@ public class SecondFragment extends Fragment {
 
         return view;
     }
+
+
+    public String[] getFavArray() {
+        return favArray;
+    }
+
+    public void setFavArray() {
+
+        db = new Database(getContext());
+        favArray = db.getData("SELECT * FROM favorite_list ", "fav_title");
+
+
+        System.out.println("SETTERRRRRRRRRRRRRRRRRRRRRRRRRRR");
+       for(int i=0; i <favArray.length;i++){
+
+           System.out.println(favArray[i]);
+       }
+
+
+    }
 }
