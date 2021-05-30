@@ -1,6 +1,7 @@
 package com.pantz.recipepro;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -61,6 +62,13 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                     boolean successRegister = Database.addElement(user);
                                     if (successRegister) {
+                                        final SharedPreferences pref = getSharedPreferences("Settings", MODE_PRIVATE);
+                                        SharedPreferences.Editor edit = pref.edit();
+
+                                        edit.putString("username", user.getUsername());
+                                        edit.putString("password", password.getText().toString());
+                                        edit.apply();
+
                                         Toast.makeText(MainActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), ActivityHome.class);
                                         startActivity(intent);
@@ -82,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-
 
 
         /*
