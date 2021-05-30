@@ -40,15 +40,7 @@ public class SecondFragment extends Fragment {
 
 
     private  Database qdb;
-    private String displayText;
-    private String exec;
-    private String cal;
-    private String difRate;
-    private String execTime;
-    private String elements;
-    private String cat;
-    private String path;
-
+    private String displayText,exec,cal,difRate,execTime,elements,cat,path;
     SwipeMenuListView favList;
     String favArray[];
     Database db;
@@ -56,6 +48,11 @@ public class SecondFragment extends Fragment {
     TextView fillMeUp;
 
 
+    /**
+     * @author Anastasios Pantzartzis
+     * Fragment Creation
+     * Each Fragment will have a role ;)
+     */
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -103,6 +100,21 @@ public class SecondFragment extends Fragment {
 
     }
 
+
+    /**
+     * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+     *
+     * Creates view with favorite list.
+     * Uses SQL commands to grab the
+     * the elements of the recipe like
+     * title, image, execution..etc
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -121,12 +133,30 @@ public class SecondFragment extends Fragment {
         ArrayAdapter<String> favAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, favArray);
         favList.setAdapter(favAdapter);
 
+
+        /////////////////////////////////////// FOR UI CONTROLS///////////////////////////////////
         if(areYouFull){
 
             imageView.setVisibility(View.GONE);
             fillMeUp.setVisibility(View.GONE);
         }
 
+
+        /**
+         *
+         * @authors  Anna Tzanakopoulou, Anastasios Pantzartzis
+         * get the elemets of the recipe in order to open the details activity
+         * elements :
+         *     execution
+         *     title
+         *     difRate
+         *     time
+         *     elements
+         *     category
+         *     path of image
+         *
+         * Details will be displayed in details activity
+         */
 
         favList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -148,6 +178,10 @@ public class SecondFragment extends Fragment {
 
 
 
+                ///////////////////////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////PARSE VALUES TO OTHER INTENT//////////////////////////
+                /////////////////////////////////////////////////////////////////////////////////////////////////
+
                 Intent intent = new Intent(SecondFragment.this.getActivity(), activity_details.class);
                 intent.putExtra("TEXT", displayText);
                 intent.putExtra("EXEC", exec);
@@ -164,7 +198,15 @@ public class SecondFragment extends Fragment {
         });
 
 
-
+        /**
+         * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+         * Swipe menu :
+         *      User can delete elements from the favorite list.
+         *      Swipe left to see the delete button -> press the button (setOnMenuItemClickListener) = recipe deleted from the list
+         *
+         *      [ it's awesome :) ]
+         *
+         */
 
         SwipeMenuCreator creator = new SwipeMenuCreator() {
 
@@ -192,6 +234,8 @@ public class SecondFragment extends Fragment {
 
 
 
+        //PRESS ic_delete to delete from list
+
        favList.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
@@ -214,20 +258,6 @@ public class SecondFragment extends Fragment {
                             fillMeUp.setVisibility(View.VISIBLE);
                         }
 
-
-
-
-
-                       /* Object toRemove = favAdapter.getItem(position);
-                        favAdapter.remove((String) toRemove);*/
-
-                    /*    try {
-                            Database db = new Database(getContext());
-                            db.deleteFromFav(displayText);
-                        }catch (SQLException e){
-                            e.printStackTrace();
-                        }*/
-
                         break;
 
                 }
@@ -235,12 +265,6 @@ public class SecondFragment extends Fragment {
                 return false;
             }
         });
-
-
-
-
-
-
 
 
 
@@ -256,13 +280,6 @@ public class SecondFragment extends Fragment {
 
         db = new Database(getContext());
         favArray = db.getData("SELECT * FROM favorite_list ", "fav_title");
-
-
-        System.out.println("SETTERRRRRRRRRRRRRRRRRRRRRRRRRRR");
-       for(int i=0; i <favArray.length;i++){
-
-           System.out.println(favArray[i]);
-       }
 
 
     }

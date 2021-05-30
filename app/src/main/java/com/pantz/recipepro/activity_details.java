@@ -26,30 +26,39 @@ import java.io.InputStream;
 
 public class activity_details extends AppCompatActivity {
 
+
+    /**
+     *
+     * @author Anna Tzanakopoulou, Anastasios Pantzartzis
+     *
+     * This activity is about to show details about the recipes
+     * Collaborates with SecondFragment, FourthFragment in order
+     * to get the details of the recipe like execution, time, elements etc..
+     *
+     */
+
     private String textTitle, textExec, cat, elements, exectime, calories, difrate, path, titleToFav;
-    private Bitmap bitmap;
     ImageView imageView;
     String [] lovedRecipes;
     Database db;
     Boolean flagOfLove = false;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        FourthFragment fg = new FourthFragment();
-       /* String text = fg.getDisplayText();
-
-
-
-        System.out.println("Text test "+text);*/
-
+       // FourthFragment fg = new FourthFragment();
         ImageView favButton = findViewById(R.id.imageViewFav);
 
-
+    /***
+     *
+     * To get the elements with this specific "key"
+     *
+     * For example textTitle will get the value that
+     * the TEXT 'points to'
+     *
+     */
 
         try{
         textTitle=getIntent().getStringExtra("TEXT");
@@ -61,9 +70,11 @@ public class activity_details extends AppCompatActivity {
         elements = getIntent().getStringExtra("ELEMENTS");
         path = getIntent().getStringExtra("IMAGE");}catch (NullPointerException ignored){}
 
-        System.out.println("PATHHHHHHHHH "+path);
 
-
+        /**
+         * To get & set image
+         * for each recipe
+         */
         try{
             String uri=path;
 
@@ -75,17 +86,22 @@ public class activity_details extends AppCompatActivity {
         }catch(NullPointerException ignored){}
 
 
-
-
+        /**
+         * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+         *
+         *
+         * Stores the data of the favorite list into string array
+         * For each element checks if the recipe title is in this array
+         * in order to fill the heart or not
+         *
+         *
+         */
         try {
             db = new Database(this);
             lovedRecipes = db.getData("SELECT * FROM favorite_list ", "fav_title");
-
-            System.out.println("<-------------------------------------------------->");
-            System.out.println("Array : ");
             for(int i =0; i<lovedRecipes.length;i++){
 
-                System.out.println("TextTitle "+textTitle);
+               // System.out.println("TextTitle "+textTitle);
                 if(lovedRecipes[i].trim().equals(textTitle)){
 
                    flagOfLove=true;
@@ -94,6 +110,10 @@ public class activity_details extends AppCompatActivity {
                 }
             }
 
+
+            /**
+             * Change the heart icon
+             */
 
             if(flagOfLove){
 
@@ -105,31 +125,22 @@ public class activity_details extends AppCompatActivity {
 
             }
 
-            System.out.println("<-------------------------------------------------->");
 
         }catch (NullPointerException e){
 
-            System.out.println("Catch Catch Catch");;
+            //System.out.println("Catch Catch Catch");;
             e.printStackTrace();
         }
 
 
+        /**
+         * Set the text of  TextViews
+         *
+         * 1)Finds the TextViews ids
+         * 2)Sets texts
+         */
 
-/*
-        File imgFile = new  File(path);
-
-
-        if(imgFile.exists()){
-
-            bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-
-        }else {
-            System.out.println("Not found");
-        }*/
-
-
-
-        System.out.println("txtTITLE "+textTitle);
+        //  System.out.println("txtTITLE "+textTitle);
 
         TextView view  = findViewById(R.id.txtTitle);
         view.setText(textTitle);
@@ -149,15 +160,9 @@ public class activity_details extends AppCompatActivity {
         TextView catTxt = findViewById(R.id.textView10);
         catTxt.setText(cat);
 
-        ImageView imageView = findViewById(R.id.imageView8);
-       // imageView.setImageBitmap(bitmap);
-
-
-
-
         exec.setMovementMethod(new ScrollingMovementMethod());
 
-        System.out.println("From details exec "+textExec);
+        //System.out.println("From details exec "+textExec);
 
 
         /**
@@ -172,26 +177,24 @@ public class activity_details extends AppCompatActivity {
         });
 
 
-
-
-
+        /**
+         * If the heart ImageView pressed
+         * Adds title to the favorite database
+         *
+         * Heart symbols is close (now)
+         *
+         *
+         */
 
         favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-
-
-                //favButton.setBackgroundResource(R.drawable.heart_close);
                 favButton.setImageDrawable(ContextCompat.getDrawable(activity_details.this, R.drawable.heart_close));
-
 
                 TextView textView = findViewById(R.id.txtTitle);
                 titleToFav = textView.getText().toString();
 
-
-                System.out.println("FAV FAV FAV FAV"+titleToFav);
                 Database favDb = new Database(getApplicationContext());
                 favDb.addFavToDatabaseNow(titleToFav);
 

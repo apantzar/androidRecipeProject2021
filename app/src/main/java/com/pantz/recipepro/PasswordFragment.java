@@ -22,6 +22,15 @@ import java.security.NoSuchAlgorithmException;
  * Use the {@link PasswordFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+
+
+/**
+ * User can change the password of the account
+ * The password must have same limits like the
+ * register activity
+ */
+
 public class PasswordFragment extends Fragment {
 
     private static boolean is_edit_mode;
@@ -73,6 +82,7 @@ public class PasswordFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_password, container, false);
     }
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         final SharedPreferences pref = requireActivity().getSharedPreferences("Settings", requireActivity().MODE_PRIVATE);
@@ -91,6 +101,11 @@ public class PasswordFragment extends Fragment {
 
         is_edit_mode = false;
 
+
+        /**
+         * Press button to edit
+         *
+         */
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

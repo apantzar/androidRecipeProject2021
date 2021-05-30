@@ -17,6 +17,13 @@ import android.widget.Button;
 public class ThirdFragment extends Fragment {
 
 
+
+    /**
+     * @author Anastasios Pantzartzis
+     * Fragment Creation
+     * Each Fragment will have a role ;)
+     * @param savedInstanceState
+     */
     Button generalBtn, passwordBtn;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -58,11 +65,6 @@ public class ThirdFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
-
-
-
-
     }
 
 
@@ -78,6 +80,15 @@ public class ThirdFragment extends Fragment {
         generalBtn = v.findViewById(R.id.button3);
         passwordBtn = v.findViewById(R.id.button5);
 
+
+        /**
+         * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+         *
+         * Opens general fragment if user press the general button
+         * GeneralFragments contains : username , edit username
+         *
+         *
+         */
         generalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +103,16 @@ public class ThirdFragment extends Fragment {
 
 
 
+
+        /**
+         * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+         *
+         * Opens password fragment if user press the button
+         * GeneralFragments contains : username , edit username
+         *
+         *
+         */
+
         passwordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,6 +125,16 @@ public class ThirdFragment extends Fragment {
         });
 
 
+
+
+
+        /**
+         * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+         *
+         * Opens LogIn activity
+         *
+         *User signed out
+         */
         Button signOutBtn = v.findViewById(R.id.buttonSignOut);
         signOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override

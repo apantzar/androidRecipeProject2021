@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -77,6 +78,8 @@ public class GeneralFragment extends Fragment {
     }
 
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -107,6 +110,12 @@ public class GeneralFragment extends Fragment {
         Button btnEdit = view.findViewById(R.id.editProfile);
 
 
+        /**
+         * Edit username TextView
+         * User can change the username
+         * Important!! The username must be unique
+         */
+
 
         is_edit_mode = false;
 
@@ -114,21 +123,28 @@ public class GeneralFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (is_edit_mode) {
-                    String new_username = username.getText().toString();
-
-                    SharedPreferences.Editor edit = pref.edit();
-                    edit.putString("username", new_username);
-                    edit.apply();
-
                     Database helper = new Database(requireContext());
                     SQLiteDatabase db = helper.getReadableDatabase();
 
-                    ContentValues cv = new ContentValues();
-                    cv.put(Database.REGISTER_COLUMN_USERNAME, new_username);
-                    db.update(Database.REGISTER_TABLE_NAME, cv, "username = ? ", new String[]{old_username});
+                    String new_username = username.getText().toString();
 
-                    username.setEnabled(false);
-                    editProfile.setText("Edit");
+                    SharedPreferences.Editor edit = pref.edit();
+
+                    if(!helper.uniqueUsername(new_username)){
+                        edit.putString("username", new_username);
+                        edit.apply();
+
+
+
+                        ContentValues cv = new ContentValues();
+                        cv.put(Database.REGISTER_COLUMN_USERNAME, new_username);
+                        db.update(Database.REGISTER_TABLE_NAME, cv, "username = ? ", new String[]{old_username});
+
+                        username.setEnabled(false);
+                        editProfile.setText("Edit");
+                    } else {
+                        Toast.makeText(getActivity(), "This username already exists. Please try another one.", Toast.LENGTH_SHORT).show();  //if the username is already in database
+                    }
                 } else {
                     is_edit_mode = true;
                     username.setEnabled(true);

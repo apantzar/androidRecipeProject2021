@@ -37,6 +37,11 @@ import pl.droidsonroids.gif.GifImageView;
  */
 public class FourthFragment extends Fragment{
 
+    /**
+     * @author Anastasios Pantzartzis
+     * Fragment Creation
+     * Each Fragment will have a role ;)
+     */
 
     private  String [] array;
     private String displayText, exec;
@@ -136,8 +141,10 @@ public class FourthFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
 
 
-
-
+        /**
+         * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+         * To grab the ids
+         */
 
         SearchView viewid = getView().findViewById(R.id.searchView);
         ListView list = getView().findViewById(R.id.mainView);
@@ -152,13 +159,20 @@ public class FourthFragment extends Fragment{
                 return false;
             }
 
+
+            /**
+             * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+             * In order to change the list dynamically
+             * @param newText -> the text to search
+             * @return
+             */
             @Override
             public boolean onQueryTextChange(String newText) {
 
 
 
 
-                System.out.println("TRUE??? -> "+viewid.isHovered());
+                //System.out.println("TRUE??? -> "+viewid.isHovered());
 
                 db = new Database(getContext());
                 array = db.getData("SELECT * FROM bizRecipe where basic_element like '%"+newText+ "%' OR recipe_title like '%"+newText+"%'", "recipe_title" );
@@ -186,16 +200,22 @@ public class FourthFragment extends Fragment{
 
 
 
-        System.out.println("TRUE??? 2 -> "+viewid.isHovered());
+       // System.out.println("TRUE??? 2 -> "+viewid.isHovered());
 
 
-       viewid.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+        /**
+         * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+         *
+         * [*]UI controls will change
+         *      -> Depends user's action
+         */
+        viewid.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
            @Override
            public void onFocusChange(View v, boolean hasFocus) {
 
                if(hasFocus){
 
-                   System.out.println("Text is ===> "+viewid.getQuery().toString());
+                   //System.out.println("Text is ===> "+viewid.getQuery().toString());
                    if(viewid.getQuery().toString().equals("")|| viewid.getQuery().toString().equals("Search for recipes")){
                        list.setVisibility(View.GONE);
 
@@ -225,9 +245,16 @@ public class FourthFragment extends Fragment{
 
                 displayText= (String)listView.getItemAtPosition(position);
 
-                System.out.println("DSPTEXT "+displayText );
+               // System.out.println("DSPTEXT "+displayText );
 
                // startActivity(new Intent(FourthFragment.this.getActivity(), activity_details.class));
+
+
+                /**
+                 * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+                 * [*] Grabs the values with SQL commands
+                 * [*] Stores them to variables
+                 */
 
                 qdb = new Database(getContext());
                 exec = qdb.getExec("SELECT exec FROM bizRecipe where recipe_title like '%"+displayText+"%'","exec" );
@@ -239,8 +266,10 @@ public class FourthFragment extends Fragment{
                 path = qdb.getExec("SELECT path FROM bizRecipe where recipe_title like '%"+displayText+"%'","path" );
 
 
-
-
+                /**
+                 * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+                 * In order to grab the data with the key
+                 */
 
 
                 Intent intent = new Intent(FourthFragment.this.getActivity(), activity_details.class);
@@ -255,8 +284,8 @@ public class FourthFragment extends Fragment{
 
 
 
-                System.out.println(exec);
-                System.out.println(cal);
+               // System.out.println(exec);
+               // System.out.println(cal);
                 startActivity(intent);
 
             }

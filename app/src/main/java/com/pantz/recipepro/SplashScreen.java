@@ -49,8 +49,8 @@ public class SplashScreen extends AppCompatActivity {
                 public void run() {
 
                     /**
-                     * The API runs in different Thread now
                      * @author Anastasios Pantzartzis
+                     * The API runs in different Thread now
                      * The API runs in different thread in order to
                      * avoid UI Freezing
                      */

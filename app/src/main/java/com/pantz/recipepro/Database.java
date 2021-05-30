@@ -14,6 +14,16 @@ import java.util.Date;
 
 public class Database extends SQLiteOpenHelper {
 
+
+    /**
+     * @authors Anna Tzanakopoulou, Anastasios Pantzartzis, Dimitris Peftitsis
+     *
+     * Database class: Creates the database,
+     * drops table if device has already the db
+     *
+     * Details for authors in report
+     */
+
     private Context context;
     private static final String DATABASE_NAME="Recipe.db";
     private static final int DATABASE_VERSION = 3;
@@ -27,12 +37,18 @@ public class Database extends SQLiteOpenHelper {
     private static final String FAV_TITLE ="fav_title";
 
 
-
+    /**
+     * For Register
+     */
     public static final String REGISTER_TABLE_NAME = "register";
     public static final String REGISTER_COLUMN_ID ="_id";
     public static final String REGISTER_COLUMN_USERNAME="username";
     public static final String REGISTER_COLUMN_PASSWORD="password";
 
+
+    /**
+     * For the recipes
+     */
 
     public static final String RECIPE_TABLE_NAME = "bizRecipe";
     private static final String RECIPE_COLUMN_ID ="_id";
@@ -59,11 +75,18 @@ public class Database extends SQLiteOpenHelper {
     /**
      * Table for images (image id, path, recipe id->(as foreign_key)
      * @param db the database
+     *
      */
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+
+        /**
+         * @author Anna Tzanakopoulou
+         * Creates the table for the register activity
+         * execution of the query to create the database local
+         */
         String table = "CREATE TABLE "+ REGISTER_TABLE_NAME+
                 " ("+ REGISTER_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
                 REGISTER_COLUMN_USERNAME +" TEXT NOT NULL,"     +
@@ -71,6 +94,12 @@ public class Database extends SQLiteOpenHelper {
 
 
 
+
+        /**
+         * @author Anna Tzanakopoulou, Anastasios Pantzartzis
+         * Creates the table for the favorite list
+         * execution of the query to create the database local
+         */
         String favTable = "CREATE TABLE "+ FAV_TABLE_NAME+
                 " ("+ FAV_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
                 FAV_TITLE +" TEXT NOT NULL);";
@@ -82,6 +111,11 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(favTable);
 
 
+        /**
+         * @author Anastasios Pantzartzis
+         * Creates the table for the recipes
+         * execution of the query to create the database local
+         */
         String theQuery = "CREATE TABLE "+ RECIPE_TABLE_NAME+
                 " ("+  RECIPE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
                 RECIPE_COLUMN_BASIC_ELEMENT +" TEXT NOT NULL,"     +
@@ -93,7 +127,7 @@ public class Database extends SQLiteOpenHelper {
                 RECIPE_COLUMN_EXEC_TIME     +" INTEGER ,"  +
                 RECIPE_COLUMN_SPECIALD      +" TEXT NOT NULL,"     +
                 RECIPE_COLUMN_ELEMENTS      +" TEXT NOT NULL,"     +
-                RECIPE_COLUMN_EXEC          +" TEXT NOT NULL,"    +
+                RECIPE_COLUMN_EXEC          +" TEXT NOT NULL,"     +
                 IMAGES_COLUMN_PATH +" TEXT );";
 
 
@@ -132,6 +166,13 @@ public class Database extends SQLiteOpenHelper {
         return insert != -1;
     }
 
+
+    /**
+     *
+     * Checks if the username is unique
+     * @param username -> user's username
+     * @return true or false
+     */
     public Boolean uniqueUsername(String username){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from " + REGISTER_TABLE_NAME + " where " + REGISTER_COLUMN_USERNAME + " = ?", new String[] {username});
@@ -164,9 +205,12 @@ public class Database extends SQLiteOpenHelper {
 
 
     /**
-     * From JSON to the database table
+     **---------------------------------------------------- From JSON to the database table ----------------------------------------------------
+     * @authors: Anna Tzanakopoulou, Anastasios Pantzartzis
      *
-     * @authors: atzanako, apantzar
+     * Inserts the data from the
+     * JSON File to the database
+     *
      *
      * @param jid -> the ID of each recipe
      * @param jRecipeTitle -> Recipe Title
@@ -215,7 +259,9 @@ public class Database extends SQLiteOpenHelper {
 
 
     /**
-     *
+     * @authors: Anna Tzanakopoulou, Anastasios Pantzartzis
+     * Add title of favorite recipe
+     * to the table.
      *
      * @param title -> recipe's title
      */
@@ -235,6 +281,11 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
+    /**
+     * @authors: Anna Tzanakopoulou, Anastasios Pantzartzis
+     * Removes title of favorite table
+     * @param title
+     */
     public void deleteFromFav(String title){
 
         try{
@@ -251,6 +302,7 @@ public class Database extends SQLiteOpenHelper {
 
 
     /**
+     * @authors: Anna Tzanakopoulou, Anastasios Pantzartzis
      * In order to execute the SQL query and select the data
      * @return selected data with cursor
      */
@@ -266,7 +318,12 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-
+    /**
+     * @authors: Anna Tzanakopoulou, Anastasios Pantzartzis
+     * @param query -> SQL query
+     * @param column -> column for the query
+     * @return Execution of recipe
+     */
     public String getExec(String query, String column){
         String txtExec="";
         Cursor cursor = getReadableDatabase().rawQuery(query,null);
@@ -281,6 +338,13 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
+    /**
+     *
+     * @authors: Anna Tzanakopoulou, Anastasios Pantzartzis
+     * @param query -> SQL query
+     * @param column -> column for the query
+     * @return data of recipes
+     */
     public String[] getData(String query, String column ){
         Cursor cursor = getReadableDatabase().rawQuery(query, null);
         cursor.moveToFirst();
@@ -294,7 +358,11 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-
+    /**
+     * @authors: Anna Tzanakopoulou, Anastasios Pantzartzis
+     * In order to call API 1 time (yes, it's the free version :)) )
+     * @return true or false
+     */
     public boolean isFull(){
 
         SQLiteDatabase db = getWritableDatabase();
@@ -312,6 +380,12 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
+    /**
+     * @authors: Anna Tzanakopoulou, Anastasios Pantzartzis
+     * Checks if the table of favorite list is
+     * full or not (For UI)
+     * @return true or false
+     */
     public boolean isFavFull(){
 
         SQLiteDatabase db = getWritableDatabase();

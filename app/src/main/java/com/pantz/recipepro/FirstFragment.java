@@ -30,18 +30,14 @@ import java.util.Random;
 public class FirstFragment extends Fragment{
 
 
-    private String displayText;
-    private String exec;
-    private String cal;
-    private String difRate;
-    private String execTime;
-    private String elements;
-    private String cat;
-    private String path;
+    private String displayText,exec,cal,difRate,execTime,elements,cat,path;
     private  Database qdb;
     private int r1,r2,r3,r4,r5,r6,r7,r8;
     Database db;
     private String[] array , imgArray, image, title;
+
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,9 +53,16 @@ public class FirstFragment extends Fragment{
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
+            **Use this
+    factory method
+    to create
+    a new
+    instance of
+     **this
+    fragment using
+    the provided
+    parameters .
+     **
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
      * @return A new instance of fragment FirstFragment.
@@ -73,6 +76,14 @@ public class FirstFragment extends Fragment{
         fragment.setArguments(args);
         return fragment;
     }
+
+
+    /**
+     * @author Anastasios Pantzartzis
+     * Fragment Creation
+     * Each Fragment will have a role ;)
+     * @param savedInstanceState
+     */
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,10 +101,14 @@ public class FirstFragment extends Fragment{
 
 
         /**
-         * :/ I know....
          *
+         * @authors: Anna Tzanakopoulou, Anastasios Pantzartzis
+         *Creates random unique numbers in order to have
+         * random unique recipes in home screen
          *
          * In order to be unique each (r)
+         *
+         * :/ I know....
          */
         while((r4==r3 || r4==r2 || r4==r1 ) || (r3==r2 || r3==r1) || (r2==r1)   ||
 
@@ -118,6 +133,12 @@ public class FirstFragment extends Fragment{
       }
 
 
+        /**
+         *
+         * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+         * To get images' paths and the data of each
+         * recipe.
+         */
 
 
         db = new Database(getContext());
@@ -133,6 +154,8 @@ public class FirstFragment extends Fragment{
         System.out.println("r1, r2, r3, r4, r5, r6, r7, r8 "+ r1+" "+r2+" "+r3+" "+ r4+" "+r5+" "+r6 +" "+r7+" "+r8);
 
 
+        ////////////////////////////////////////////////Tests//////////////////////////////////////////////////
+/*
         for (String s : array) {
             System.out.println("This is Array: " + s);
 
@@ -141,7 +164,7 @@ public class FirstFragment extends Fragment{
         for (String s : imgArray ) {
             System.out.println("This is Array: " + s);
 
-        }
+        }*/
 
     }
 
@@ -159,7 +182,14 @@ public class FirstFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
 
-            TextView view0 = view.findViewById(R.id.recipe1txt);
+        /**
+         *
+         * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+         * Init textsviews, imageviews
+         * with the values of database
+         *
+         */
+        TextView view0 = view.findViewById(R.id.recipe1txt);
             view0.setText(array[0]);
 
 
@@ -207,6 +237,10 @@ public class FirstFragment extends Fragment{
             initTheImages(imgArray[7], img8);
 
 
+            //////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////GRAB THE IDS OF EACH CARD//////////////////////////
+            /////////////////////////////////////UI//////////////////////////////////////
+
             CardView cardView1 = view.findViewById(R.id.card1);
             CardView cardView2 = view.findViewById(R.id.card2);
             CardView cardView3 = view.findViewById(R.id.card3);
@@ -227,6 +261,20 @@ public class FirstFragment extends Fragment{
     }
 
 
+    /**
+     * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+     * Init cards (info)
+     *
+     * @param view -> The view
+     * @param cardView1 -> card (1)
+     * @param cardView2 -> card (2)
+     * @param cardView3 -> card (3)
+     * @param cardView4 -> card (4)
+     * @param cardView5 -> card (5)
+     * @param cardView6 -> card (6)
+     * @param cardView7 -> card (7)
+     * @param cardView8 -> card (8)
+     */
 
     public void titleValueByClickCard(View view, CardView cardView1,  CardView cardView2,  CardView cardView3,  CardView cardView4,
                                       CardView cardView5,  CardView cardView6,  CardView cardView7, CardView cardView8 ){
@@ -258,6 +306,9 @@ public class FirstFragment extends Fragment{
 
 
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////CALLS THE FUNCTION WITH CARD, TITLE//////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////
         openCardWithClickNow(cardView1, t1);
         openCardWithClickNow(cardView2, t2);
         openCardWithClickNow(cardView3, t3);
@@ -274,8 +325,14 @@ public class FirstFragment extends Fragment{
     }
 
 
-
-
+    /**
+     * @authors Anna Tzanakopoulou, Anastasios Pantzartzis
+     *
+     * Will grab the data from the database with
+     * given title of recipe.
+     * @param cardView -> the cardview
+     * @param displayText -> title
+     */
 
     private void openCardWithClickNow(CardView cardView, String displayText){
         cardView.setOnClickListener(new View.OnClickListener() {
@@ -293,6 +350,10 @@ public class FirstFragment extends Fragment{
                 path = qdb.getExec("SELECT path FROM bizRecipe where recipe_title like '%"+displayText+"%'","path" );
 
 
+
+                ////////////////////////////////////////////////////////////////////////////////////////////////////
+                //////////////////////////////////////TO PARSE VALUES TO OTHER FRAGMENT////////////////////////////
+                //////////////////////////////////////////////////////////////////////////////////////////////////
                 Intent intent = new Intent(FirstFragment.this.getActivity(), activity_details.class);
                 intent.putExtra("TEXT", displayText);
                 intent.putExtra("EXEC", exec);
@@ -308,12 +369,15 @@ public class FirstFragment extends Fragment{
     }
 
 
+    /**
+     * Init the images of the recipes
+     * @param uri
+     * @param imageView
+     */
+
     private void initTheImages(String uri, ImageView imageView){
 
-
         int imageResource = getResources().getIdentifier(uri, null, getActivity().getPackageName());
-
-
         Drawable res = getResources().getDrawable(imageResource);
         imageView.setImageDrawable(res);
 
