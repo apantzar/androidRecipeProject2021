@@ -84,7 +84,7 @@ public class GeneralFragment extends Fragment {
         //fromUserPasser = getArguments().getString("pass");
 
         MainActivity mn = new MainActivity();
-        fromUserPasser= mn.getUsernameToEdit();
+    //    fromUserPasser= mn.getUsernameToEdit();
         viewC = inflater.inflate(R.layout.fragment_general, container, false);
         return viewC;
     }
