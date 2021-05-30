@@ -97,7 +97,7 @@ public class GeneralFragment extends Fragment {
 
         Button btnEdit = view.findViewById(R.id.editProfile);
 
-        ImageView backBtn = view.findViewById(R.id.imageVBack);
+
 
         is_edit_mode = false;
 
@@ -129,52 +129,6 @@ public class GeneralFragment extends Fragment {
         });
 
 
-
-
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               /* Intent intent = new Intent(GeneralFragment.this.getActivity(), ThirdFragment.class);
-                startActivity(intent);*/
-
-
-
-
-
-
-
-                /*getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.generalInfo, nextFrag, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit()*/;
-           /*             ThirdFragment fragment = view.findd(R.layout.fragment_general);
-
-                fragment.getView().setFocusableInTouchMode(true);
-                fragment.getView().requestFocus();
-                fragment.getView().setOnKeyListener( new View.OnKeyListener()
-                {
-                    @Override
-                    public boolean onKey( View v, int keyCode, KeyEvent event )
-                    {
-                        if( keyCode == KeyEvent.KEYCODE_BACK )
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                } );*/
-
-                backBtn.setVisibility(View.GONE);
-                btnEdit.setVisibility(View.GONE);
-
-
-
-
-
-
-            }
-        });
 
 
 

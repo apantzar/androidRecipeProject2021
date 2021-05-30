@@ -87,7 +87,7 @@ public class PasswordFragment extends Fragment {
         Button editProfile = view.findViewById(R.id.editProfile);
         /*Button close = view.findViewById(R.id.buttonGenralBack);*/
 
-        ImageView backBtn = view.findViewById(R.id.imageVBack);
+
 
         is_edit_mode = false;
 
@@ -149,20 +149,6 @@ public class PasswordFragment extends Fragment {
 
 
 
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                ThirdFragment nextFrag= new ThirdFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.passWordFrag, nextFrag, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
-
-
-                editProfile.setVisibility(View.GONE);
-                backBtn.setVisibility(View.GONE);
-            }
-        });
     }
 }
