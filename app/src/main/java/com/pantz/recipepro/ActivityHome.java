@@ -49,23 +49,13 @@ public class ActivityHome extends AppCompatActivity {
     static final  String path = "/data/data/com.pantz.recipepro/databases/";
     static final  String DB_NAME="Recipe";
     static final  String Query = "Select * from bizRecipe";
-
-
-
-    private static int tagKey = 0;
-
     private String title;
-    public String elementsIn = "ssss";
-
 
 
     @SuppressLint("SimpleDateFormat")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
 
 
         title = getIntent().getStringExtra("TEXT");
@@ -87,84 +77,7 @@ public class ActivityHome extends AppCompatActivity {
 
         theNavFunction();
 
-
-       // Button button = (Button)findViewById(R.id.button2);
-
-       // button.setOnClickListener(v -> {
-
-
-            //getData();
-
-
-
-
-/*
-            Database theDatabase = new Database(this);
-
-            for(int i=0; i< rows.size(); i++){
-                System.out.println("Inside the loop");
-                System.out.println(rows.get(i));
-                theDatabase.writeJSONtoTheDB(Integer.parseInt(rows.get(0)),rows.get(1) , "cat", "noth"
-                ,"elelel","sddd",50,"sddd",null,20,2);
-
-            }
-
-*/
-
-
-
-
-
-           // for(int i =0; i<rows.size();i++){
-
-           // }
-
-
-
-
-
-        //    InsideCSVParser insider = new InsideCSVParser();
-        //    insider.giveTheRecipesNow();
-
-
-
-      //  });
-
-
-
-
     }
-
-
-   /* public void getData(){
-        try(
-
-                Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection(path, "", "");
-            Statement statement = conn.createStatement();
-            ResultSet result  = statement.executeQuery(Query);
-
-        ){
-
-            while(result.next()){
-
-                System.out.println("ID: "+result.getInt("_id"));
-                System.out.println("BASIC ELEMENT"+result.getString("basic_element"));
-
-            }
-
-
-        }catch (SQLException | ClassNotFoundException e){
-
-
-            System.out.println("NEW EXCEPRION AGAINNNNNNNNNNNNNNN");
-
-            e.printStackTrace();
-        }
-
-
-    }*/
-
 
 
     public View getIdOfBox(){

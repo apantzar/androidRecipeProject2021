@@ -39,9 +39,11 @@ public class GeneralFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private  EditText username;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private  String fromUserPasser;
 
     public GeneralFragment() {
         // Required empty public constructor
@@ -79,6 +81,10 @@ public class GeneralFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //fromUserPasser = getArguments().getString("pass");
+
+        MainActivity mn = new MainActivity();
+        fromUserPasser= mn.getUsernameToEdit();
         viewC = inflater.inflate(R.layout.fragment_general, container, false);
         return viewC;
     }
@@ -89,8 +95,11 @@ public class GeneralFragment extends Fragment {
 
         final SharedPreferences pref = requireActivity().getSharedPreferences("Settings", requireActivity().MODE_PRIVATE);
         final String old_username = pref.getString("username", "");
+        username = view.findViewById(R.id.username);
+        if(!username.equals("")){
+            username.setText(fromUserPasser);
+        }
 
-        EditText username = view.findViewById(R.id.username);
         username.setText(old_username);
 
         Button editProfile = view.findViewById(R.id.editProfile);

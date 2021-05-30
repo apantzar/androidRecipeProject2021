@@ -17,7 +17,7 @@ public class ActivityLogin extends AppCompatActivity {
 
     EditText username, password;
     Button btnlogin;
-    TextView SignUp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,11 @@ public class ActivityLogin extends AppCompatActivity {
         // ######## try to login last user  ###########
 
 
+        /**
+         *
+         *
+         *
+         */
         final SharedPreferences pref = getSharedPreferences("Settings", MODE_PRIVATE);
         User user = new User(pref.getString("username", ""), pref.getString("password", ""));
         Database Database = new Database(ActivityLogin.this);
@@ -62,27 +67,42 @@ public class ActivityLogin extends AppCompatActivity {
         // ######## try to login last user  ###########
 
 
-
-
-
+        /**
+         * @author Anna Tzanakopoulou
+         * Login if password hash and username are
+         * valid
+         */
         btnlogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 User user = new User(username.getText().toString(), password.getText().toString());
+
                 if (user.getUsername().equals("") || user.getPassword().equals("")) {
+
                     Toast.makeText(ActivityLogin.this, "Please enter all fields.", Toast.LENGTH_SHORT).show();
                 }
                 else{
+
                     Database Database = new Database(ActivityLogin.this);
                     HashMe passwordToHash = new HashMe(user.getPassword());
+
+                    //If given hashed password is equal to database's hash --> Login
                     try {
                         String hashedPassword = passwordToHash.theHasher(user.getPassword());
                         user.setPassword(hashedPassword);
                     } catch (NoSuchAlgorithmException e) {
+
                         e.printStackTrace();
                     }
+
                     Boolean isMatching = Database.usernamePasswordMatch(user.getUsername(), user.getPassword());
+
+
+                    /**
+                     * @author Dimitrios Peftitsis
+                     *
+                     */
                     if(isMatching){
                         //store saved login info
                         SharedPreferences.Editor edit = pref.edit();
@@ -90,6 +110,13 @@ public class ActivityLogin extends AppCompatActivity {
                         edit.putString("username", user.getUsername());
                         edit.putString("password", password.getText().toString());
                         edit.apply();
+
+
+                        /**
+                         * @author Anna Tzanakopoulou
+                         * [*] Message of success
+                         * [*] Toast
+                         */
 
                         Toast.makeText(ActivityLogin.this, "Successful sign in", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), ActivityHome.class);
@@ -105,12 +132,17 @@ public class ActivityLogin extends AppCompatActivity {
 
         });
 
+        /**
+         * @author Anna Tzanakopoulou
+         * Register page is open now
+         */
+
         TextView btn = (TextView)findViewById(R.id.textView8);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityLogin.this, MainActivity.class));
+                startActivity(new Intent(ActivityLogin.this, MainActivity.class)); //new activity
             }
         });
 

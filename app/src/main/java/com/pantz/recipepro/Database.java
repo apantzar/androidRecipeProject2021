@@ -18,10 +18,6 @@ public class Database extends SQLiteOpenHelper {
     private static final String DATABASE_NAME="Recipe.db";
     private static final int DATABASE_VERSION = 3;
 
-    public static final String IMAGES_TABLE_NAME = "images";
-    public static final String IMAGES_COLUMN_ID = "id";
-    public static final String IMAGES_COLUMN_RECIPE_ID = "recipe_id";
-
 
     /**
      * For FAVORITE
@@ -67,11 +63,6 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //create the table
-   //     String imagesTable = "CREATE TABLE " + IMAGES_TABLE_NAME+ " ("+ IMAGES_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
-  //              IMAGES_COLUMN_RECIPE_ID + "INTEGER, " + IMAGES_COLUMN_PATH +" TEXT NOT NULL);";
-
-   //     db.execSQL(imagesTable);
 
         String table = "CREATE TABLE "+ REGISTER_TABLE_NAME+
                 " ("+ REGISTER_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
@@ -91,21 +82,18 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(favTable);
 
 
-
-
-
         String theQuery = "CREATE TABLE "+ RECIPE_TABLE_NAME+
-                " ("+ /*ok*/ RECIPE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
+                " ("+  RECIPE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
                 RECIPE_COLUMN_BASIC_ELEMENT +" TEXT NOT NULL,"     +
-                /*ok*/   RECIPE_COLUMN_TITLE         +" TEXT NOT NULL,"     +
-                /**/   RECIPE_COLUMN_CALORIES      +" INTEGER ,"  +
-                /*will be deleted*/ RECIPE_COLUMN_DATE_ADDED    +" DATE ,"     +
+                RECIPE_COLUMN_TITLE         +" TEXT NOT NULL,"     +
+                RECIPE_COLUMN_CALORIES      +" INTEGER ,"  +
+                RECIPE_COLUMN_DATE_ADDED    +" DATE ,"     +
                 RECIPE_COLUMN_CATEGORY      +" TEXT NOT NULL,"     +
                 RECIPE_COLUMN_DIF_RATE      +" INTEGER ,"  +
-                /**/  RECIPE_COLUMN_EXEC_TIME     +" INTEGER ,"  +
+                RECIPE_COLUMN_EXEC_TIME     +" INTEGER ,"  +
                 RECIPE_COLUMN_SPECIALD      +" TEXT NOT NULL,"     +
-                /*ok*/   RECIPE_COLUMN_ELEMENTS      +" TEXT NOT NULL,"     +
-                /*ok*/  RECIPE_COLUMN_EXEC          +" TEXT NOT NULL,"    +
+                RECIPE_COLUMN_ELEMENTS      +" TEXT NOT NULL,"     +
+                RECIPE_COLUMN_EXEC          +" TEXT NOT NULL,"    +
                 IMAGES_COLUMN_PATH +" TEXT );";
 
 
@@ -123,8 +111,6 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ REGISTER_TABLE_NAME); //in order to delete the table
         db.execSQL("DROP TABLE IF EXISTS "+ RECIPE_TABLE_NAME); //in order to delete the table
         db.execSQL("DROP TABLE IF EXISTS "+ FAV_TABLE_NAME); //in order to delete the table
-        //db.execSQL("ALTER TABLE bizRecipe  ADD COLUMN path TEXT NOT NULL");
-       // db.execSQL("DROP TABLE IF EXISTS "+ IMAGES_TABLE_NAME); //in order to delete the table FOR IMAGES
         onCreate(db); // to create again
     }
 
@@ -225,9 +211,6 @@ public class Database extends SQLiteOpenHelper {
             e.printStackTrace();
         }
 
-
-
-
     }
 
 
@@ -253,14 +236,6 @@ public class Database extends SQLiteOpenHelper {
 
 
     public void deleteFromFav(String title){
-      /*  try{
-            SQLiteDatabase sqLiteDatabase= this.getReadableDatabase();
-            sqLiteDatabase.execSQL("delete from "+FAV_TABLE_NAME+" where fav_title="+title);
-        }catch (SQLException e){
-            System.out.println("-------From delete-------");
-            e.printStackTrace();
-        }*/
-
 
         try{
             SQLiteDatabase db = getWritableDatabase();
@@ -270,8 +245,6 @@ public class Database extends SQLiteOpenHelper {
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
 
     }
 

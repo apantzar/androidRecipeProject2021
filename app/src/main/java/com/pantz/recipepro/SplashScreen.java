@@ -50,14 +50,13 @@ public class SplashScreen extends AppCompatActivity {
 
                     /**
                      * The API runs in different Thread now
-                     * @author apantzar
+                     * @author Anastasios Pantzartzis
+                     * The API runs in different thread in order to
+                     * avoid UI Freezing
                      */
                     synchronized (this) {
                         try {
 
-
-                            //SharedPreferences pref = getPreferences(MODE_PRIVATE);
-                            //boolean first_time = pref.getBoolean("first_time", true);
                             boolean first_time = true;
 
                             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -67,16 +66,16 @@ public class SplashScreen extends AppCompatActivity {
 
 
                             /**
+                             * API: TASTY
                              * This API's code for requests
-                             * The result of the call will be displayed (console) for now.
-                             *
-                             * @author pantz
+                             * The result of the call will be stored in database
+                             * @author Anastasios Pantzartzis
                              */
 
                             OkHttpClient client = new OkHttpClient();
 
                             Request request = new Request.Builder()
-                                    .url("https://tasty.p.rapidapi.com/recipes/list?from=0&size=1000")//First 10 recipes
+                                    .url("https://tasty.p.rapidapi.com/recipes/list?from=0&size=1000")
                                     .get()
                                     .addHeader("x-rapidapi-key", "26a22ee7a7msh03d13c0b22a034cp1317e8jsn479f9b5ec601")
                                     .addHeader("x-rapidapi-host", "tasty.p.rapidapi.com")
@@ -118,31 +117,14 @@ public class SplashScreen extends AppCompatActivity {
                                         String elementsStr = "";
                                         String execStr = "";
                                         int calories = 225;
-                                        // int totalTime = 20;
 
 
                                         JSONArray recipesArray = inner.getJSONArray("recipes");
-                                        // JSONObject totalTimeObj = inner.getJSONObject("total_time_minutes");
                                         JSONObject innerParser = recipesArray.getJSONObject(0);
                                         JSONArray sectionsAr = innerParser.getJSONArray("sections");
                                         JSONObject innerSections = sectionsAr.getJSONObject(0);
                                         JSONArray compArray = innerSections.getJSONArray("components");
-                                        //JSONObject nutritionObj = inner.getJSONObject("nutrition");
-                                        //calories = nutritionObj.getInt("calories");
                                         String recipeName = innerParser.getString("name");
-
-                                        //totalTime = totalTimeObj.getInt("total_time_minutes");
-
-                                        // if(totalTime<=0){
-
-                                        //    totalTime = 20;
-
-                                        //}
-
-                                        // if(calories<=0 ){
-                                        //      calories= 225;
-                                        //   }
-
 
                                         String[] rawTextArray = new String[compArray.length()];
 
@@ -155,14 +137,11 @@ public class SplashScreen extends AppCompatActivity {
                                          */
 
                                         for (int j = 0; j < compArray.length(); j++) {
-                                            //elementsStr="";
-                                            //String compValue = compArray.optString("raw_text");
-                                            // System.out.println("The raw text is:  "+compValue);
 
                                             JSONObject innerObj = compArray.getJSONObject(j);
                                             for (Iterator it = innerObj.keys(); it.hasNext(); ) {
                                                 String key = (String) it.next();
-                                                System.out.println(key + "!!:" + innerObj.get(key));
+                                             //   System.out.println(key + "!!:" + innerObj.get(key));
 
                                                 if (key.equals("raw_text")) {
 
@@ -172,28 +151,12 @@ public class SplashScreen extends AppCompatActivity {
                                                 }
 
 
-                                                //System.out.println("First print of raw text: "+elementsStr);
                                             }
 
-
-                                            // System.out.println("Second print of raw text: "+elementsStr);
-
-
-
-
-                          /*  for(int k=0;k<rawTextArray.length; k++){
-
-
-
-                               elementsStr += rawTextArray[k];
-
-
-
-                            }*/
                                         }
 
 
-                                        System.out.println("Third print of raw text: " + elementsStr);
+                                  //      System.out.println("Third print of raw text: " + elementsStr);
 
 
                                         /**
@@ -206,20 +169,14 @@ public class SplashScreen extends AppCompatActivity {
                                             JSONObject insObj = instructionsArray.getJSONObject(in);
                                             for (Iterator it = insObj.keys(); it.hasNext(); ) {
                                                 String key = (String) it.next();
-                                                System.out.println(key + "!!:" + insObj.get(key));
+                                              //  System.out.println(key + "!!:" + insObj.get(key));
 
                                                 if (key.equals("display_text")) {
 
-
-                                                    System.out.println("I am here baby");
-
-                                                    //rawTextArray[in] = (String) insObj.get(key);
                                                     execStr += (String) insObj.get(key) + "| ";
 
                                                 }
 
-
-                                                //  System.out.println("First print of raw text: "+elementsStr);
                                             }
 
                                         }
@@ -229,39 +186,8 @@ public class SplashScreen extends AppCompatActivity {
                                                 execStr, 225, "spd", null, 25, 2, null);
 
 
-                                        //Testing for results
-                                        System.out.println("Second print of exec: " + execStr);
-
-                                        System.out.println("Calories ==> " + calories);
-
-                                        // System.out.println("Total time ==> "+totalTime);
-
-
-                                        for (int k = 0; k < rawTextArray.length; k++) {
-
-
-                                            //String elementsStr = rawTextArray;
-
-                                            System.out.println("-----------------------[here]--------------------------------------");
-                                            System.out.println("Raw text: " + k + " => " + rawTextArray[k]);
-
-                                        }
-
-
-                                        // JSONArray section = inner.getJSONArray("sections");
-                                        //  JSONArray comp = section.getJSONArray(0);
-
-                                        System.out.println("\n=========================================================");
-
-                                        System.out.println(inner);
-
-                                        System.out.println("\n\n=========================================================");
-
 
                                         counterOfRecipes++;
-
-
-                                        System.out.println("Recipes Number: " + counterOfRecipes);
 
 
                                     } catch (Exception e) {
@@ -270,14 +196,11 @@ public class SplashScreen extends AppCompatActivity {
 
                                     }
 
-                                    // String recipeTitle = inner.getString("")
-
                                 }
 
 
                             } catch (IOException | JSONException e) {
                                 e.printStackTrace();
-                                System.out.println("Oh noooo");
                             }
 
                         } catch (Exception e) {
@@ -291,56 +214,6 @@ public class SplashScreen extends AppCompatActivity {
 
                 }
 
-
-                /**
-                 * for local file to db because API sucks
-                 * @authors: atzanako ,apantzar
-                 */
-
-
-
-                /*LocalFileParser fileParser;
-
-                {
-                    try {
-
-                        System.out.println("I am in try (HomeActivity)");
-                        fileParser = new LocalFileParser();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }*/
-
-
-          /*      LocalFileParser lf;
-
-                {
-                    try {
-                        lf = new LocalFileParser();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-
-
-
-                List<String[]> rows = new ArrayList<>();
-        CSVReader csvReader = new CSVReader(RatingActivity.this, "movies.csv");
-        try {
-            rows = csvReader.readCSV();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        for (int i = 0; i < rows.size(); i++) {
-            Log.d(Constants.TAG, String.format("row %s: %s, %s", i, rows.get(i)[0], rows.get(i)[1]));
-        }
-    }
-
-
-
-  */
             };
 
 
@@ -348,8 +221,15 @@ public class SplashScreen extends AppCompatActivity {
             thread.start();
 
 
+
+            /**
+             * For local file to db because API sucks :(
+             * The free API has limited recipes, we are going to add
+             * from JSON file extra recipes now.
+             * @authors: Anna Tzanakopoulou, Anastasios Pantzartzis
+             */
+
             HashMap<Integer, String> rows = new HashMap<>();
-            HashMap<Integer, String> imgRows = new HashMap<>();
 
 
             LocalFileParser localFileParser = new LocalFileParser(this, "recipes.json");
@@ -357,28 +237,12 @@ public class SplashScreen extends AppCompatActivity {
             try {
 
                 rows = localFileParser.readJSON();
-                // imgRows = localFileParser.getImgValues();
-                //System.out.println("Element: "+ rows);
-                System.out.println("IM IN TH ROWS HASHMAP=============================");
-               /* for(int i = 0; i<imgRows.size(); i++){
-                   // if(rows.get(i)=="#"){
-                    //    i++;
-                   // }else{
-
-                    System.out.println(imgRows.get(i));
-                      //  System.out.println(rows.get(i));
-                  //  }
-                }*/
-
 
                 try {
 
                     int counter = 0;
 
                     for (int i = 0; i < 49; i++) {
-
-                        System.out.println("Caltest " + rows.get(6));
-                        System.out.println("CATtEST " + rows.get(2));
 
                         sqllite.writeJSONtoTheDB(Integer.parseInt(rows.get(counter++)), rows.get(counter++), rows.get(counter++),
                                 rows.get(counter++), rows.get(counter++), rows.get(counter++), Integer.parseInt(rows.get(counter++)), rows.get(counter++),
@@ -390,23 +254,25 @@ public class SplashScreen extends AppCompatActivity {
 
 
                 } catch (NumberFormatException | ParseException e) {
-                    System.out.println("WHY DONT YOU TAKE 9????????");
                     e.printStackTrace();
                 }
 
 
             } catch (IOException | JSONException e) {
-
-                System.out.println("!!!!!!!!!!!!!!!!I am in exception for csv!!!!!!!!!!!!!!!");
                 e.printStackTrace();
             }
         }
 
 
 
+        /**
+         * @author Dimitris Peftitsis
+         *
+         */
+
         new Handler().postDelayed(new Runnable() {
             @Override public void run() {
                 Intent i = new Intent(SplashScreen.this, MainActivity.class); startActivity(i);
-                finish(); } }, 4000);
+                finish(); } }, 1500);
     }
 }
