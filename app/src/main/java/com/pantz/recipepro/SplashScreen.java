@@ -39,7 +39,7 @@ public class SplashScreen extends AppCompatActivity {
         Boolean tableStatus = db.isFull();
 
 
-        System.out.println("Is the table of db full? "+tableStatus);
+        //System.out.println("Is the table of db full? "+tableStatus);
 
 
         if(!tableStatus) {
@@ -111,7 +111,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
                                     int id = inner.getInt("id");
-                                    System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!This is the id of:  " + id);
+
 
                                     try {
                                         String elementsStr = "";
@@ -178,7 +178,6 @@ public class SplashScreen extends AppCompatActivity {
                                                 }
 
                                             }
-
                                         }
 
 
@@ -236,6 +235,12 @@ public class SplashScreen extends AppCompatActivity {
 
             try {
 
+                /**
+                 * HashMap that stores the data from
+                 * the JSON and Pasrse them to Database
+                 * with try{}catch
+                 *
+                 */
                 rows = localFileParser.readJSON();
 
                 try {
@@ -244,12 +249,12 @@ public class SplashScreen extends AppCompatActivity {
 
                     for (int i = 0; i < 49; i++) {
 
+                        //Let's write them to the db ;)
+
                         sqllite.writeJSONtoTheDB(Integer.parseInt(rows.get(counter++)), rows.get(counter++), rows.get(counter++),
                                 rows.get(counter++), rows.get(counter++), rows.get(counter++), Integer.parseInt(rows.get(counter++)), rows.get(counter++),
                                 new SimpleDateFormat("dd/MM/yyyy").parse(rows.get(counter++)),
                                 Integer.parseInt(rows.get(counter++)), Integer.parseInt(rows.get(counter++)), rows.get(counter++));
-
-
                     }
 
 
@@ -267,7 +272,7 @@ public class SplashScreen extends AppCompatActivity {
 
         /**
          * @author Dimitris Peftitsis
-         *
+         * SplashScreen Delay
          */
 
         new Handler().postDelayed(new Runnable() {

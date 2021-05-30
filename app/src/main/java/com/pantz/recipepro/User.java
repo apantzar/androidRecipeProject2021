@@ -8,6 +8,11 @@ package com.pantz.recipepro;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+/**
+ * @author Anna Tzanakopoulou
+ */
+
 public class User {
     private String username;
     private String password;
