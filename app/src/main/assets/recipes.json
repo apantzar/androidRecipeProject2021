@@ -3,7 +3,7 @@
         {
             "_id": "1",
             "basic_element": "Chicken",
-            "recipe_title": "Grilled chicken with charred pineapple salad",
+            "recipe_title": "Grilled chicken & pineapple salad",
             "calories": "290",
             "date_added": "14/5/2021",
             "recipe_category": "Lunch",
@@ -142,7 +142,7 @@
         {
             "_id": "11",
             "basic_element": "Fruit",
-            "recipe_title": "Mixed leaf salad with mozzarella, mint, peach & prosciutto",
+            "recipe_title": "Mixed leaf salad",
             "calories": "412",
             "date_added": "14/5/2021",
             "recipe_category": "Salad",
@@ -156,7 +156,7 @@
         {
             "_id": "12",
             "basic_element": "Potato",
-            "recipe_title": "Smoked trout, horseradish & new potato salad",
+            "recipe_title": "Smoked trout & potato salad",
             "calories": "449",
             "date_added": "14/5/2021",
             "recipe_category": "Salad",
@@ -282,7 +282,7 @@
         {
             "_id": "21",
             "basic_element": "Pineapple",
-            "recipe_title": "Sage Honey Pineapple Blended Cocktail",
+            "recipe_title": "Honey Pineapple Cocktail",
             "calories": "280",
             "date_added": "14/5/2021",
             "recipe_category": "Cocktail",
@@ -296,7 +296,7 @@
         {
             "_id": "22",
             "basic_element": "Chicken",
-            "recipe_title": "Broiled Paprika and Lemon-Pepper Chicken Breasts",
+            "recipe_title": "Broiled Paprika Chicken Breasts",
             "calories": "220",
             "date_added": "14/5/2021",
             "recipe_category": "Lunch",
@@ -324,7 +324,7 @@
         {
             "_id": "24",
             "basic_element": "Beef",
-            "recipe_title": "Easy Meatloaf",
+            "recipe_title": "Meatloaf",
             "calories": "372",
             "date_added": "15/3/2021",
             "recipe_category": "Lunch",
@@ -338,7 +338,7 @@
         {
             "_id": "25",
             "basic_element": "Chorizo",
-            "recipe_title": "Air Fryer Mini Breakfast Burritos",
+            "recipe_title": "Air Fryer Burritos",
             "calories": "254",
             "date_added": "15/4/2021",
             "recipe_category": "Breakfast",
@@ -590,7 +590,7 @@
         {
             "_id": "43",
             "basic_element": "Tomato",
-            "recipe_title": "Marinated tomato & rice salad",
+            "recipe_title": "Tomato & rice salad",
             "calories": "336",
             "date_added": "18/3/2021",
             "recipe_category": "Salad",

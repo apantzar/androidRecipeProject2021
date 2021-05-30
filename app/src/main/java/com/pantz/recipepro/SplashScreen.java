@@ -50,14 +50,13 @@ public class SplashScreen extends AppCompatActivity {
 
                     /**
                      * The API runs in different Thread now
-                     * @author apantzar
+                     * @author Anastasios Pantzartzis
+                     * The API runs in different thread in order to
+                     * avoid UI Freezing
                      */
                     synchronized (this) {
                         try {
 
-
-                            //SharedPreferences pref = getPreferences(MODE_PRIVATE);
-                            //boolean first_time = pref.getBoolean("first_time", true);
                             boolean first_time = true;
 
                             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -67,16 +66,16 @@ public class SplashScreen extends AppCompatActivity {
 
 
                             /**
+                             * API: TASTY
                              * This API's code for requests
-                             * The result of the call will be displayed (console) for now.
-                             *
-                             * @author pantz
+                             * The result of the call will be stored in database
+                             * @author Anastasios Pantzartzis
                              */
 
                             OkHttpClient client = new OkHttpClient();
 
                             Request request = new Request.Builder()
-                                    .url("https://tasty.p.rapidapi.com/recipes/list?from=0&size=1000")//First 10 recipes
+                                    .url("https://tasty.p.rapidapi.com/recipes/list?from=0&size=1000")
                                     .get()
                                     .addHeader("x-rapidapi-key", "26a22ee7a7msh03d13c0b22a034cp1317e8jsn479f9b5ec601")
                                     .addHeader("x-rapidapi-host", "tasty.p.rapidapi.com")
@@ -292,55 +291,9 @@ public class SplashScreen extends AppCompatActivity {
                 }
 
 
-                /**
-                 * for local file to db because API sucks
-                 * @authors: atzanako ,apantzar
-                 */
 
 
 
-                /*LocalFileParser fileParser;
-
-                {
-                    try {
-
-                        System.out.println("I am in try (HomeActivity)");
-                        fileParser = new LocalFileParser();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }*/
-
-
-          /*      LocalFileParser lf;
-
-                {
-                    try {
-                        lf = new LocalFileParser();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-
-
-
-                List<String[]> rows = new ArrayList<>();
-        CSVReader csvReader = new CSVReader(RatingActivity.this, "movies.csv");
-        try {
-            rows = csvReader.readCSV();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        for (int i = 0; i < rows.size(); i++) {
-            Log.d(Constants.TAG, String.format("row %s: %s, %s", i, rows.get(i)[0], rows.get(i)[1]));
-        }
-    }
-
-
-
-  */
             };
 
 
@@ -348,8 +301,15 @@ public class SplashScreen extends AppCompatActivity {
             thread.start();
 
 
+
+            /**
+             * For local file to db because API sucks :(
+             * The free API has limited recipes, we are going to add
+             * from JSON file extra recipes now.
+             * @authors: Anna Tzanakopoulou, Anastasios Pantzartzis
+             */
+
             HashMap<Integer, String> rows = new HashMap<>();
-            HashMap<Integer, String> imgRows = new HashMap<>();
 
 
             LocalFileParser localFileParser = new LocalFileParser(this, "recipes.json");
@@ -357,28 +317,12 @@ public class SplashScreen extends AppCompatActivity {
             try {
 
                 rows = localFileParser.readJSON();
-                // imgRows = localFileParser.getImgValues();
-                //System.out.println("Element: "+ rows);
-                System.out.println("IM IN TH ROWS HASHMAP=============================");
-               /* for(int i = 0; i<imgRows.size(); i++){
-                   // if(rows.get(i)=="#"){
-                    //    i++;
-                   // }else{
-
-                    System.out.println(imgRows.get(i));
-                      //  System.out.println(rows.get(i));
-                  //  }
-                }*/
-
 
                 try {
 
                     int counter = 0;
 
                     for (int i = 0; i < 49; i++) {
-
-                        System.out.println("Caltest " + rows.get(6));
-                        System.out.println("CATtEST " + rows.get(2));
 
                         sqllite.writeJSONtoTheDB(Integer.parseInt(rows.get(counter++)), rows.get(counter++), rows.get(counter++),
                                 rows.get(counter++), rows.get(counter++), rows.get(counter++), Integer.parseInt(rows.get(counter++)), rows.get(counter++),
@@ -404,9 +348,17 @@ public class SplashScreen extends AppCompatActivity {
 
 
 
+
+
+
+        /**
+         * @author Dimitris Peftitsis
+         *
+         */
+
         new Handler().postDelayed(new Runnable() {
             @Override public void run() {
                 Intent i = new Intent(SplashScreen.this, MainActivity.class); startActivity(i);
-                finish(); } }, 4000);
+                finish(); } }, 1500);
     }
 }

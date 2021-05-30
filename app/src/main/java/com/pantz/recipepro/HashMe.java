@@ -1,8 +1,7 @@
 /**
+ * @author Anastasios Pantzartzis
  * this class is responsible to encrypt
  * passwords
- *
- *
  * Algorithm: shhh be quiet (¬‿¬)
  */
 
@@ -31,12 +30,15 @@ public class HashMe {
 
 
     /**
-     * @author apantzar
+     * In order to hash the given password : Collaboration with MainActivity.java & ActivityLogin.java
+     * @author Anastasios Pantzartzis
      * @param passwordToHash --> Given password
      * @return --> Hashed password value
      * @throws NoSuchAlgorithmException --> exception
      */
     public String theHasher(String passwordToHash) throws NoSuchAlgorithmException {
+
+        //The encryption algorithm is SHA-256
         MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
         messageDigest.update(passwordToHash.getBytes());
 
