@@ -39,18 +39,13 @@ public class FourthFragment extends Fragment{
 
 
     private  String [] array;
-
-
-    private String displayText;
-    private String exec;
+    private String displayText, exec;
     private String cal;
     private String difRate;
     private String execTime;
     private String elements;
     private String cat;
     private String path;
-
-
 
     private  Database qdb;
     private  Database db;
@@ -105,12 +100,6 @@ public class FourthFragment extends Fragment{
 
 
 
-/*
-        SearchView view = (SearchView)getSomething();
-        String givenString= view.getQuery().toString();
-
-
-        System.out.println("The given "+givenString);*/
 
 
 
@@ -127,21 +116,6 @@ public class FourthFragment extends Fragment{
                              Bundle savedInstanceState) {
 
 
-
-
-/*
-        ActivityHome home = new ActivityHome();
-        home.getIdOfBox();*/
-
-
-      /*  db = new Database(getContext());
-        array = db.getData("SELECT * FROM bizRecipe", "recipe_title" );*/
-       /* System.out.println("From array: ");
-         for(int i=0; i<array.length; i++){
-
-             System.out.println(array[i]);
-         }*/
-        //Cursor cursor= db.readTheData("SELECT * FROM ");
         // Inflate the layout for this fragment
 
 
@@ -149,18 +123,6 @@ public class FourthFragment extends Fragment{
 
 
          listView = (ListView) view.findViewById(R.id.mainView);
-/*
-        ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                array
-
-
-        );*/
-
-        //listView.setAdapter(listViewAdapter);
-
-
         return view;
 
 

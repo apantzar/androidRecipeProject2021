@@ -117,31 +117,14 @@ public class SplashScreen extends AppCompatActivity {
                                         String elementsStr = "";
                                         String execStr = "";
                                         int calories = 225;
-                                        // int totalTime = 20;
 
 
                                         JSONArray recipesArray = inner.getJSONArray("recipes");
-                                        // JSONObject totalTimeObj = inner.getJSONObject("total_time_minutes");
                                         JSONObject innerParser = recipesArray.getJSONObject(0);
                                         JSONArray sectionsAr = innerParser.getJSONArray("sections");
                                         JSONObject innerSections = sectionsAr.getJSONObject(0);
                                         JSONArray compArray = innerSections.getJSONArray("components");
-                                        //JSONObject nutritionObj = inner.getJSONObject("nutrition");
-                                        //calories = nutritionObj.getInt("calories");
                                         String recipeName = innerParser.getString("name");
-
-                                        //totalTime = totalTimeObj.getInt("total_time_minutes");
-
-                                        // if(totalTime<=0){
-
-                                        //    totalTime = 20;
-
-                                        //}
-
-                                        // if(calories<=0 ){
-                                        //      calories= 225;
-                                        //   }
-
 
                                         String[] rawTextArray = new String[compArray.length()];
 
@@ -154,14 +137,11 @@ public class SplashScreen extends AppCompatActivity {
                                          */
 
                                         for (int j = 0; j < compArray.length(); j++) {
-                                            //elementsStr="";
-                                            //String compValue = compArray.optString("raw_text");
-                                            // System.out.println("The raw text is:  "+compValue);
 
                                             JSONObject innerObj = compArray.getJSONObject(j);
                                             for (Iterator it = innerObj.keys(); it.hasNext(); ) {
                                                 String key = (String) it.next();
-                                                System.out.println(key + "!!:" + innerObj.get(key));
+                                             //   System.out.println(key + "!!:" + innerObj.get(key));
 
                                                 if (key.equals("raw_text")) {
 
@@ -171,28 +151,12 @@ public class SplashScreen extends AppCompatActivity {
                                                 }
 
 
-                                                //System.out.println("First print of raw text: "+elementsStr);
                                             }
 
-
-                                            // System.out.println("Second print of raw text: "+elementsStr);
-
-
-
-
-                          /*  for(int k=0;k<rawTextArray.length; k++){
-
-
-
-                               elementsStr += rawTextArray[k];
-
-
-
-                            }*/
                                         }
 
 
-                                        System.out.println("Third print of raw text: " + elementsStr);
+                                  //      System.out.println("Third print of raw text: " + elementsStr);
 
 
                                         /**
@@ -205,20 +169,14 @@ public class SplashScreen extends AppCompatActivity {
                                             JSONObject insObj = instructionsArray.getJSONObject(in);
                                             for (Iterator it = insObj.keys(); it.hasNext(); ) {
                                                 String key = (String) it.next();
-                                                System.out.println(key + "!!:" + insObj.get(key));
+                                              //  System.out.println(key + "!!:" + insObj.get(key));
 
                                                 if (key.equals("display_text")) {
 
-
-                                                    System.out.println("I am here baby");
-
-                                                    //rawTextArray[in] = (String) insObj.get(key);
                                                     execStr += (String) insObj.get(key) + "| ";
 
                                                 }
 
-
-                                                //  System.out.println("First print of raw text: "+elementsStr);
                                             }
 
                                         }
@@ -228,39 +186,8 @@ public class SplashScreen extends AppCompatActivity {
                                                 execStr, 225, "spd", null, 25, 2, null);
 
 
-                                        //Testing for results
-                                        System.out.println("Second print of exec: " + execStr);
-
-                                        System.out.println("Calories ==> " + calories);
-
-                                        // System.out.println("Total time ==> "+totalTime);
-
-
-                                        for (int k = 0; k < rawTextArray.length; k++) {
-
-
-                                            //String elementsStr = rawTextArray;
-
-                                            System.out.println("-----------------------[here]--------------------------------------");
-                                            System.out.println("Raw text: " + k + " => " + rawTextArray[k]);
-
-                                        }
-
-
-                                        // JSONArray section = inner.getJSONArray("sections");
-                                        //  JSONArray comp = section.getJSONArray(0);
-
-                                        System.out.println("\n=========================================================");
-
-                                        System.out.println(inner);
-
-                                        System.out.println("\n\n=========================================================");
-
 
                                         counterOfRecipes++;
-
-
-                                        System.out.println("Recipes Number: " + counterOfRecipes);
 
 
                                     } catch (Exception e) {
@@ -269,14 +196,11 @@ public class SplashScreen extends AppCompatActivity {
 
                                     }
 
-                                    // String recipeTitle = inner.getString("")
-
                                 }
 
 
                             } catch (IOException | JSONException e) {
                                 e.printStackTrace();
-                                System.out.println("Oh noooo");
                             }
 
                         } catch (Exception e) {
@@ -289,10 +213,6 @@ public class SplashScreen extends AppCompatActivity {
                     Log.i(TAG, "run: Finished");
 
                 }
-
-
-
-
 
             };
 
@@ -334,20 +254,14 @@ public class SplashScreen extends AppCompatActivity {
 
 
                 } catch (NumberFormatException | ParseException e) {
-                    System.out.println("WHY DONT YOU TAKE 9????????");
                     e.printStackTrace();
                 }
 
 
             } catch (IOException | JSONException e) {
-
-                System.out.println("!!!!!!!!!!!!!!!!I am in exception for csv!!!!!!!!!!!!!!!");
                 e.printStackTrace();
             }
         }
-
-
-
 
 
 

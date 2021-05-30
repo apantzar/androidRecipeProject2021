@@ -81,15 +81,7 @@ public class FirstFragment extends Fragment{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
 
-
-
-
-
-
         }
-
-
-
 
 
         Random random = new Random();
@@ -150,21 +142,6 @@ public class FirstFragment extends Fragment{
             System.out.println("This is Array: " + s);
 
         }
-
-
-      //  System.out.println(array[0]);
-
-
-
-
-        //giveTitlesNow();
-
-
-
-
-
-
-
 
     }
 
@@ -305,21 +282,6 @@ public class FirstFragment extends Fragment{
             @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
-                /*TextView theText= v.findViewById(R.id.recipe1txt);
-                int id=0;
-
-
-                  *//* theText.findViewById(R.id.recipe1txt);
-                   displayText = theText.getText().toString();*//*
-
-                    id = cardView.getChildAt(1).getId();
-
-                     System.out.println(id);
-                    theText= v.findViewById(id);
-                    displayText = theText.getText().toString();
-
-
-*/
 
                 qdb = new Database(getContext());
                 exec = qdb.getExec("SELECT exec FROM bizRecipe where recipe_title like '%"+displayText+"%'","exec" );
