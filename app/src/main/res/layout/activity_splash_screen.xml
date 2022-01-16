@@ -26,9 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal"
-        android:text="Copyright©TupperTeam"
+        android:text="By Spirit Software"
         android:textColor="#FFFFFF"
-        android:textSize="14sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
